@@ -1,0 +1,74 @@
+
+## Direct values 2
+
+42
+3.141592
+"Jane Doe"
+jane@email.com
+https://ryelang.org
+%data/apples.csv
+{ 100 20 "Three" }
+
+
+
+## Words 2
+
+pi: 3.141592
+
+
+; if Word is bound to a direct value it evaluates to that value
+pi
+
+; if Word is bound to a Function it runs the Function and returns
+; the result. True is a function that just returns Integer 1
+true
+
+; Function inc accepts Integer and returns it incremented by 1
+inc 41
+
+; Function concat accepts two values and concatenates them together
+concat "Fizz" "Buzz"
+
+
+## Special word types 2
+
+; Lit-word evaluates to the Word itself
+'green
+'inc
+
+; Set-word bind a Word to a direct value
+score: 330
+; or a Function, which is also normal Rye value
+inc3: fn { x } { inc inc inc x }
+
+; Get-word always gets the bound value, even if
+; it's a Function or a Builtin function
+?score
+?inc
+?inc3
+
+## factorial example
+
+is-equal: fn { x y "checks two values for equality" } { x = y }
+mul: fn { x y "multiplies two values" } { x * y }
+dec: fn { x "decrements an integer" } { x - 1 }
+
+
+; Rye2 has a word type, that functions as a math operand, but we will
+; use just ordinary words, we learned about above, for this example.
+
+; So we defined 3 funtions for this. Get-word describes them in shell
+
+?is-equal
+?mul
+?dec
+
+; Now we use evaluation rules from above to create recursive factorial
+fac: fn { x } { either is-equal x 1 { 1 } { mul x fac dec x } }
+fac 5
+fac 10
+
+
+
+?fn
+?either

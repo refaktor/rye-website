@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="29.35 0 422.432 328.616" xmlns="http://www.w3.org/2000/svg">
+  <rect rx="5" ry="5" style="fill: rgb(216, 216, 216); transform-origin: 305.672px 113.27px;" height="31.589" x="267.149" y="97.476" width="77.046" transform="matrix(0.999741, 0.02276, -0.02276, 0.999741, -127.530732, -51.937295)"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Timmana; font-size: 14.7px; white-space: pre; transform-origin: 195.276px 109.539px;" x="151.829" y="66.324">Rye code</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.7px;" x="195.575" y="76.02"> </text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.7px;" x="186.583" y="89.099" transform="matrix(1, 0, 0, 1, -130.944473, 28.850677)">Direct values<tspan x="186.58299255371094" dy="1em">​</tspan></text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.7px;" x="231.738" y="119.521">Words</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; white-space: pre;" x="231.214" y="131.576">Return bound value</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; white-space: pre;" x="108.371" y="110.325" transform="matrix(1, 0, 0, 1, -53.375481, 22.037682)">Return themselves<tspan x="108.37100219726562" dy="1em">​</tspan>* strings<tspan x="108.37100219726562" dy="1em">​</tspan>* numbers<tspan x="108.37100219726562" dy="1em">​</tspan>* blocks<tspan x="108.37100219726562" dy="1em">​</tspan>* ...</text>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x1="135.826" y1="87.027" x2="104.904" y2="103.798"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x1="214.967" y1="85.454" x2="242.22" y2="103.798"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; white-space: pre; transform-origin: 342.939px 34.398px;" x="281.852" y="33.281" transform="matrix(1, 0, 0, 1, -54.948486, 26.230682)">Rye
+  code is a block of Rye values.<tspan x="281.85198974609375" dy="1em">​</tspan>Block is also a type of Rye value.</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.7px;" x="149.334" y="223.032">Direct values</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; white-space: pre;" x="149.859" y="236.66">Return themselves</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.7px;" x="306.567" y="221.984">Functions</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; white-space: pre;" x="342.649" y="212.002" transform="matrix(1, 0, 0, 1, -34.507484, 22.561676)">Accept arguments if any, <tspan x="342.64898681640625" dy="1em">​</tspan>evaluate it's code and return result<tspan x="342.64898681640625" dy="1em">​</tspan>or failure.</text>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x1="263.185" y1="140.486" x2="263.185" y2="158.829"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x1="253.227" y1="174.029" x2="209.202" y2="205.475"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x1="274.191" y1="172.456" x2="314.548" y2="205.999"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; white-space: pre; transform-origin: 346.94px 34.398px;" x="238.453" y="168.194">Can be bound to</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; white-space: pre; transform-origin: 346.94px 34.398px;" x="157.635" y="92.005">Consists of</text>
+  <rect rx="5" ry="5" style="fill: rgb(216, 216, 216); transform-origin: 1304.07px 17.394px;" height="4.851" x="1139.721" y="14.968" width="328.693" transform="matrix(0.99995, -0.009966, 0.019485, 0.999855, -1075.475804, 273.504077)"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px; font-style: italic; white-space: pre;" y="-30.374" x="11.089"><tspan x="45.418" y="287.884" style="font-size: 8px; word-spacing: 0px;">But what about special forms like </tspan><tspan style="font-weight: 700; font-size: 8px; word-spacing: 0px;">if</tspan><tspan style="font-size: 8px; word-spacing: 0px;">, </tspan><tspan style="font-weight: 700; font-size: 8px; word-spacing: 0px;">loop</tspan><tspan style="font-size: 8px; word-spacing: 0px;"> and </tspan><tspan style="font-weight: 700; font-size: 8px; word-spacing: 0px;">function</tspan><tspan style="font-size: 8px; word-spacing: 0px;"> definitions? - These are also just functions in Rye.</tspan></text>
+</svg>

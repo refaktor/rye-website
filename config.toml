@@ -1,0 +1,79 @@
+baseURL = "https://ryelang.org"
+languageCode = "en-us"
+title = "Rye Language"
+themesDir = "../.."
+theme = "hugo-whisper-theme"
+
+ignoreFiles = ["meet_rye/_code/", "meet_rye/load_do/" ]
+
+pygmentsCodeFences = false
+pygmentsCodefencesGuessSyntax = false
+pygmentsUseClasses = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+
+# Controls how many words are printed in the content summary on the docs homepage.
+# See https://gohugo.io/content-management/summaries/
+summaryLength = 30
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Docs"
+    url = "/meet_rye/"
+    weight = 2
+
+#[[menu.main]]
+#    name = "Reference"
+#    url = "/basics.html"
+#    weight = 3
+
+[[menu.main]]
+    name = "New Blog"
+#    url = "https://ryelang.blogspot.com/"
+    url = "/blog/"
+    weight = 4
+
+#[[menu.main]]
+#    name = "Reddit"
+#    url = "https://reddit.com/r/ryelang"
+#    weight = 5
+
+[[menu.main]]
+    name = "Github"
+    url = "https://github.com/refaktor/rye"
+    weight = 6
+
+[params]
+  mainSections = [ "cookbook", "meet_rye" ] 
+  google_analytics_id=""
+  homepage_button_link = '/cookbook'
+  homepage_button_text = 'Read The Cookbook'
+  homepage_intro = 'Whisper is a documentation theme built with Hugo. The design and functionality is intentionally minimal.'
+  homepage_image = '/images/terminal.gif'
+
+  ## You can enable to add anchor links to header elements
+  # enable_anchor_link = true
+
+  [params.homepage_meta_tags]
+    meta_description = "Rye is a work in progress dynamic language with some new ideas"
+    meta_og_title = "Rye language"
+    meta_og_type = "website"
+    meta_og_url = "https://ryelang.org"
+    #meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
+    #meta_og_description = "Rye language is a work in progress dynamic language..."
+    #meta_twitter_card = "summary"
+    #meta_twitter_site = "@refaktor"
+    #meta_twitter_creator = "@refaktor"
+
+  [params.logo]
+      mobile = "/images/logo.png"
+      standard  = "/images/logo.png"
+      # standard  = "/images/logo.svg"
+      
