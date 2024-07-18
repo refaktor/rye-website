@@ -76,7 +76,7 @@ All the lines above are expressions, because they return results and have no sid
 
 ## Words with values
 
-In the previos page we learned that we can assign values to words. Invoking a word is the simplest expression, if the value is not a function it returns the assigned value.
+In the previous page we learned that we can assign values to words. Invoking a word is the simplest expression, if the value is not a function it returns the assigned value.
 
 ```clojure
 name: "Jane"
