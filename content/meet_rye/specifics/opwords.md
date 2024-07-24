@@ -146,7 +146,7 @@ inc 10 |* 10
 Because first argument comes from previous expressions on the left, functions in Rye use the _active/input_ value as the first argument if possible. 
 
 It's not always strictly determinable, but in general
-in a function one value is the input, the active value and other values are often parameters / settings / options. This sometimes means the same order as we're already used to rom other languages, 
+in a function one value is the input, the active value and other values are often parameters / settings / options. This sometimes means the same order as we're already used to from other languages, 
 but sometimes order is specific.
 
 Let's look at one such chain:
