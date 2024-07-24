@@ -58,8 +58,8 @@ probe ?now
 ; prints: [BFunction(0): Returns current Time.]
 ```
 
-Function for creating pure function is **fnp**. Pure functions can only call other pure functions (builtin or normal). Pure functions are bound to a context with just pure functions so they 
-have no access to any unpure function or a word (variable) outside it's scome (like global).
+Function for creating pure function is **pfn**. Pure functions can only call other pure functions (builtin or normal). Pure functions are bound to a context with just pure functions so they 
+have no access to any unpure function or a word (variable) outside it's scope (like global).
 
 ```clojure
 x: 101
