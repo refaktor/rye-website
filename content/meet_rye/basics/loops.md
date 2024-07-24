@@ -16,19 +16,21 @@ Like conditionals (if, either, switch) looping _constructs_ in Rye are also just
 Sometimes you just need to loop N times. And there is a function for that. It accepts integer - a number of loops and a block of code.
 
 ```clojure
-loop 2 { print "Hey!" }
+loop 3 { print "Hey!" }
 ; prints:
 ; Hey!
 ; Hey!
 ; Hey!
 
-loop 3 { prns "Bye" }
+loop 2 { prns "Bye" }
 ; prints: Bye Bye
 ```
 
 The use of left set-word might seem a little odd, but you will see the benefits later.
 
-## Injected values - crash course
+## For function
+
+### Injected values - quick crash course
 
 We are getting ahead of ourselves. We will learn about injected values, op-words and similar things later, but we need to touch them a little. We could skip them at loop
 function, but the next one (for) doesn't make any sense without them.
@@ -52,7 +54,7 @@ There are other functions that inject values into blocks, not just loop, with (a
 
 BTW: comma is called expression guard and is optional.
 
-## For function
+### Now a "for" loop
 
 For functions takes a block of values and a block of code. It iterates through values passing each as injected value into the block as it evaluates the block.
 

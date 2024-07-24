@@ -94,27 +94,9 @@ say-hi
 Since there is no special keyword like: `func, def, function, ...`, but functions are
 like other Rye values constructed with functions (and you can load these as a library or make your own), we tend to use more words for specific cases of constructing functions than just one keyword.
 
-## Fnc 
-
-Rye has a function **fnc**. With it you can define a custom context in which you want function to be executed.
-
-```clojure
-me: context { name: "Jim" }
-
-introduce: fnc { to } me { print { "Hi" to ", I'm" name } }
-
-introduce "Jane"
-; prints: Hi Jane , I'm Jim
-
-introduce "Bob"
-; prints: Hi Bob , I'm Jim
-```
-
-This function enables many interesting things, some are still being explored.
-
 ## Closure
 
-It turns out closures are just a simpler variant of this. Closure is a function that's  executed in the context it was defined in.
+It turns out closures are just a simpler variant of this. Closure is a function that's executed in the context it was defined in.
 
 ```clojure
 me: context { 
@@ -149,4 +131,3 @@ add5 5
 add10 5
 ; returns: 15
 ```
-
