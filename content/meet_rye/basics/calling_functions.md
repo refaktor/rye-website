@@ -120,7 +120,7 @@ print capitalize name
 In Rye (like in REBOL) all functions have a fixed number of arguments. REBOL had something called refinements to remedy this, the idea was good on the first level, but you couldn't elegantly pass refinements to next calls. Refinements also 
 clashed syntatctically with context navigation. So Rye doesn't have this concept. 
 
-It has a naming convention. Where there is a primary function, but you need more variations or specialisations of it, we use "\" character in the naming of function denote that. You saw one example above with join and join\with. Remember these are
+It has a naming convention. Where there is a primary function, but you need more variations or specialisations of it, we use "\\" character in the naming of function denote that. You saw one example above with join and join\with. Remember these are
 two different functions, it's just a naming convention.
 
 ```clojure
