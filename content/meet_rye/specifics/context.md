@@ -87,7 +87,7 @@ do\in pos-printer {
 
 So how does this work? Evaluator finds values of **out**, **clrf**, **info** and **codepage** in it's now parent context, the context _pos-printer_ that we created above. It evaluates the first 3 because they are functions and retrieves the last. 
 
-But it found _print_ and _loop_ in the parent context of the parent context, where all the builtins are defined.
+But it found _print_ and _loop_ in the parent context of the parent context, where all the built-ins are defined.
 
 <!-- With **do\in** we have access to words in current context and the words defined in a specified context (pos-printer) through the parent link. --> 
 We can use functions **ls** (list) and **lsp** (list parent) to demonstrate this.
@@ -108,7 +108,7 @@ do\in pos-printer { lsp } ; list parent
 
 ### Builtin contexts
 
-Rye also comes with some builtin contexts. To ensure we can use short math related words to do math operations **math** builtin functions are defined in their own context.
+Rye also comes with some built-in contexts. To ensure we can use short math related words to do math operations **math** built-in functions are defined in their own context.
 
 We can use words from such contexts using cpaths (math/pi, math/sin) like in the next example.
 
@@ -162,7 +162,7 @@ Rye is context oriented language, where words get meaning in specific contexts, 
 that it makes sense to define context circle with context math as the first parent.
 
 ```clojure
-rye .needs { math } ; check if we have math module builtin
+rye .needs { math } ; check if we have math module built-in
 
 circle: extends math { 
 	circuference: fn { r } { 2 * pi * r } 
@@ -181,9 +181,9 @@ This is a way of giving our code access to words defined in math context, and gi
 ### Private function
 
 
-Function **private** uses a context for completely different reason. It creates a new context and executes code in it, but just returns the **last value**, not the context.
+Function **private** uses a context for a completely different reason. It creates a new context and executes code in it, but just returns the **last value**, not the context.
 
-This is usefull if we need the result of some operations, but we don't want the intermediate words/variables to plopute our working context.
+This is useful if we need the result of some operations, but we don't want the intermediate words/variables to pollute our working context.
 
 
 ```clojure
@@ -201,7 +201,7 @@ ls
 ;  result: [Integer: 108]
 ```
 
-<!-- Rye code isn't organised in lines and isn't in statements, but more something like scentences. And scentences usually have one main goal. -->
+<!-- Rye code isn't organised in lines and isn't in statements, but more something like sentences. And sentences usually have one main goal. -->
 
 
 ### Isolate function
@@ -213,12 +213,12 @@ Code evaluated in a resulting context can call **only the functions** that are d
 **This wouldn't be that exciting, but you have to remember that every active component, also all language constructs like `if loop fn ...` in Rye are just functions.**
 
 Imagine having a framework, but you provide a specially crafted context, for the framework programmer to use. Or a distributed computing platform where code is sent between processes, but code is  evaluated in such specialized, safe, isolated contexts. 
-So your peer or a client isn't given just endpoints, but a dialect that is composable and can have a full power of a language, or just very limited subset of it.
+So your peer or a client isn't given just endpoints, but a dialect that is composable and can have the full power of a language, or just a very limited subset of it.
 
-Let's create an isolate that represents an ok-printer. It exposes only two Rye's builtin functions **print** and **prn** as **pr** and **p**.
+Let's create an isolate that represents an ok-printer. It exposes only two of Rye's built-in functions, **print** and **prn** as **pr** and **p**.
 
 ```clojure
-ok-printer: isolate { pr: ?print p: ?prn }x
+ok-printer: isolate { pr: ?print p: ?prn }
 
 do\in ok-printer { p "*" p "*" p "*" pr "" pr "OK." }
 ; prints:
@@ -248,7 +248,7 @@ do\in ok-printer { lo 3 { p "*" } pr "" pr "OK." }
 ;  OK.
 ```
 
-We want to add function **nl**, to avoid printing an empty string for a newline. This is not a direct builtin, but our custom Rye function. This function uses just words from
+We want to add function **nl**, to avoid printing an empty string for a newline. This is not a direct built-in, but our custom Rye function. This function uses just words from
 isolated context itself, so ordinary **fn** or **does** works.
 
 ```clojure
@@ -260,7 +260,7 @@ do\in ok-printer { lo 3 { p "*" } nl pr "ER!" }
 ;  ER!
 ```
 
-Now lets give our our remote programmer that uses the context (for example) an ability to create her own functions.
+Now lets give our remote programmer that uses the context (for example) the ability to create her own functions.
 
 ```clojure
 ok-printer:: isolate { 
@@ -278,7 +278,7 @@ do\in ok-printer { ln: f { c } { lo 3 { p c } } , ln "-" nl pr "QL!" }
 ```
 
 Now we wish to expose a function, but contrary to **nl** above, this function will use Rye's regular functions that aren't available inside a context in it's body.
-Well that is not a problem. We already saw rye can create functions that are executed in specific contexts, so we use that mechanicm.
+Well that is not a problem. We already saw rye can create functions that are executed in specific contexts, so we use that mechanism.
 
 
 ```clojure
@@ -308,7 +308,7 @@ do\in ok-printer {
 ### Fn\in
 
 Similar to **do\in** you can also define a function that is evaluated _in_ a specific context. You create these function with **fn\in**. The body of the function is evaluated in it's own context, like a normal function, but
-with parent set to the given function.
+with parent set to the given context.
 
 <!--Rye has a functions **fn\in** and **fn\inside** which besides arguments list also accept a context. With it you can define a custom context in which you want function to be executed, but there are two
 options. **fn\in** executes code of a function in a context where the given context is a parent context, with **fn\inside** the code of the function is executed directly inside the given context. 
@@ -342,7 +342,7 @@ print-report "BRKNG!" "all-ok"
 
 ### Closures
 
-And where do closures fit into this? Closure is in Rye just specific use of the function **fn\in** with the current context. We do have a helper
+And where do closures fit into this? A closure in Rye is just a specific use of the function **fn\in** with the current context. We do have a helper
 function `closure`, but we get the same result if we do:
 
 ```clojure
