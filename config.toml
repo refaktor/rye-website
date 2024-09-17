@@ -25,9 +25,14 @@ summaryLength = 30
     weight = 1
 
 [[menu.main]]
-    name = "Docs"
+    name = "Meet Rye"
     url = "/meet_rye/"
     weight = 2
+
+[[menu.main]]
+    name = "Cookbook"
+    url = "/cookbook/"
+    weight = 3
 
 #[[menu.main]]
 #    name = "Reference"
@@ -35,7 +40,7 @@ summaryLength = 30
 #    weight = 3
 
 [[menu.main]]
-    name = "New Blog"
+    name = "Blog"
 #    url = "https://ryelang.blogspot.com/"
     url = "/blog/"
     weight = 4
@@ -51,7 +56,7 @@ summaryLength = 30
     weight = 6
 
 [params]
-  mainSections = [ "cookbook", "meet_rye" ] 
+  mainSections = [ "cookbook", "meet_rye" , "subprojects" ] 
   google_analytics_id=""
   homepage_button_link = '/cookbook'
   homepage_button_text = 'Read The Cookbook'
