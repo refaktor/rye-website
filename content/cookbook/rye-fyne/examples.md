@@ -22,6 +22,7 @@ mygroup: true
 
 What's new: `app` `window` `label` `set-content` `show-and-run`
 
+We'll start this with just a Hello world app. We see the basic building blocks (functions / constructors) of every Fyne app here, an `app`, a `window` and the first widget `label` and two functions `set-content` and `show-and-run`.
 
 ![Hello fyne World](../hello_fyne_world_s.png)
 
@@ -34,18 +35,45 @@ do\in fyne {
 }
 ```
 
-## Button
+## First layout
 
-What's new: `button` `v-box` `set-text` `layout-spacer` `resize`
+What's new: `h-box` `v-box`
+
+Fyne uses various layout components that you can combine to declaratively lay out the widgets. The two basic ones age horizontal and vertical boxes `h-box` and `v-box`.
+
+![layouts](../layouts.png)
+
+```lisp
+do\in fyne { 
+	
+	win: app .window "Layouts"
+	win .set-content v-box [ 
+		h-box [
+			label "Don't look RIGHT"
+			label "Don't look LEFT"
+		]
+		label "Don't look UP"
+	]
+	win .show-and-run	
+}
+```
+
+
+## Button and spacer
+
+What's new: `button` `set-text` `layout-spacer` `resize`
+
+A button comes with a callback function that gets called when the button is clicked. `does` is a Rye function that creates function with no arguments. 
+
+Since we want a button in this case to be at the bottom of our window, when we resize it, we use a `layout-spacer` which takes that extra space that is available, in this case vertically. 
 
 ![Button](../button.png)
-
 
 ```lisp
 do\in fyne { 
 
 	lab: label "I'm Waiting ..."
-	btn: button "Click here" does { lab .set-text "Finally :)" }
+	btn: button "Click here" does { lab .set-text "Finally ..." }
 	box: v-box [ lab layout-spacer btn ]
 	
 	with app .window "Button" {
@@ -58,9 +86,11 @@ do\in fyne {
 
 ## Feedback form
 
-What's new: `multiline` `get-text` `show-pop-up`
+What's new: `multi-line!` `get-text` `show-pop-up`
 
-![Feedback form](../feedback_form.png)
+Let's now combine these, change entry to multi-line and add a select field to make our first potentially practical applet.
+
+![Feedback form](../feedback.png)
 
 ```lisp
 do\in fyne {
@@ -69,7 +99,9 @@ do\in fyne {
 	
 	cont: v-box [
 		label "Send us feedback:"
-		entry .multi-line! 1 :ent
+		entry .multi-line! true :ent
+		select [ "Happy" "Normal" "Confused" ] fn { v } { }
+		|place-holder! "How do you feel ..."
 		button "Send" does {
 			msg: ent .text?
 			show-pop-up label "Sending: " + msg  win .canvas
@@ -80,11 +112,18 @@ do\in fyne {
 }
 ```
 
-## Clock
+&nbsp;
+
+*by Rye convention a `noun!` means set-noun, like `noun?` means get-noun. This is used in Fyne bindings to name functions that
+set and get Fynes structs' properties.*
+
+## Live clock
 
 What's new: `go (goroutines)`
 
-![Date & Time](../date_time.png)
+Rye inherits the awesome goroutines from Go and Fyne seems to works very nicely with goroutines. So doing live updates to the GUI (main thread) from a paralel "process", like a goroutine, is just as simple as it could be.
+
+![Date & Time](../clock.gif)
 
 ```lisp
 do\in fyne { 
@@ -106,7 +145,11 @@ do\in fyne {
 
 What's new: `canvas-image-from-file` `fill-mode!`
 
-![My home](../my_home2.png)
+In fact, goroutines get handy in a lot of cases. Imagine we are making an app that display basic live information about our home. Let's throw in an example of using an image also. 
+
+This app simulates reading outside temperature from a sensor that updates every 300 milliseconds.
+
+![My home](../home_app.gif)
 
 ```lisp
 Sensors: context {
@@ -123,7 +166,7 @@ do\par fyne {
 	img .fill-mode! canvas-image-fill-original
 	
 	go fn { } {
-		sleep 3 .seconds  ; sensor wake up ...
+		sleep 3 .seconds  ; waiting for sensors to wake up
 		forever {
 			Sensors/get-temperature .to-string + " °C"
 			|concat* "Outside temp: "
@@ -144,6 +187,8 @@ do\par fyne {
 
 What's new: `form` `password-entry` `check` `disable` `enable`
 
+Back to more static world. Fyne has this nice concept of `form`, which is very handy. You can fill the right side of the form with any widget.
+
 ![Form](../form.png)
 
 
@@ -152,7 +197,7 @@ do\in fyne {
 	
 	win: app .window "Form"
 
-	btn: disable button "Sing up" does {
+	btn: disable button "Sign up" does {
 		show-pop-up label "You rock!"  win .canvas
 	} 
 
@@ -222,6 +267,47 @@ do\par fyne {
 }
 ```
 
+## Percentages clock
+
+What's new: `progress-bar` 
+
+![Percentages clock](../percentage_clock.gif)
+
+```lisp
+do\in fyne {
+
+	app .window "Percentage Clock" :win
+	
+	cont: v-box [
+		label "Year:" :ly
+		progress-bar :py
+		label "Today's hours:"
+		progress-bar :ph
+		label "Minutes:"
+		progress-bar :pm
+		label "Seconds:"
+		progress-bar :ps
+	]
+
+	leap-year: fn { y } { all { y .multiple-of 4  not y .multiple-of 100  not y .multiple-of 400 } }
+	days-in: fn { y } { .leap-year .either { 366 } { 365 } }
+	
+	go fn\par { } current {
+		forever {
+			now
+			|pass { .year? ::y |concat* "Year " |set-text* ly }
+			|pass { .year-day? / days-in y  |set-value* py }
+			|pass { .hour?     / 24 |set-value* ph }
+			|pass { .minute?   / 60 |set-value* pm }
+			|pass { .second?   / 60 |set-value* ps }
+			sleep 500
+		}
+	}
+	
+	win |resize size 300.0 200.0 |set-content cont |show-and-run
+}
+```
+
 ## CSV file in a table
 
 What's new: `header?` `show-header-row!` `update-header!`
@@ -239,8 +325,7 @@ do\par fyne {
 	does { label "......................." }
 	fn { i o } {
 		row: i .row? , col: i .col?
-		team -> row -> col
-		|set-text* o
+		team -> row -> col |set-text* o
 	}
 	|show-header-row! true
 	|update-header! fn { i o } {

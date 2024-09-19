@@ -1,0 +1,30 @@
+---
+title: "Live development"
+date: 2024-09-13T19:30:08+10:00
+draft: false
+group: true
+weight: 150
+summary: "You can explore the wast Fyne library and combine / see and use various widgets and layout directly from Rye console (REPL)"
+mygroup: true
+---
+
+## Exploring Fyne binding
+
+What's new: `app` `window` `label` `set-content` `show-and-run`
+
+
+![Hello fyne World](../hello_fyne_world_s.png)
+
+```lisp
+```
+
+## Develop from REPL
+
+What's new: `button` `v-box` `set-text` `layout-spacer` `resize`
+
+![Button](../button.png)
+
+
+```lisp
+```
+
