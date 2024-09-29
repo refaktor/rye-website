@@ -8,21 +8,23 @@ summary: "An growing list of simple GUI examples."
 mygroup: true
 ---
 
-<style>
-  pre > code {
-      __width: 440px;
-      border-radius: 5px;
-      __padding: 16px;
-      __background-color: #3e3e3e;
-      font-size: 13px;
-  }
-</style>
+Rye started out focused on 'backed development' and 'interactive use in console' and it still is. But **[Go's Fyne GUI library](https://fyne.io/)** was just too tempting not to try to integrate. It's easy to deploy, works on desktop and mobile platforms and keeps getting better.
+
+If the code below doesn't always make sense to you, check out [Meet Rye](https://ryelang.org/meet_rye/), especially the part about [op and pipe-words](https://ryelang.org/meet_rye/specifics/opwords/).
+
+<!-- Rye started out focused on 'backed development' and 'interactive use in console'. However, with the continuous improvement of Go's Fyne GUI framework, we were tempted to explore integrating it to see how Rye could handle GUI code.
+
+We were integrating Fyne into Rye manually, but at some point Darwin came around and proposed to create a tool to automatically generate the bindings. It's still all work in progress, but the results are here. -->
+
+<!-- ## No GUI dialect
+
+If you’re familiar with REBOL, the language Rye is based on, you might recall its famous GUI dialect. Rye, somewhat controversially, doesn’t have a dedicated GUI dialect. Instead, we rely on Rye's core language, which we believe is flexible enough to elegantly create  GUI structures. -->
 
 ## Hello fyne world
 
 What's new: `app` `window` `label` `set-content` `show-and-run`
 
-We'll start this with just a Hello world app. We see the basic building blocks (functions / constructors) of every Fyne app here, an `app`, a `window` and the first widget `label` and two functions `set-content` and `show-and-run`.
+We'll start with a Hello world app. We can see the basic building blocks of every Fyne app here, constructor functions for `app`, `window` and a widget `label` and functions `set-content` and `show-and-run`.
 
 ![Hello fyne World](../hello_fyne_world_s.png)
 
@@ -39,7 +41,7 @@ do\in fyne {
 
 What's new: `h-box` `v-box`
 
-Fyne uses various layout components that you can combine to declaratively lay out the widgets. The two basic ones age horizontal and vertical boxes `h-box` and `v-box`.
+Fyne uses various layout components that you can combine to declaratively lay out the widgets. The two very basic ones are horizontal and vertical boxes `h-box` and `v-box`.
 
 ![layouts](../layouts.png)
 
@@ -63,9 +65,9 @@ do\in fyne {
 
 What's new: `button` `set-text` `layout-spacer` `resize`
 
-A button comes with a callback function that gets called when the button is clicked. `does` is a Rye function that creates function with no arguments. 
+A button comes with a callback function that gets called when the button is clicked. `does` is a Rye function that creates a function with no arguments. 
 
-Since we want a button in this case to be at the bottom of our window, when we resize it, we use a `layout-spacer` which takes that extra space that is available, in this case vertically. 
+Since we want the button in this case to remain at the bottom of our window, when we resize it, we also add a `layout-spacer`, which takes that extra space that is available, in this case vertically. 
 
 ![Button](../button.png)
 
@@ -86,9 +88,9 @@ do\in fyne {
 
 ## Feedback form
 
-What's new: `multi-line!` `get-text` `show-pop-up`
+What's new: `entry` `multi-line!` `select` `get-text` `show-pop-up`
 
-Let's now combine these, change entry to multi-line and add a select field to make our first potentially practical applet.
+Let's now combine an entry widget, make it multi-line, a select field and a button to make our first potentially practical applet.
 
 ![Feedback form](../feedback.png)
 
@@ -114,14 +116,13 @@ do\in fyne {
 
 &nbsp;
 
-*by Rye convention a `noun!` means set-noun, like `noun?` means get-noun. This is used in Fyne bindings to name functions that
-set and get Fynes structs' properties.*
+*By Rye convention a `noun!` means set-noun, and `noun?` means get-noun. This is also used in Fyne bindings to name functions that set and get Fynes structs' properties.*
 
 ## Live clock
 
 What's new: `go (goroutines)`
 
-Rye inherits the awesome goroutines from Go and Fyne seems to works very nicely with goroutines. So doing live updates to the GUI (main thread) from a paralel "process", like a goroutine, is just as simple as it could be.
+Rye inherits awesome goroutines from Go and Fyne seems to works very nicely with them. So doing live updates to the GUI (main thread) from a paralel "process", like a goroutine, is just as simple as it could be.
 
 ![Date & Time](../clock.gif)
 
@@ -187,7 +188,7 @@ do\par fyne {
 
 What's new: `form` `password-entry` `check` `disable` `enable`
 
-Back to more static world. Fyne has this nice concept of `form`, which is very handy. You can fill the right side of the form with any widget.
+Back to more static world. Fyne has this nice concept of `form`-s, which is very handy. You can fill the right side of the form item with any widget.
 
 ![Form](../form.png)
 
@@ -213,9 +214,37 @@ do\in fyne {
 }
 ```
 
-## Gastown bingo players
+## 1 million items list
+
+What's new: `list`
+
+Fyne handles lists in a quite simple and effective way. To construct a list you give constructor function `list` 3 functions. 
+First returns the number of items, second constructs and the widget(s) for an item and in the third you update the given widgets
+for a given row index. In this way Fyne reuses list item widgets and can basically display lists of any size.
+
+Below we create a list with 1 million line items and it works with no performance problems.
+
+![1 million list](../1millionlist.png)
+
+```lisp
+do\par fyne {
+
+	lst: list does { 1000000 }
+	does { label "num" }
+	fn { i item } { item .set-text to-string i + 1 }
+
+	app .window "1 million list"
+	|resize size 220.0 200.0
+	|set-content lst
+	|show-and-run
+}
+```
+
+## Players' list
 
 What's new: `list` `h-box` `set-title`
+
+To me at least the main indicator of GUI framework's elegance is to see how it handles lists with composed list items. Fyne's approach does very good in this regard.
 
 ![Gastown bingo players](../list_gastown.png)
 
@@ -245,6 +274,8 @@ do\par fyne {
 
 What's new: `table` `row?` `col?`
 
+Fyne also has tables that are conceptually very similar to Lists.
+
 ![Multiplication table](../multiplication_table.png)
 
 ```lisp
@@ -269,7 +300,9 @@ do\par fyne {
 
 ## Percentages clock
 
-What's new: `progress-bar` 
+What's new: `progress-bar`
+
+Progress bars often have to be updated from another "thread". With Fyne / Goroutines / Rye this is again no problem at all.
 
 ![Percentages clock](../percentage_clock.gif)
 
@@ -312,6 +345,8 @@ do\in fyne {
 
 What's new: `header?` `show-header-row!` `update-header!`
 
+Rye comes with the Spreadsheet value type. Here we load it from CSV and then display it in a Fyne table.
+
 ![LOTR team](../lotr_team.png)
 
 ```lisp
@@ -344,6 +379,9 @@ do\par fyne {
 ## Shopping list app
 
 What's new: `button-with-icon` `objects?` `set-checked` `place-holder!` `on-submitted!` `refresh`
+
+This is a very simple work in progress app with simple state management using a Rye's spreadsheet value type. Spreadsheets were like other values in Rye basically immutable data strucures, so they can't be
+efficietly used as a app-level "database". We are changing some things so they can also be usefull in this situation. While the default use is still immutable.
 
 ![shoping list app](../shopping_list.png)
 
@@ -386,7 +424,6 @@ do\par fyne {
 		chk .set-checked 0 <- i <- Data/tasks
 		lbl .set-text 1 <- i <- Data/tasks
 		hdn .set-text to-string i
-		; btn .on-tapped! 
 	}
 
 	input: entry
@@ -406,3 +443,18 @@ do\par fyne {
 	}
 }
 ```
+
+## There is more
+
+These are not all Fyne's components at all, so this document will get part 2 in the future.  Thanks for reading this so far.
+
+Current version: **09/24/2024**
+
+## Related links
+
+* [Rye language](https://ryelang.org)
+* [Fyne GUI library](https://fyne.io)
+
+* [Rye language](https://github.com/refaktor/rye) - main language repository
+* [Rye-Fyne project](https://github.com/refaktor/rye-fyne) - Rye extended with Fyne
+* [ryegen](https://github.com/refaktor/rye-fyne) - binding generator

@@ -1,5 +1,5 @@
 ---
-title: "Mobile apps"
+title: "Mobile apps*"
 date: 2024-08-13T19:30:08+10:00
 draft: false
 group: true
@@ -7,6 +7,8 @@ weight: 150
 summary: "We document and explain how to make Rye-fyne app for mobile"
 mygroup: true
 ---
+
+*work in progress*
 
 ## Status
 
