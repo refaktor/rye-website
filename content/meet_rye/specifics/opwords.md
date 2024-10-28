@@ -190,3 +190,93 @@ word .replace* str "****" |print
 word .concat* "- " |print 
 ; prints: - apple
 ```
+
+## Warning: math expressions
+
+We look at it above (title Operators) but let's do it again. 
+In Rye, operators like `+ - * /` are regular functions in the form of op-words. The only difference is that operators are loaded as op-words by default while regular `.words` need a dot in front to be
+op-words. Their non op-word (prefix) form is: `_+ _- _* _/ `, so: 
+
+```clojure
+1 + 2 + 3
+; return 6
+
+_+ 1 _+ 2 3
+; or
+_+ _+ 1 2 3
+; return 6
+```
+
+And you can use the same function as pipe words using: `|_+ |_- |_* |_/` or shorter `|+ |- |* |/`. But what does all this means at functions (or operators) that are **not associative** and **comutative** like addition is?
+It means you have to be avare of the fact that operators are still op-words and behave like them, not like math operators.
+
+```clojure
+; add 12 and 3 and divide the result by 3 (prefix)
+_/ _+ 12 3 3
+; returns 5
+
+; using pipe word for division
+12 + 3 |/ 3
+; returns 5
+
+; using just op-words
+12 + 3 / 3
+; returns 13 -- Oops!
+; op-words evaluate from right to left, pipe-words left to right 
+
+; substracting 3 numbers also doesn't do what you would expect from math
+100 - 12 - 5
+; returns 93
+; it first substracted 12 - 5 and got 7 and it substracted 7 from 100
+
+; addition and multiplicaton have same operator precedence
+; but if this was math expression we would expect result 56
+10 * 5 + 2 * 3
+; returns 110
+; from left to right it does:
+; 2 * 3 = 6
+; 6 + 5 = 11
+; 11 * 10 = 110
+```
+
+Why is that? Rye comes from the family of languages where whole language is uniform and math expressions are not threated any differently. These languages usually see it as a plus, that you don't have to learn (complex?) 
+operators precedence rules. Yes, we all know precedence rules between `+ - * /` but what about all other operators or functions like `! and or & > < ...`, so they might have a point.
+
+In REBOL math expressions are always evaluated left to right, which is more natural than right to left, but you will get shot in the foot just the same if you are not avare of it. Lisp goes a step beyond and doesn't even
+have infix operators or functions. In forth the same, all functions (also operators) are postfix.
+
+```clojure
+; in REBOL
+10 * 5 + 2 * 3
+; returns 156 (left to right)
+
+; in Lisp this would be written, which has it's estetics too
+(+ (* 10 5) (* 2 3))
+
+; and in Forth (Factor)
+10 5 * 2 3 * +
+```
+
+All 3 languages value internal consistency above conventions and so does Rye. So what can you do in Rye in this case:
+
+```clojure
+; in Rye (and REBOL) we can use parenthesis to explicitly define the order
+; of operations we like, and this is IMO the most natural way to do this
+
+( 10 * 5 ) + ( 2 * 3 )
+; or just
+( 10 * 5 ) + 2 * 3
+; return 56
+
+; technically we could use the distinction between op and pipe words
+10 * 5 |+ 2 * 3
+; returns 56
+
+; and Rye has math dialect, which follows math precedence rules
+; it's defined in math context, where you can find plenty of math
+; specific functions (do `cc math lc` to see them)
+
+math/calc { 10 * 5 + 2 * 3 }
+; returns 56
+```
+

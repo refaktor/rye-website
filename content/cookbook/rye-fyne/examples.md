@@ -386,13 +386,15 @@ efficietly used as a app-level "database". We are changing some things so they c
 ![shoping list app](../shopping_list.png)
 
 ```lisp
+rye .needs { fyne }
+
 Data: context {
 
-	add!: fn { task } { change! tasks .add-row task 'tasks }
-	remove!: fn { idx } { print "Delete row: " + idx } ; tasks .remove-row! idx }
-	check!: fn { idx val } { print "Check row: " + idx } ; tasks .update-row idx [ 'done val ] } }
+	add!: fn { task } { tasks .add-rows! task }
+	remove!: fn { idx } { tasks .remove-row! idx + 1 }
+	check!: fn { idx val } { tasks .update-row! idx + 1 dict [ "done" val ] }
 	
-	tasks: spreadsheet { 'done 'text } {
+	tasks: ref spreadsheet { "done" "text" } {
 		0 "Goat cheese"
 		0 "Eggs"
 		0 "Oats"
@@ -406,23 +408,23 @@ do\par fyne {
 	win: app .window "Shopping List"
 
 	lst: list
-	does { length? Data/tasks }
+	does { length? deref Data/tasks }
 	does {
 		idx: hide label "idx"
 		h-box [
-			check "" 
-			  fn\par { v } current { print "Check row: " + idx .text? }
+			check "" fn\par { v } current
+			{ Data/check! to-integer idx .text? v , lst .refresh }
 			label ""
 			idx
 			layout-spacer
-			button-with-icon "" delete-icon 
-			  fn\par { } current { Data/remove! to-integer idx .text? }
+			button-with-icon "" delete-icon fn\par { } current
+			{ Data/remove! to-integer idx .text? , lst .refresh }
 		]
 	}
 	fn { i box } { 
 		set! box .objects? { chk lbl hdn xo btn }
-		chk .set-checked 0 <- i <- Data/tasks
-		lbl .set-text 1 <- i <- Data/tasks
+		chk .set-checked 0 <- i <- deref Data/tasks
+		lbl .set-text 1 <- i <- deref Data/tasks
 		hdn .set-text to-string i
 	}
 

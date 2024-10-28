@@ -64,6 +64,7 @@ We'll run `rye --help` first and see what we get. Rye follows the default Go fla
   rye -do 'print "Hello" path/.     # evaluates main.rye in path/ and then do code
   rye -console file.rye             # evaluates file.rye and enters console
   rye -do 'print 123' -console .    # evaluates main.rye in current dir. evaluates do code and enters console
+  rye -sdo 'print 123'              # silent do command
   rye -silent                       # enters console in that doesn't show return values - silent mode
   rye -silent -console file.rye     # evaluates file.re and enters console in silent mode
   rye -lang eyr                     # enter console of stack based Eyr language
