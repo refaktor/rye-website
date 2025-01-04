@@ -62,6 +62,8 @@ word      ; normal word
 'word     ; lit-word
 word:     ; set-word
 :word     ; lset-word
+word::    ; mod-word
+::word    ; lmod-word
 ?word     ; get-word
 .word     ; op-word
 |word     ; pipe-word

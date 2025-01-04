@@ -34,7 +34,7 @@ with msg { .print }
 Let's return back to **loop** function with knowing about injected blocks and op/pipe words. Now this example from before:
 
 ```clojure
-loop 3 { :i , prns i }
+loop 3 { ::i , prns i }
 ; prints: 1 2 3
 ```
 
@@ -52,13 +52,13 @@ Similar for **for** function. We had this before:
 ```clojure
 names: { "Jim" "Jane" "Anne" }
 
-for names { :name , print "Hi " + name }
+for names { ::name , print "Hi " + name }
 ; prints:
 ; Hi Jim
 ; Hi Jane
 ; Ji Anne
 
-for range 1 5 { :i , prns i }
+for range 1 5 { ::i , prns i }
 ; prints: 1 2 3 4 5 
 ```
 
@@ -143,7 +143,7 @@ injected into function block. Either way, the first argument is always injected 
 add10: fn { a } { a + 10 }
 
 ; is the same as
-add10: fn1 { + 10 }
+add10:: fn1 { + 10 }
 
 ; this also works
 add: fn { a b } { + b }
@@ -189,7 +189,7 @@ functions that work with injected blocks.
 ; prints:
 ; Max: 21
 ; Min: 4
-; Avg: 11.0
+	; Avg: 11.0
 ; ---------
 ; Sum: 44
 ```

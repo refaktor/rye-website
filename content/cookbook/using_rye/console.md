@@ -100,7 +100,7 @@ Context: Context of builtins
 ## List with a full text search [TODO]
 
 ```
-x> lc\full "spreadsheet add"
+x> lc\full "table add"
 Context: Context of builtins
  add-column!: [BFunction: ...]
  add-column: [BFunction: ...]

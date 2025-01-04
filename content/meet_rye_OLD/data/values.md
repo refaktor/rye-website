@@ -19,7 +19,7 @@ https://ryelang.org ; uri
 
 ## Compound values
 
-There are also multiple compound values. More specialized ones Lists, Dicts, Contexts, Spreadsheets, .... But the main and most important one is a Block. It's similar to a List or Array in other languages. 
+There are also multiple compound values. More specialized ones Lists, Dicts, Contexts, Tables, .... But the main and most important one is a Block. It's similar to a List or Array in other languages. 
 
 It's Rye's main building _block_. All Rye values (and code) resides inside Blocks.
 

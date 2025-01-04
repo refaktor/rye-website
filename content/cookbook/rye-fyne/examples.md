@@ -345,7 +345,7 @@ do\in fyne {
 
 What's new: `header?` `show-header-row!` `update-header!`
 
-Rye comes with the Spreadsheet value type. Here we load it from CSV and then display it in a Fyne table.
+Rye comes with the Table value type. Here we load it from CSV and then display it in a Fyne table.
 
 ![LOTR team](../lotr_team.png)
 
@@ -380,7 +380,7 @@ do\par fyne {
 
 What's new: `button-with-icon` `objects?` `set-checked` `place-holder!` `on-submitted!` `refresh`
 
-This is a very simple work in progress app with simple state management using a Rye's spreadsheet value type. Spreadsheets were like other values in Rye basically immutable data strucures, so they can't be
+This is a very simple work in progress app with simple state management using a Rye's table value type. Tables were like other values in Rye basically immutable data strucures, so they can't be
 efficietly used as a app-level "database". We are changing some things so they can also be usefull in this situation. While the default use is still immutable.
 
 ![shoping list app](../shopping_list.png)
@@ -394,7 +394,7 @@ Data: context {
 	remove!: fn { idx } { tasks .remove-row! idx + 1 }
 	check!: fn { idx val } { tasks .update-row! idx + 1 dict [ "done" val ] }
 	
-	tasks: ref spreadsheet { "done" "text" } {
+	tasks: ref table { "done" "text" } {
 		0 "Goat cheese"
 		0 "Eggs"
 		0 "Oats"
