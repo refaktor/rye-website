@@ -37,8 +37,9 @@ function, but the next one (for) doesn't make any sense without them.
 
 ```clojure
 123 :a                    ; you already learned about left leaning set-word
-print a                   ; it gets its value from the left
-; prints: 123
+                          ; it gets its value from the left
+
+print a                   ; prints: 123
 
 loop 3 { :i , prns i }    ; loop function injects loop number into the 
                           ; code block and left set-word can pick it up
