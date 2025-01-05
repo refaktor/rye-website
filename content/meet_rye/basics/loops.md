@@ -36,10 +36,10 @@ We are getting ahead of ourselves. We will learn about injected values, op-words
 function, but the next one (for) doesn't make any sense without them.
 
 ```clojure
-123 ::a                   ; you already learned about left leaning set-word
-                          ; or a mod-word
-print a                   ; it gets its value from the left
-; prints: 123
+123 ::a                   ; you already learned about left leaning set-word or a mod-word
+                          ; it gets its value from the left
+
+print a                   ; prints: 123
 
 loop 3 { ::i , prns i }   ; loop function injects loop number into the 
                           ; code block and left set-word can pick it up

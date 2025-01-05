@@ -39,7 +39,7 @@ If you've programmed in any language before, the concept is the same as with var
 
 ## Using bound words
 
-We haven't looked at function calls yet, but the use of `print` function below will be self-evident I hope.
+We haven't looked at function calls yet, but the use of the `print` function below will be self-evident I hope.
 
 ```clojure
 print "Hello world!"
@@ -67,7 +67,7 @@ print meaning
 
 ## Inline use
 
-Everything in Rye returns a value. Use of Set-words also return the assigned value, so they could be used _inline_ of expreee.
+Everything in Rye returns a value. Use of Set-words also return the assigned value, so they could be used _inline_ within an expression.
 
 ```clojure
 fruits: 100 + apples: 12 + 21
