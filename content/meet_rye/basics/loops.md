@@ -36,16 +36,19 @@ We are getting ahead of ourselves. We will learn about injected values, op-words
 function, but the next one (for) doesn't make any sense without them.
 
 ```clojure
-123 :a                    ; you already learned about left leaning set-word
-                          ; it gets its value from the left
+123 ::a                   ; you already learned about left leaning set-word or a mod-word
+print a                   ; it gets its value from the left
 
 print a                   ; prints: 123
 
-loop 3 { :i , prns i }    ; loop function injects loop number into the 
+loop 3 { ::i , prns i }   ; loop function injects loop number into the 
                           ; code block and left set-word can pick it up
 ; prints: 1 2 3
 
-with 100 { :x , print x } ; with takes an argument and injects it. Now why
+	                      ; because loop is repeater i is assigned multiple
+						  ; times, hence the need for a mod-word
+
+with 100 { ::x , print x } ; with takes an argument and injects it. Now why
                           ; would you do that? There is more to this as
 						  ; you will see later
 ; prints: 100
