@@ -84,3 +84,23 @@ You will see _why_ later, but Rye also has set-words that take a value from the 
 "Jim" :name
 12 + 21 :apples + 100 :fruits
 ```
+
+## Mod-words
+
+But set-word from above will only allow you to set the word once. If you use set-word on a word already defined in current context
+you will get an error. For cases, where you need change a value bound to a word, you must use mod-word.
+
+It's a little harder to look at, but that is by design. The goal is that you modify values under words only when you explicitly need to.
+
+```clojure
+age: 42
+
+sleep 3 .seconds                            ; todo make .seconds compat.
+
+; age: 43
+; Would produce an Error
+
+age:: 43
+```
+
+The same holds true for the left mod-words. `::age`.

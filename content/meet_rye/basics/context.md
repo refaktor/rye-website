@@ -17,21 +17,21 @@ Context is just a dictionary of words and values, an optional link to the parent
 
 ## First look
 
-When you start Rye console you enter an empty context. Your context has a parent context where all the builtin functions are defined. You can list the empty context with `ls` (list context) and a parent context `lsp` (list parent context) functions.
+When you start Rye console you enter an empty context. Your context has a parent context where all the builtin functions are defined. You can list the empty context with `lc` (list context) and a parent context `lcp` (list parent context) functions.
  
 _BTW: Try the code below in the console on the top right, it's always better to see it work for real :)_
 
 ```clojure
-ls
+lc
 ;Context:
 
-lsp
+lcp
 ; ...
 ; ... will print all builtin functions and subcontexts
 ; ...
-; where-lesser: [BFunction(3): Returns spreadsheet of rows where specific colum is lesser than given value.]
-; where-match: [BFunction(3): Returns spreadsheet of rows where a specific colum matches a regex.]
-; where-not-contains: [BFunction(3): Returns spreadsheet of rows where specific colum contains a given string value.]
+; where-lesser: [BFunction(3): Returns table of rows where specific colum is lesser than given value.]
+; where-match: [BFunction(3): Returns table of rows where a specific colum matches a regex.]
+; where-not-contains: [BFunction(3): Returns table of rows where specific colum contains a given string value.]
 ; with: [BFunction(2): Takes a value and a block of code. It does the code with the value injected.]
 ; wrap: [BFunction(2): Accepts a value and a block. It does the block, with value injected, and returns (passes on) the initial value.]
 ; wrap\failure: [BFunction(2): Wraps an Error with another Error. Accepts String as message, Integer as code, or block for multiple parameters and Error as arguments.]
@@ -45,7 +45,7 @@ name: "Gerald"
 xp: 1023
 speak: does { print "Hmm" }
 
-ls
+lc
 ; Context:
 ; name: [String: Geralt]
 ; speak: [Function(0)]
@@ -64,7 +64,7 @@ In the parent context of our opening context, `print` is bound to a builtin func
 
 ```clojure
 
-lsp\ "print"        ; list parent context with a filter
+lcp\ "print"        ; list parent context with a filter
 ; Context:
 ;  print: [BFunction(1): Prints a value and adds a newline.]
 ;  ...

@@ -19,10 +19,10 @@ pygmentsUseClasses = true
 # See https://gohugo.io/content-management/summaries/
 summaryLength = 30
 
-[[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
+#[[menu.main]]
+#    name = "Home"
+#    url = "/"
+#    weight = 1
 
 [[menu.main]]
     name = "Meet Rye"
@@ -34,16 +34,16 @@ summaryLength = 30
     url = "/cookbook/"
     weight = 3
 
-#[[menu.main]]
-#    name = "Reference"
-#    url = "/basics.html"
-#    weight = 3
+[[menu.main]]
+    name = "Reference"
+    url = "/info/base.html"
+    weight = 4
 
 [[menu.main]]
     name = "Blog"
 #    url = "https://ryelang.blogspot.com/"
     url = "/blog/"
-    weight = 4
+    weight = 5
 
 #[[menu.main]]
 #    name = "Reddit"

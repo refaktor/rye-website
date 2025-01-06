@@ -90,7 +90,7 @@ So how does this work? Evaluator finds values of **out**, **clrf**, **info** and
 But it found _print_ and _loop_ in the parent context of the parent context, where all the built-ins are defined.
 
 <!-- With **do\in** we have access to words in current context and the words defined in a specified context (pos-printer) through the parent link. --> 
-We can use functions **ls** (list) and **lsp** (list parent) to demonstrate this.
+We can use functions **lc** (list context) and **lcp** (list context parent) to demonstrate this.
 
 ```clojure
 name: "Jim"
