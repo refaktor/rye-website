@@ -23,7 +23,7 @@ https://example.com    ; URL
 
 ## Set-words
 
-And these values can be assigned to words using set-word, words that have a colon or their right.
+These values can be assigned to words using set-words, i.e. words that have a colon on their right.
 
 
 ```clojure
@@ -67,7 +67,7 @@ print meaning
 
 ## Inline use
 
-Everything in Rye returns a value. Use of Set-words also return the assigned value, so they could be used _inline_ within an expression.
+Everything in Rye returns a value. Use of set-words also return the assigned value, so they could be used _inline_ within an expression.
 
 ```clojure
 fruits: 100 + apples: 12 + 21
@@ -78,7 +78,7 @@ fruits: 100 + apples: 12 + 21
 
 ## Left set-words
 
-You will se _why_ later, but Rye also has set-words that take value from the left.
+You will see _why_ later, but Rye also has set-words that take a value from the left.
 
 ```clojure
 "Jim" :name
