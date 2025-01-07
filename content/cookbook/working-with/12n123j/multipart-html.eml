@@ -1,0 +1,257 @@
+Delivered-To: podpora@cebelca.biz
+Return-Path: <info@artbeat.si>
+Delivered-To: podpora@cebelca.biz
+Received: from director12.mail.ord1d.rsapps.net ([172.31.255.6])
+	by backend6.mail.ord1d.rsapps.net with LMTP
+	id MNSkJAVlWGcrXQAA6C+aqA
+	(envelope-from <info@artbeat.si>)
+	for <podpora@cebelca.biz>; Tue, 10 Dec 2024 10:57:57 -0500
+Received: from proxy18.mail.iad3b.rsapps.net ([172.31.255.6])
+	by director12.mail.ord1d.rsapps.net with LMTP
+	id mFpwJAVlWGcXJgAAIasKDg
+	(envelope-from <info@artbeat.si>)
+	for <podpora@cebelca.biz>; Tue, 10 Dec 2024 10:57:57 -0500
+Received: from smtp21.gate.iad3b ([172.31.255.6])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	by proxy18.mail.iad3b.rsapps.net with LMTPS
+	id sN4kHwVlWGdPGgAA3NpJmQ
+	(envelope-from <info@artbeat.si>)
+	for <podpora@cebelca.biz>; Tue, 10 Dec 2024 10:57:57 -0500
+Return-Path: <info@artbeat.si>
+X-Spam-Threshold: 95
+X-Spam-Score: 0
+X-Spam-Flag: NO
+X-Virus-Scanned: OK
+X-Orig-To: podpora@cebelca.biz
+X-Originating-Ip: [91.185.211.144]
+Authentication-Results: smtp21.gate.iad3b.rsapps.net; iprev=pass policy.iprev="91.185.211.144"; spf=pass smtp.mailfrom="info@artbeat.si" smtp.helo="mailer-211-144.hitrost.net"; dkim=pass header.d=artbeat.si; dmarc=pass (p=none; dis=none) header.from=artbeat.si
+X-Suspicious-Flag: NO
+X-Classification-ID: 850fb6b6-b70f-11ef-a23b-525400cdc90a-1-1
+Received: from [91.185.211.144] ([91.185.211.144:34057] helo=mailer-211-144.hitrost.net)
+	by smtp21.gate.iad3b.rsapps.net (envelope-from <info@artbeat.si>)
+	(ecelerity 4.2.38.62370 r(:)) with ESMTPS (cipher=AES256-GCM-SHA384) 
+	id BC/53-13395-40568576; Tue, 10 Dec 2024 10:57:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=artbeat.si;
+	s=x; h=Content-Type:MIME-Version:Message-ID:Date:Subject:To:From:Sender:
+	Reply-To:Cc:Content-Transfer-Encoding:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=a62erZ2BccJciJZxlZRgFZS2slmbOhXy5GwcJeoXUmU=; b=OVEqdFqpTJ5n4c7TOjP6Wtvus+
+	2HhEpPiifEyItQQmgCVso0IBLwDwy6SUtbHt9Ixppy4LzXqINm7k2699nG2qJZ/jNm0XDv4SO95ZK
+	U+Vbe2QYWhvhxweE5xhIcH75vqNLD6PWI+F4Hr5zeQTN8OqXAd+PkSBvOspytoo6NMJx1d741j8UT
+	bxCowNgluNb8LUVEqDGSnGk0eeRFYukyGR+bisjrSGctYbYExgRxaSLWmaDLlCeKjejGsqpB0cBQ8
+	l6ztMnSw0qj7cNAGifIGSyaNQW765rf2l+dtphuWefVHrdAk5+NwuoPWWAiP/T1E12/aIWKUKdEok
+	B/B22kuQ==;
+Received: from 89-212-132-60.dynamic.t-2.net ([89.212.132.60] helo=HPZ640)
+	by b2.hitrost.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98)
+	(envelope-from <info@artbeat.si>)
+	id 1tL2cV-0000000ACRR-15mX
+	for podpora@cebelca.biz;
+	Tue, 10 Dec 2024 16:57:55 +0100
+From: =?utf-8?Q?Primo=C5=BE_iz_Artbeat?= <info@artbeat.si>
+To: <podpora@cebelca.biz>
+Subject: =?utf-8?Q?Tiskanje_ve=C4=8D_ra=C4=8Dunov_hkrati?=
+Date: Tue, 10 Dec 2024 16:57:56 +0100
+Message-ID: <000201db4b1c$475c4b40$d614e1c0$@artbeat.si>
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0003_01DB4B24.A92239E0"
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AdtLG9+WXhNhZOZRSYS8Q/g7gSrLOw==
+Content-Language: en-si
+X-GeoIP: Country [IP], SI [89.212.132.60]
+X-Authenticated-Id: info@artbeat.si
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_0003_01DB4B24.A92239E0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_0004_01DB4B24.A92260F0"
+
+
+------=_NextPart_001_0004_01DB4B24.A92260F0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Pozdravljeni
+
+=20
+
+Sem naro=C4=8Dnik paketa Ra=C4=8Duni PLUS. Zasledil sem, da je =
+mogo=C4=8De tiskati do 50 ra=C4=8Dunov hkrati.
+
+Zanima me kako/na kak=C5=A1en na=C4=8Din lahko to naredim.
+
+=20
+
+Hkrati me zanima ali je mogo=C4=8De hkrati kreirati tudi ve=C4=8D =
+ra=C4=8Dunov in jih obenem dav=C4=8Dno potrditi ali pa vsaj osnutkov =
+ra=C4=8Dunov (na vseh ra=C4=8Dunih bi bil isti naro=C4=8Dnik, isti =
+artikli/storitve, iste cene, ista koli=C4=8Dina,=E2=80=A6.) ?
+
+=20
+
+Hvala za odgovor.
+
+=20
+
+Lep in kreativen dan,
+
+Primo=C5=BE Kostanjevec
+
+=20
+
+=20
+
+ <https://artbeat.si/>=20
+
+=20
+
+T: 041 343 949
+
+E:  <mailto:info@artbeat.si> info@artbeat.si
+
+I:  <http://www.artbeat.si/> www.artbeat.si
+
+=20
+
+ <https://artbeat.si/pogoji-poslovanja/> Splo=C5=A1ni pogoji poslovanja
+
+=20
+
+
+------=_NextPart_001_0004_01DB4B24.A92260F0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
+xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
+xmlns=3D"http://www.w3.org/TR/REC-html40"><head><meta =
+http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8"><meta =
+name=3DGenerator content=3D"Microsoft Word 15 (filtered medium)"><!--[if =
+!mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Aptos;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Aptos",sans-serif;
+	mso-ligatures:standardcontextual;
+	mso-fareast-language:EN-US;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Aptos",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:11.0pt;
+	mso-fareast-language:EN-US;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]--></head><body lang=3DSL =
+link=3D"#467886" vlink=3D"#96607D" style=3D'word-wrap:break-word'><div =
+class=3DWordSection1><p class=3DMsoNormal>Pozdravljeni<o:p></o:p></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3DMsoNormal>Sem =
+naro=C4=8Dnik paketa Ra=C4=8Duni PLUS. Zasledil sem, da je mogo=C4=8De =
+tiskati do 50 ra=C4=8Dunov hkrati.<o:p></o:p></p><p =
+class=3DMsoNormal>Zanima me kako/na kak=C5=A1en na=C4=8Din lahko to =
+naredim.<o:p></o:p></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
+class=3DMsoNormal>Hkrati me zanima ali je mogo=C4=8De hkrati kreirati =
+tudi ve=C4=8D ra=C4=8Dunov in jih obenem dav=C4=8Dno potrditi ali pa =
+vsaj osnutkov ra=C4=8Dunov (na vseh ra=C4=8Dunih bi bil isti =
+naro=C4=8Dnik, isti artikli/storitve, iste cene, ista =
+koli=C4=8Dina,=E2=80=A6.) ?<o:p></o:p></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3DMsoNormal>Hvala za =
+odgovor.<o:p></o:p></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
+class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'>Lep in kreativen =
+dan,<o:p></o:p></span></p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'>Primo=C5=BE =
+Kostanjevec<o:p></o:p></span></p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'><o:p>&nbsp;</o:p></s=
+pan></p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'><o:p>&nbsp;</o:p></s=
+pan></p><p class=3DMsoNormal><a href=3D"https://artbeat.si/"><span =
+lang=3DEN-US =
+style=3D'color:#0563C1;mso-fareast-language:SL;text-decoration:none'><img=
+ border=3D0 width=3D120 height=3D23 style=3D'width:1.25in;height:.243in' =
+id=3D"Picture_x0020_1" =
+src=3D"cid:image001.png@01DB4B24.A8DD1A90"></span></a><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'><o:p></o:p></span></=
+p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'><o:p>&nbsp;</o:p></s=
+pan></p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'>T: 041 343 =
+949<o:p></o:p></span></p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'>E: <a =
+href=3D"mailto:info@artbeat.si"><span =
+style=3D'color:#0563C1'>info@artbeat.si</span></a></span><span =
+lang=3Den-SI style=3D'mso-ligatures:none'><o:p></o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US =
+style=3D'mso-ligatures:none;mso-fareast-language:SL'>I: <a =
+href=3D"http://www.artbeat.si/"><span =
+style=3D'color:#0563C1'>www.artbeat.si</span></a><o:p></o:p></span></p><p=
+ class=3DMsoNormal><span lang=3DEN-US =
+style=3D'font-size:8.0pt;mso-ligatures:none;mso-fareast-language:SL'><o:p=
+>&nbsp;</o:p></span></p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'font-size:8.0pt;mso-ligatures:none;mso-fareast-language:SL'><a =
+href=3D"https://artbeat.si/pogoji-poslovanja/"><span =
+style=3D'color:#0563C1'>Splo=C5=A1ni pogoji =
+poslovanja</span></a></span><span lang=3Den-SI =
+style=3D'font-size:8.0pt;mso-ligatures:none;mso-fareast-language:SL'><o:p=
+></o:p></span></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></body></html>
+------=_NextPart_001_0004_01DB4B24.A92260F0--
+
+------=_NextPart_000_0003_01DB4B24.A92239E0
+Content-Type: image/png;
+	name="image001.png"
+Content-Transfer-Encoding: base64
+Content-ID: <image001.png@01DB4B24.A8DD1A90>
+
+iVBORw0KGgoAAAANSUhEUgAAAHgAAAAXCAMAAAD3GHtvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAAMBQTFRF////NTU1ycnJqampgYGB6enp4ODgt7e32NjYSUlJZ2dnUVFR
+RkZGODg4Pz8//Pz809PTdHR09fX1z8/POzs7hISE8PDwXl5ecHBwj4+PVlZWQkJCsbGx+vn57Ozs
+WlpaY2NjvLy8bGxsf39/mpqai4uLoqKilpaWxcXF5OTknZ2d29vb/0ZI1dXVTU1NzMzM8/PzeHh4
+h4eHfHx8/3iMtLS0/0Jd/0g53t7e/7Gz/0RSq6ur/15T/8rV/1hF/5iIQvO8pQAAAv9JREFUeNrM
+lmmbojAMgFsOFeUQEVAEBPF2vHWOnev//6ttUwqoMM7s7ofNB2hDmrdPkqYg9A2R6wdPJm8RE+mj
+PxOjIZrmz5Y0Ke9vwasBWdv82ZrWvwC38f8FDlaCFX4bbNSE7eIygasbzbOwle+Ba4lO1cOzMZGI
+hPTRR7t4OZHqZ0mCj3tJmjJwOFPpuzXt8PXWHkzUScaWJ8xGDJbUmWxLPTpXyLidc6caTiWiFYBr
+YBODs76NMxkB2FX5vLWG5Z1jZtGdMo9nnWu8DX02urmXesad4SsBsM5si+CeeGWo0907w6JKQjwl
+RSkFx7gUnMqXYKw4yGheqsYk8tp3wIECU9e34qN2BVainv9qmhC3kWkuU7A6FoQxC/gBvWaqGeRJ
+e0YsBJ64nR9SYGNvwv5U0zStFOzDlxmMt3oBrI3l0qrGrkOVjgtJdSCHQzgRskfHicBibkDbYPtr
+lFQ1VFvvYhe1qyK4BOvpsZNhlxPYY6MD0qYh0yE5rsGs5pVgiPSWH768qrtGBdjmagDoNxWCwceZ
+W3lVYMirw2dRfpyqGsgrV4v4C2lwq2MVuMu9ggzvg6fZ8f8KzEsImVVgCIWfTkLtPnh0cWnBN7Ve
+FDc9VezQDKrAkKlNGusEV4JrWXDnxbLxi4UYgJslJFoudicCXkPJFcAWOyLUb+eAS8EQ/+MidBhY
+j6myDmW1MUZQiaCqNVUauoWW9dNgnGV8BeVfl0MHvZ9OLzxiWGva5gCXg83rzuUlSYuNfLRmXcez
+j7C/aMXjhiN7r+altuPtbPL++PjrgZAXg9KWWQD7lS1zZKSRLahIb9mU1ThvrcKJcB/eaLAHd8BG
+VAGOdjeXzIiqnpUSMO/X1olwnz4gNxG/bUSlDIx2tpaDpX1qrfWDtMxaHKCKrO3IPX5Pjt3sVK9h
+iJcvhPv0yZYKkqduRlMHWQKRDn1YF78KnfZcEBoy/VBDq4mrKtEs/+Mw4sRTlWESB/kPx2GoKs1l
+iNbgMe2yFvGyRi9vH5/BbwEGAEEHOftOpPbkAAAAAElFTkSuQmCC
+
+------=_NextPart_000_0003_01DB4B24.A92239E0--
+
+

@@ -1,0 +1,1122 @@
+Delivered-To: podpora@cebelca.biz
+Return-Path: <jetmir@pharmreg.si>
+Delivered-To: podpora@cebelca.biz
+Received: from director10.mail.ord1d.rsapps.net ([172.30.191.6])
+	by backend6.mail.ord1d.rsapps.net with LMTP
+	id 6JNMGUY6WGd2TgAA6C+aqA
+	(envelope-from <jetmir@pharmreg.si>)
+	for <podpora@cebelca.biz>; Tue, 10 Dec 2024 07:55:34 -0500
+Received: from proxy3.mail.ord1d.rsapps.net ([172.30.191.6])
+	by director10.mail.ord1d.rsapps.net with LMTP
+	id MOg8GUY6WGe0LQAApN4f7A
+	(envelope-from <jetmir@pharmreg.si>)
+	for <podpora@cebelca.biz>; Tue, 10 Dec 2024 07:55:34 -0500
+Received: from smtp13.gate.ord1d ([172.30.191.6])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	by proxy3.mail.ord1d.rsapps.net with LMTPS
+	id AFTZGEY6WGcWegAA7WKfLA
+	(envelope-from <jetmir@pharmreg.si>)
+	for <podpora@cebelca.biz>; Tue, 10 Dec 2024 07:55:34 -0500
+Return-Path: <jetmir@pharmreg.si>
+X-Spam-Threshold: 95
+X-Spam-Score: 0
+X-Spam-Flag: NO
+X-Virus-Scanned: OK
+X-Orig-To: podpora@cebelca.biz
+X-Originating-Ip: [195.206.229.22]
+Authentication-Results: smtp13.gate.ord1d.rsapps.net; iprev=pass policy.iprev="195.206.229.22"; spf=pass smtp.mailfrom="jetmir@pharmreg.si" smtp.helo="sh4-a.mail-neoserv.si"; dkim=pass header.d=pharmreg.si; dmarc=pass (p=none; dis=none) header.from=pharmreg.si
+X-Suspicious-Flag: NO
+X-Classification-ID: 09f43cd6-b6f6-11ef-8fca-525400b197d9-1-1
+Received: from [195.206.229.22] ([195.206.229.22:35825] helo=sh4-a.mail-neoserv.si)
+	by smtp13.gate.ord1d.rsapps.net (envelope-from <jetmir@pharmreg.si>)
+	(ecelerity 4.2.38.62370 r(:)) with ESMTPS (cipher=AES256-GCM-SHA384) 
+	id E4/17-18381-44A38576; Tue, 10 Dec 2024 07:55:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=pharmreg.si
+	; s=default; h=Content-type:Mime-version:In-Reply-To:References:Message-ID:To
+	:From:Subject:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=mkf3Kfj6ovd2tPVyWUHmbgFr3qMGp3qKDnz8XuViVNE=; b=FOgxuXTlbIXvfL5LNEJr0S+XLa
+	JlK9eshchCvETMcFlb0GdLtapM1bIzkBa/K6yDqe9MPTgV6eJaTdShLCoUQXf+FbWxZPrB+43JDif
+	n/wh1s/lKzYX7j3ggBobs1mKnjv15KjBzN0p7AQcJt3UAnqLsnj/pfQvukOFF+arjdyzKfKeHGzwP
+	PpZaKlwn597EQVN4fWTTyt7wof6Bf/f3/6qR82+FQ/oDClA+6Dwz1t77UZ4t+r6pjzoFnucZMb2b3
+	zHEr30hYPhHbF6PCu/kRd5hZAU4MTjwuZPP3jEpqcQTar5tjPX0swm5pNx1TTivgwkfem9MCf6jtj
+	zAdxzJbg==;
+Received: from [31.15.143.162] (port=54433 helo=[192.168.0.41])
+	by sh4.neoserv.si with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96.2)
+	(envelope-from <jetmir@pharmreg.si>)
+	id 1tKzlx-000yNP-2K
+	for podpora@cebelca.biz;
+	Tue, 10 Dec 2024 13:55:29 +0100
+User-Agent: Microsoft-MacOutlook/16.78.23102801
+Date: Tue, 10 Dec 2024 13:55:28 +0100
+Subject: Re: =?UTF-8?B?UkHEjFVOSQ==?=
+From: Jetmir Ramadani <jetmir@pharmreg.si>
+To: <podpora@cebelca.biz>
+Message-ID: <8D222277-7896-4618-9B3F-32C5E99235A0@pharmreg.si>
+Thread-Topic: =?UTF-8?B?UkHEjFVOSQ==?=
+References: <BF7FC8A1-07BD-4683-8F31-17C8FB4D3AC7@pharmreg.si>
+ <1733822130.462619019@apps.rackspace.com>
+In-Reply-To: <1733822130.462619019@apps.rackspace.com>
+Mime-version: 1.0
+Content-type: multipart/mixed;
+	boundary="B_3816683729_1754248206"
+X-NEOSERV-MailScanner-Information: Please contact the ISP for more information
+X-NEOSERV-MailScanner-ID: 1tKzlx-000yNP-2K
+X-NEOSERV-MailScanner: Found to be clean
+X-NEOSERV-MailScanner-SpamCheck: 
+X-NEOSERV-MailScanner-From: jetmir@pharmreg.si
+X-Spam-Status: No
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - sh4.neoserv.si
+X-AntiAbuse: Original Domain - cebelca.biz
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - pharmreg.si
+X-Get-Message-Sender-Via: sh4.neoserv.si: authenticated_id: jetmir@pharmreg.si
+X-Authenticated-Sender: sh4.neoserv.si: jetmir@pharmreg.si
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3816683729_1754248206
+Content-type: multipart/related;
+	boundary="B_3816683729_1766762521"
+
+--B_3816683729_1766762521
+Content-type: multipart/alternative;
+	boundary="B_3816683729_4129314486"
+
+
+--B_3816683729_4129314486
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Pozdravljeni,
+
+=20
+
+V pdf obliki nam poka=C5=BEe na vrhu, v xml obliki, =C5=A1t. naro=C4=8Dilnice poka=C5=BEe s=
+podaj.
+
+=20
+
+Oni bi si =C5=BEeleli zgoraj, kot je bilo v prilo=C5=BEenem vzorcu.
+
+=20
+
+Kako lahko mi napi=C5=A1emo v programu, da bo tudi v xml obliki na =C5=A1t. naro=C4=8Di=
+lnice zgoraj?
+
+=20
+
+Lp,
+
+=20
+
+=20
+
+Jetmir Ramadani=20
+Tehni=C4=8Dni preglednik SAPZ
+
+=20
+
+ Pod jel=C5=A1ami 38,=20
+SI-1000 Ljubljana=20
+
+
+E: info@pharmreg.si=20
+T: +386 (0)31 688 810=20
+
+W: www.pharmreg.si
+
+=20
+
+=20
+
+=20
+
+From: <podpora@cebelca.biz>
+Date: Tuesday, 10 December 2024 at 10:15
+To: Jetmir Ramadani <jetmir@pharmreg.si>
+Subject: RE: FW: RA=C4=8CUNI
+
+=20
+
+Gledam sken ampak ne vem kaj je razlika. Podatki so isti s tem da jih imate=
+ vi v dveh vrsticah oni pa v eni. In vi na vrhu oni pa poleg klavzul za skli=
+c. A pozicija jih moti? Druga=C4=8De sklici na dokumente so obi=C4=8Dajno na vrhu, s=
+podaj so klavzule o ra=C4=8Dunu.
+
+=20
+
+Dodajam priponko kjer se vidita oba, mogo=C4=8De sem kaj spregledal.
+
+=20
+
+LP
+Janko
+
+=20
+
+=20
+
+-----Original Message-----
+From: "Jetmir Ramadani" <jetmir@pharmreg.si>
+Sent: Monday, December 9, 2024 1:18pm
+To: "Janko Metelko" <podpora@cebelca.biz>
+Subject: FW: RA=C4=8CUNI
+
+Spo=C5=A1tovani,
+
+=20
+
+Prejeli smo po=C5=A1to od na=C5=A1ega naro=C4=8Dnika z vpra=C5=A1anjem, ali je mo=C5=BEno =C5=A1t. =
+naro=C4=8Dilnico vpisati tako, kot je ozna=C4=8Dil (v prionki), kjer nam je poslal v=
+zorc od enega od svojih naro=C4=8Dnikov.
+
+=20
+
+V na=C5=A1em ra=C4=8Dunu, kjer ro=C4=8Dno vpi=C5=A1emo =C5=A1t. naro=C4=8Dilnice, se jim ta prika=C5=BE=
+e spodaj (v priponki na=C5=A1 izpis v xml).=20
+
+=20
+
+Prosim za pomo=C4=8D pri tem, kako naj =C5=A1t. naro=C4=8Dilnice vpi=C5=A1emo, da se bo pri=
+kazala tako, kot je prikazano v prilo=C5=BEenem vzorcu, saj jim trenutni na=C4=8Din =
+povzro=C4=8Da te=C5=BEave.
+
+=20
+
+Vnaprej hvala in lp,
+
+=20
+
+=20
+
+Jetmir Ramadani=20
+Tehni=C4=8Dni preglednik SAPZ
+
+=20
+
+ Pod jel=C5=A1ami 38,=20
+SI-1000 Ljubljana=20
+
+
+E: info@pharmreg.si=20
+T: +386 (0)31 688 810=20
+
+W: www.pharmreg.si
+
+=20
+
+=20
+
+=20
+
+From: Ismet Dizdarevi=C4=87 <ismet.dizdarevic@kclj.si>
+Date: Monday, 9 December 2024 at 14:10
+To: Jetmir Ramadani <tajnistvo@pharmreg.si>, Jetmir Ramadani <jetmir@pharmr=
+eg.si>
+Subject: RA=C4=8CUNI
+
+=20
+
+Pozdravljeni
+
+Kot sva se po telefonu pogovarjala vam po=C5=A1iljam va=C5=A1 PGF in XML ra=C4=8Dun ter=
+ tretji vzorec od drugega podjetja kje se vidi kako oni vpi=C5=A1ejo podatek
+
+Zelo bi me razbremenili, =C4=8De bi vam to spelo urediti.
+
+Hvala
+
+=20
+
+=20
+
+=20
+
+=20
+
+Z lepimi pozdravi / Best regards =20
+
+=20
+
+Ismet Dizdarevi=C4=87
+
+UKC Ljubljana
+
+Podro=C4=8Dje za nabavno dejavnost in tr=C5=BEenje
+
+Zalo=C5=A1ka cesta 14
+
+1000 Ljubljana
+
+tel.   00386 1 522 45 92
+
+fax; 00386 1 522 12 44
+
+e-mail; ismet.dizdarevic@kclj.si
+
+=20
+
+=20
+
+=20
+
+
+--B_3816683729_4129314486
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsof=
+t-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" xmlns:m=
+=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http://www.w3.org=
+/TR/REC-html40"><head><meta http-equiv=3DContent-Type content=3D"text/html; char=
+set=3Dutf-8"><meta name=3DGenerator content=3D"Microsoft Word 15 (filtered medium)=
+"><!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.EmailStyle23
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	mso-ligatures:none;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]--></head><body lang=3Den-SI link=3D"#000000" vl=
+ink=3Dpurple style=3D'word-wrap:break-word'><div class=3DWordSection1><p class=3DMso=
+Normal><span lang=3DSL style=3D'mso-fareast-language:EN-US'>Pozdravljeni,<o:p></=
+o:p></span></p><p class=3DMsoNormal><span lang=3DSL style=3D'mso-fareast-language:=
+EN-US'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal><span lang=3DSL style=3D'm=
+so-fareast-language:EN-US'>V pdf obliki nam poka=C5=BEe na vrhu, v xml obliki, =C5=
+=A1t. naro=C4=8Dilnice poka=C5=BEe spodaj.<o:p></o:p></span></p><p class=3DMsoNormal><sp=
+an lang=3DSL style=3D'mso-fareast-language:EN-US'><o:p>&nbsp;</o:p></span></p><p=
+ class=3DMsoNormal><span lang=3DSL style=3D'mso-fareast-language:EN-US'>Oni bi si =
+=C5=BEeleli zgoraj, kot je bilo v prilo=C5=BEenem vzorcu.<o:p></o:p></span></p><p cl=
+ass=3DMsoNormal><span lang=3DSL style=3D'mso-fareast-language:EN-US'><o:p>&nbsp;</=
+o:p></span></p><p class=3DMsoNormal><span lang=3DSL style=3D'mso-fareast-language:=
+EN-US'>Kako lahko mi napi=C5=A1emo v programu, da bo tudi v xml obliki na =C5=A1t. n=
+aro=C4=8Dilnice zgoraj?<o:p></o:p></span></p><p class=3DMsoNormal><span lang=3DSL st=
+yle=3D'mso-fareast-language:EN-US'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNor=
+mal><span lang=3DSL style=3D'mso-fareast-language:EN-US'>Lp,<o:p></o:p></span></=
+p><p class=3DMsoNormal><span lang=3DSL style=3D'mso-fareast-language:EN-US'><o:p>&=
+nbsp;</o:p></span></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><div><p class=3D=
+MsoNormal><b><span style=3D'color:#17375E'>Jetmir Ramadani&nbsp;</span></b><sp=
+an style=3D'color:#17375E'><br></span><span style=3D'font-size:9.0pt;color:#1737=
+5E'>Tehni=C4=8Dni preglednik SAPZ</span><span style=3D'color:black'><o:p></o:p></s=
+pan></p><p class=3DMsoNormal><span style=3D'font-size:9.0pt;color:#17375E'>&nbsp=
+;</span><span style=3D'color:black'><o:p></o:p></span></p><p class=3DMsoNormal><=
+span style=3D'font-family:"Arial",sans-serif;color:#17375E'><img width=3D240 hei=
+ght=3D46 style=3D'width:2.5in;height:.4791in' id=3D"Picture_x0020_3" src=3D"cid:imag=
+e001.png@01DB4B0B.2BCADC40" alt=3D"Logo_Pharmreg"></span><span style=3D'color:bl=
+ack'><o:p></o:p></span></p><p class=3DMsoNormal><span style=3D'color:#17375E'>&n=
+bsp;</span><span style=3D'font-size:9.0pt;color:#17375E;background:white'>Pod =
+jel=C5=A1ami 38,&nbsp;</span><span style=3D'font-size:9.0pt;color:#17375E'><br><sp=
+an style=3D'background:white'>SI-1000 Ljubljana&nbsp;</span></span><span style=
+=3D'color:black'><o:p></o:p></span></p><p class=3DMsoNormal><span style=3D'font-si=
+ze:9.0pt;color:#17375E'><br><span style=3D'background:white'>E:&nbsp;<a href=3D"=
+mailto:info@pharmreg.si" title=3D"mailto:info@pharmreg.si"><u><span style=3D'col=
+or:#00006A'>info@pharmreg.si</span></u></a>&nbsp;</span><br><span style=3D'bac=
+kground:white'>T: +386 (0)31 688 810&nbsp;</span></span><span style=3D'color:b=
+lack'><o:p></o:p></span></p><p class=3DMsoNormal><span style=3D'font-size:9.0pt;=
+color:#17375E'>W:&nbsp;<a href=3D"http://www.pharmreg.si/"><u><span style=3D'col=
+or:#00006A'>www.pharmreg.si</span></u></a></span><span style=3D'color:black'><=
+o:p></o:p></span></p></div><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3D=
+MsoNormal><span lang=3DSL style=3D'mso-fareast-language:EN-US'><o:p>&nbsp;</o:p>=
+</span></p><p class=3DMsoNormal><span style=3D'mso-fareast-language:EN-US'><o:p>=
+&nbsp;</o:p></span></p><div style=3D'border:none;border-top:solid #B5C4DF 1.0p=
+t;padding:3.0pt 0cm 0cm 0cm'><p class=3DMsoNormal><b><span style=3D'font-size:12=
+.0pt;color:black'>From: </span></b><span style=3D'font-size:12.0pt;color:black=
+'>&lt;podpora@cebelca.biz&gt;<br><b>Date: </b>Tuesday, 10 December 2024 at 1=
+0:15<br><b>To: </b>Jetmir Ramadani &lt;jetmir@pharmreg.si&gt;<br><b>Subject:=
+ </b>RE: FW: RA=C4=8CUNI<o:p></o:p></span></p></div><div><p class=3DMsoNormal><o:p=
+>&nbsp;</o:p></p></div><p style=3D'margin:0cm;overflow-wrap: break-word'><span=
+ style=3D'font-size:10.0pt;font-family:"Arial",sans-serif'>Gledam sken ampak n=
+e vem kaj je razlika. Podatki so isti s tem da jih imate vi v dveh vrsticah =
+oni pa v eni. In vi na vrhu oni pa poleg klavzul za sklic. A pozicija jih mo=
+ti? Druga=C4=8De sklici na dokumente so obi=C4=8Dajno na vrhu, spodaj so klavzule o =
+ra=C4=8Dunu.<o:p></o:p></span></p><p style=3D'margin:0cm;overflow-wrap: break-word=
+'><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif'>&nbsp;<o:p><=
+/o:p></span></p><p style=3D'margin:0cm;overflow-wrap: break-word'><span style=3D=
+'font-size:10.0pt;font-family:"Arial",sans-serif'>Dodajam priponko kjer se v=
+idita oba, mogo=C4=8De sem kaj spregledal.<o:p></o:p></span></p><p style=3D'margin=
+:0cm;overflow-wrap: break-word'><span style=3D'font-size:10.0pt;font-family:"A=
+rial",sans-serif'>&nbsp;<o:p></o:p></span></p><p style=3D'margin:0cm;overflow-=
+wrap: break-word'><span style=3D'font-size:10.0pt;font-family:"Arial",sans-ser=
+if'>LP<br>Janko<o:p></o:p></span></p><p style=3D'margin:0cm;overflow-wrap: bre=
+ak-word'><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif'>&nbsp=
+;<o:p></o:p></span></p><p style=3D'margin:0cm;overflow-wrap: break-word'><span=
+ style=3D'font-size:10.0pt;font-family:"Arial",sans-serif'>&nbsp;<o:p></o:p></=
+span></p><p style=3D'mso-margin-top-alt:0cm;margin-right:0cm;margin-bottom:12.=
+0pt;margin-left:0cm;overflow-wrap: break-word'><span style=3D'font-size:10.0pt=
+;font-family:"Arial",sans-serif'>-----Original Message-----<br>From: &quot;J=
+etmir Ramadani&quot; &lt;jetmir@pharmreg.si&gt;<br>Sent: Monday, December 9,=
+ 2024 1:18pm<br>To: &quot;Janko Metelko&quot; &lt;podpora@cebelca.biz&gt;<br=
+>Subject: FW: RA=C4=8CUNI<o:p></o:p></span></p><div id=3DSafeStyles1733822016><p c=
+lass=3DMsoNormal><span lang=3DSL style=3D'font-size:10.0pt;mso-ligatures:standardc=
+ontextual;mso-fareast-language:EN-US'>Spo=C5=A1tovani,</span><span style=3D'font-s=
+ize:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;m=
+so-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'o=
+verflow-wrap: break-word'><span lang=3DSL style=3D'font-size:10.0pt;mso-ligature=
+s:standardcontextual;mso-fareast-language:EN-US'>&nbsp;</span><span style=3D'f=
+ont-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontext=
+ual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal sty=
+le=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:10.0pt;mso-lig=
+atures:standardcontextual;mso-fareast-language:EN-US'>Prejeli smo po=C5=A1to od =
+na=C5=A1ega naro=C4=8Dnika z vpra=C5=A1anjem, ali je mo=C5=BEno =C5=A1t. naro=C4=8Dilnico vpisati ta=
+ko, kot je ozna=C4=8Dil (v prionki), kjer nam je poslal vzorc od enega od svojih=
+ naro=C4=8Dnikov.</span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-s=
+erif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p=
+></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3D=
+SL style=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso-fareast-lang=
+uage:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial",s=
+ans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p>=
+</o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span =
+lang=3DSL style=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso-fareast=
+-language:EN-US'>V na=C5=A1em ra=C4=8Dunu, kjer ro=C4=8Dno vpi=C5=A1emo =C5=A1t. naro=C4=8Dilnice, s=
+e jim ta prika=C5=BEe spodaj (v priponki na=C5=A1 izpis v xml). </span><span style=3D'=
+font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontex=
+tual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal st=
+yle=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:10.0pt;mso-li=
+gatures:standardcontextual;mso-fareast-language:EN-US'>&nbsp;</span><span st=
+yle=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardc=
+ontextual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNorm=
+al style=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:10.0pt;m=
+so-ligatures:standardcontextual;mso-fareast-language:EN-US'>Prosim za pomo=C4=8D=
+ pri tem, kako naj =C5=A1t. naro=C4=8Dilnice vpi=C5=A1emo, da se bo prikazala tako, kot =
+je prikazano v prilo=C5=BEenem vzorcu, saj jim trenutni na=C4=8Din povzro=C4=8Da te=C5=BEave=
+.</span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-lig=
+atures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></span></p>=
+<p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'fo=
+nt-size:10.0pt;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'>=
+&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;ms=
+o-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></span=
+></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL styl=
+e=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso-fareast-language:EN=
+-US'>Vnaprej hvala in lp,</span><span style=3D'font-size:10.0pt;font-family:"A=
+rial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US=
+'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'=
+><span lang=3DSL style=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso-=
+fareast-language:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-fami=
+ly:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:=
+EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-=
+word'><span style=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso-far=
+east-language:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:=
+"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-=
+US'><o:p></o:p></span></p><div><p class=3DMsoNormal style=3D'overflow-wrap: brea=
+k-word'><strong><span style=3D'font-size:10.0pt;font-family:"Calibri",sans-ser=
+if;color:#17375E'>Jetmir Ramadani&nbsp;</span></strong><span style=3D'font-siz=
+e:10.0pt;color:#17375E'><br></span><span style=3D'font-size:9.0pt;color:#17375=
+E'>Tehni=C4=8Dni preglednik SAPZ</span><span style=3D'font-size:10.0pt;font-family=
+:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN=
+-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-wo=
+rd'><span style=3D'font-size:9.0pt;color:#17375E'>&nbsp;</span><span style=3D'fo=
+nt-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextu=
+al;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal styl=
+e=3D'overflow-wrap: break-word'><span style=3D'font-size:10.0pt;font-family:"Ari=
+al",sans-serif;color:#17375E;border:solid windowtext 1.0pt;padding:0cm'><img=
+ border=3D0 width=3D240 height=3D46 style=3D'width:2.5in;height:.4791in' id=3D"Picture=
+_x0020_1" src=3D"cid:~WRD0000.jpg" alt=3D"Image removed by sender. Logo_Pharmreg=
+"></span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-li=
+gatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></span></p=
+><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span style=3D'font-size=
+:10.0pt;color:#17375E'>&nbsp;</span><span style=3D'font-size:9.0pt;color:#1737=
+5E;background:white'>Pod jel=C5=A1ami 38,&nbsp;</span><span style=3D'font-size:9.0=
+pt;color:#17375E'><br><span style=3D'background:white'>SI-1000 Ljubljana&nbsp;=
+</span></span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;m=
+so-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></spa=
+n></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span style=3D'font=
+-size:9.0pt;color:#17375E'><br><span style=3D'background:white'>E:&nbsp;<a hre=
+f=3D"mailto:info@pharmreg.si" title=3D"mailto:info@pharmreg.si"><u><span style=3D'=
+color:#00006A'>info@pharmreg.si</span></u></a>&nbsp;</span><br><span style=3D'=
+background:white'>T: +386 (0)31 688 810&nbsp;</span></span><span style=3D'font=
+-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual=
+;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D=
+'overflow-wrap: break-word'><span style=3D'font-size:9.0pt;color:#17375E'>W:&n=
+bsp;<a href=3D"http://www.pharmreg.si/"><u><span style=3D'color:#00006A'>www.pha=
+rmreg.si</span></u></a></span><span style=3D'font-size:10.0pt;font-family:"Ari=
+al",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'>=
+<o:p></o:p></span></p></div><p class=3DMsoNormal style=3D'overflow-wrap: break-w=
+ord'><span style=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso-fare=
+ast-language:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"=
+Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-U=
+S'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word=
+'><span lang=3DSL style=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso=
+-fareast-language:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-fam=
+ily:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language=
+:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break=
+-word'><span style=3D'font-size:10.0pt;mso-ligatures:standardcontextual;mso-fa=
+reast-language:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family=
+:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN=
+-US'><o:p></o:p></span></p><div style=3D'border:none;border-top:solid #B5C4DF =
+1.0pt;padding:3.0pt 0cm 0cm 0cm'><p class=3DMsoNormal style=3D'overflow-wrap: br=
+eak-word'><strong><span lang=3DSL style=3D'font-size:12.0pt;font-family:"Calibri=
+",sans-serif;color:black'>From: </span></strong><span lang=3DSL style=3D'font-si=
+ze:12.0pt;color:black'>Ismet Dizdarevi=C4=87 &lt;ismet.dizdarevic@kclj.si&gt;<br=
+><strong><span style=3D'font-family:"Calibri",sans-serif'>Date: </span></stron=
+g>Monday, 9 December 2024 at 14:10<br><strong><span style=3D'font-family:"Cali=
+bri",sans-serif'>To: </span></strong>Jetmir Ramadani &lt;tajnistvo@pharmreg.=
+si&gt;, Jetmir Ramadani &lt;jetmir@pharmreg.si&gt;<br><strong><span style=3D'f=
+ont-family:"Calibri",sans-serif'>Subject: </span></strong>RA=C4=8CUNI</span><spa=
+n style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:stand=
+ardcontextual;mso-fareast-language:EN-US'><o:p></o:p></span></p></div><div><=
+p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'fon=
+t-size:10.0pt'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial=
+",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o=
+:p></o:p></span></p></div><p class=3DMsoNormal style=3D'overflow-wrap: break-wor=
+d'><span lang=3DSL style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-=
+ligatures:standardcontextual;mso-fareast-language:EN-US'>Pozdravljeni</span>=
+<span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:s=
+tandardcontextual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=
+=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:=
+10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-f=
+areast-language:EN-US'>Kot sva se po telefonu pogovarjala vam po=C5=A1iljam va=C5=A1=
+ PGF in XML ra=C4=8Dun ter tretji vzorec od drugega podjetja kje se vidi kako on=
+i vpi=C5=A1ejo podatek</span><span style=3D'font-size:10.0pt;font-family:"Arial",s=
+ans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p>=
+</o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span =
+lang=3DSL style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures=
+:standardcontextual;mso-fareast-language:EN-US'>Zelo bi me razbremenili, =C4=8De=
+ bi vam to spelo urediti.</span><span style=3D'font-size:10.0pt;font-family:"A=
+rial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US=
+'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'=
+><span lang=3DSL style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-li=
+gatures:standardcontextual;mso-fareast-language:EN-US'>Hvala</span><span sty=
+le=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardco=
+ntextual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNorma=
+l style=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:10.0pt;fo=
+nt-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-la=
+nguage:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial"=
+,sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:=
+p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><spa=
+n lang=3DSL style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatur=
+es:standardcontextual;mso-fareast-language:EN-US'>&nbsp;</span><span style=3D'=
+font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontex=
+tual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal st=
+yle=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:10.0pt;font-f=
+amily:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-langua=
+ge:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial",san=
+s-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></=
+o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span la=
+ng=3DSL style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-lan=
+guage:SL'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial",san=
+s-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></=
+o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span la=
+ng=3DSL style=3D'font-size:14.0pt;font-family:"Arial",sans-serif;mso-ligatures:s=
+tandardcontextual;mso-fareast-language:SL'>Z lepimi pozdravi / Best regards =
+&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;ms=
+o-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></span=
+></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL styl=
+e=3D'font-size:14.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcon=
+textual;mso-fareast-language:SL'>&nbsp;</span><span style=3D'font-size:10.0pt;=
+font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-=
+language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wra=
+p: break-word'><span lang=3DSL style=3D'font-size:12.0pt;font-family:"Arial",san=
+s-serif;mso-ligatures:standardcontextual;mso-fareast-language:SL'>Ismet Dizd=
+arevi=C4=87</span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;m=
+so-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></spa=
+n></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL sty=
+le=3D'font-size:12.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardco=
+ntextual;mso-fareast-language:SL'>UKC Ljubljana</span><span style=3D'font-size=
+:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-=
+fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'over=
+flow-wrap: break-word'><span lang=3DSL style=3D'font-size:12.0pt;font-family:"Ar=
+ial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:SL'>Po=
+dro=C4=8Dje za nabavno dejavnost in tr=C5=BEenje</span><span style=3D'font-size:10.0pt=
+;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast=
+-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wr=
+ap: break-word'><span lang=3DSL style=3D'font-size:12.0pt;font-family:"Arial",sa=
+ns-serif;mso-ligatures:standardcontextual;mso-fareast-language:SL'>Zalo=C5=A1ka =
+cesta 14</span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;=
+mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></sp=
+an></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL st=
+yle=3D'font-size:12.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardc=
+ontextual;mso-fareast-language:SL'>1000 Ljubljana</span><span style=3D'font-si=
+ze:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;ms=
+o-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'ov=
+erflow-wrap: break-word'><span lang=3DSL style=3D'font-size:12.0pt;font-family:"=
+Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:SL'>=
+tel.&nbsp; &nbsp;00386 1 522 45 92</span><span style=3D'font-size:10.0pt;font-=
+family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-langu=
+age:EN-US'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: br=
+eak-word'><span lang=3DSL style=3D'font-size:12.0pt;font-family:"Arial",sans-ser=
+if;mso-ligatures:standardcontextual;mso-fareast-language:SL'>fax; 00386 1 52=
+2 12 44</span><span style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;m=
+so-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p></o:p></spa=
+n></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span lang=3DSL sty=
+le=3D'font-size:12.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardco=
+ntextual;mso-fareast-language:SL'>e-mail</span><span lang=3DSL style=3D'font-siz=
+e:14.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso=
+-fareast-language:SL'>; <a href=3D"mailto:ismet.dizdarevic@kclj.si"><u><span s=
+tyle=3D'color:#0563C1'>ismet.dizdarevic@kclj.si</span></u></a></span><span sty=
+le=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standardco=
+ntextual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMsoNorma=
+l style=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:14.0pt;fo=
+nt-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-la=
+nguage:SL'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"Arial",sa=
+ns-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-US'><o:p><=
+/o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word'><span l=
+ang=3DSL style=3D'font-size:14.0pt;font-family:"Arial",sans-serif;mso-fareast-la=
+nguage:SL'><img border=3D0 width=3D382 height=3D75 style=3D'width:3.9791in;height:.7=
+812in' id=3D"_x0000_i1025" src=3D"cid:image002.png@01DB4B0B.2BCADC40"></span><sp=
+an style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:stan=
+dardcontextual;mso-fareast-language:EN-US'><o:p></o:p></span></p><p class=3DMs=
+oNormal style=3D'overflow-wrap: break-word'><span lang=3DSL style=3D'font-size:10.=
+0pt;font-family:"Arial",sans-serif;mso-ligatures:standardcontextual;mso-fare=
+ast-language:EN-US'>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"=
+Arial",sans-serif;mso-ligatures:standardcontextual;mso-fareast-language:EN-U=
+S'><o:p></o:p></span></p><p class=3DMsoNormal style=3D'overflow-wrap: break-word=
+'><span lang=3DSL style=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-l=
+igatures:standardcontextual;mso-fareast-language:EN-US'>&nbsp;</span><span s=
+tyle=3D'font-size:10.0pt;font-family:"Arial",sans-serif;mso-ligatures:standard=
+contextual;mso-fareast-language:EN-US'><o:p></o:p></span></p></div></div></b=
+ody></html>
+
+--B_3816683729_4129314486--
+
+
+--B_3816683729_1766762521
+Content-type: image/png; name="image001.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image001.png@01DB4B0B.2BCADC40>
+Content-disposition: inline;
+	filename="image001.png"
+Content-transfer-encoding: base64
+
+
+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
+TkSuQmCCAAAA
+--B_3816683729_1766762521
+Content-type: image/png; name="image002.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image002.png@01DB4B0B.2BCADC40>
+Content-disposition: inline;
+	filename="image002.png"
+Content-transfer-encoding: base64
+
+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
+v8vxp1UEThEu
+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
+RU5ErkJgggAA
+--B_3816683729_1766762521--
+
+
+--B_3816683729_1754248206--
+
+
+
