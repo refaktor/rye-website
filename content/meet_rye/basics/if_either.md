@@ -11,7 +11,7 @@ _"if it has no special forms, how does it have if"_
 
 ## Revisit Do again
 
-On the previous page we looked at the **do** function. It accepts one argument, a block of code and evaluates it.
+On the previous page, we looked at the **do** function. It accepts one argument, a block of code and evaluates it.
 
 
 ```clojure
@@ -23,7 +23,7 @@ do { print "Hello" }
 
 Now think of a function similar to **do** function. But it takes an additional argument and only evaluates the block of code if the first argument is True (1).
 
-And so we get **if**, and it's just an ordinary builtin function, just like **do** is.
+And so we get **if**, and it's just an ordinary built-in function, just like **do** is.
 
 ```clojure
 if 0 { print "Moon" }

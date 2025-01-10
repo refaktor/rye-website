@@ -13,11 +13,11 @@ But context is also just another Rye value type. You can create them, manipulate
 
 ## Context structure
 
-Context is just a dictionary of words and values, an optional link to the parent context and an optional dosctring.
+Context is just a dictionary of words and values, an optional link to the parent context, and an optional docstring.
 
 ## First look
 
-When you start Rye console you enter an empty context. Your context has a parent context where all the builtin functions are defined. You can list the empty context with `lc` (list context) and a parent context `lcp` (list parent context) functions.
+When you start the Rye console, you enter an empty context. Your context has a parent context where all the built-in functions are defined. You can list the empty context with `lc` (list context) and a parent context `lcp` (list parent context) functions.
  
 _BTW: Try the code below in the console on the top right, it's always better to see it work for real :)_
 
@@ -27,7 +27,7 @@ lc
 
 lcp
 ; ...
-; ... will print all builtin functions and subcontexts
+; ... will print all built-in functions and subcontexts
 ; ...
 ; where-lesser: [BFunction(3): Returns table of rows where specific colum is lesser than given value.]
 ; where-match: [BFunction(3): Returns table of rows where a specific colum matches a regex.]
@@ -60,7 +60,7 @@ Words are just words. The context in which we evaluate the code, consisting of w
 
 When the evaluator gets to a word, it looks for the word's bound value in the current context. If it doesn't find one, it goes up to the parent context, if a context has a parent, and looks there, and so on ...
 
-In the parent context of our opening context, `print` is bound to a builtin function that prints a text. The evaluator finds the word and since its value is a function, it evaluates the function.
+In the parent context of our opening context, `print` is bound to a built-in function that prints a text. The evaluator finds the word and since its value is a function, it evaluates the function.
 
 ```clojure
 
@@ -100,7 +100,7 @@ print friend/name
 
 ## Sending messages
 
-What you can do, is "send messages" to other contexts, that means "call functions" there. But in Rye a limited number of functions that change values in-place (hence can change state) need to end with "!" (exclamation mark), so the calls to such modifying functions are visible and explicit.
+What you can do, is "send messages" to other contexts, that means "call functions" there. But in Rye, a limited number of functions that change values in-place (hence can change state) need to end with "!" (exclamation mark), so the calls to such modifying functions are visible and explicit.
 
 ```clojure
 count: 0
@@ -136,11 +136,9 @@ You can create functions in multiple ways and by this define which context is se
 
 ## No global context
 
-Lets review what we learned in the context of so called "global scope". 
+Lets review what we learned in the context of so-called "global scope". 
 
-In Python, for example, a function can modify global variables. You explicitly declare which variables inside a function are global with a `global` keyword.
-In Rebol you explicitly define which 
-words are local. This is problematic. If you forget to define a word as local, you are setting and changing a global variable. 
+In Python, for example, a function can modify global variables. You explicitly declare which variables inside a function are global with a `global` keyword. In Rebol, you explicitly define which words are local. This is problematic. If you forget to define a word as local, you are setting and changing a global variable. 
 
 Both approaches mean that you have to _scan the code higher up_ in a function to understand, where _local code_ makes modifications.
 
@@ -181,8 +179,8 @@ print "Hi"
 ; prints: Hi
 ```
 
-Evaluator arrives at word `print`, since it's not defined in current context it looks up the parent where it finds it bound to a builtin function accepting one argument.
-It finds text "Hi" as the next value which it uses as the argument to builtin function `print` and the builtin function prints it. We can check that print really is defined
+Evaluator arrives at word `print`, since it's not defined in current context it looks up the parent where it finds it bound to a built-in function accepting one argument.
+It finds text "Hi" as the next value which it uses as the argument to built-in function `print` and the built-in function prints it. We can check that print really is defined
 in a parent context.
 
 ```clojure
@@ -192,7 +190,7 @@ lsp\ "print"
 ;  ...
 ```
 
-Now we'll print a word defined in current context. Evaluator as before goes seeking an argument for the builtin function, but arrives at a word name. It looks in local context
+Now we'll print a word defined in current context. Evaluator as before goes seeking an argument for the built-in function, but arrives at a word name. It looks in local context
 first and finds it bound to text "Geralt" so it returns the text to the function at it prints it.
 
 ```clojure

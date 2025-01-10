@@ -140,5 +140,5 @@ if hour < 8 { say "Good morning, sire!" }
 if hour > 18 { say "Good evening, mr.!" }
 ```
 
-Well, if **hour** and **say** are functions in our context, this above is just regular **Rye language code**. The same goes for Logo Turtle example, if we make functions _pen_, _move_ and _rotate_ each taking one argument, we can evaluate it as normal Rye. And the NPC dialogue has Rye code in its _do_ blocks.
+Well, if **hour** and **say** are functions in our context, the above is just regular **Rye language code**. The same goes for the Logo Turtle example above, if we make functions _pen_, _move_ and _rotate_ each taking one argument, we can evaluate it as normal Rye. Note that the NPC dialog example has Rye code in its _do_ blocks.
 

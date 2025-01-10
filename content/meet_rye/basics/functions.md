@@ -7,9 +7,9 @@ summary: "Creating your functions."
 mygroup: true
 ---
 
-## Builtin functions
+## Built-in functions
 
-Rye comes with many builtin functions, which are functions defined in a host language (Go). While solving a problem you build functions of your own in Rye.
+Rye comes with many built-in functions, which are functions defined in a host language (Go). While solving a problem, you can build your own functions in Rye.
 
 ## Rye functions
 
@@ -27,7 +27,7 @@ is-positive: fn { n } { if n > 0 { return 1 } 0 }
 
 The value of the last expression is returned from function calls. You don't need to use return statements (there is a return function, for when you want to return in the middle of code).
 
-We call them like we call builtin functions, by naming them and providing the arguments.
+We call them like we call built-in functions, by naming them and providing the arguments.
 
 ```clojure
 say-hi "Jane"
@@ -42,10 +42,10 @@ is-positive -100
 
 ## Pure functions
 
-If you **probe** builtin functions in shell you will see that most of them show something like `[Pure BFunction ...]`. A function being pure means that it has no side effects and that
+If you **probe** built-in functions in shell you will see that most of them show something like `[Pure BFunction ...]`. A function being pure means that it has no side effects and that
 it has referential transparency. This means that with the same inputs it will always produce same output. 
 
-Above **join** is a pure builtin function, while print has a side effect, and function like `now` is not referentially transparent. It will return a different result each time you call it.
+Above **join** is a pure built-in function, while print has a side effect, and function like `now` is not referentially transparent. It will return a different result each time you call it.
 
 ```lisp
 probe ?join
@@ -58,8 +58,8 @@ probe ?now
 ; prints: [BFunction(0): Returns current Time.]
 ```
 
-Function for creating pure function is **pfn**. Pure functions can only call other pure functions (builtin or normal). Pure functions are bound to a context with just pure functions so they 
-have no access to any unpure function or a word (variable) outside its scope (like global).
+The way to create a pure function is by using **pfn** (function). Pure functions can only call other pure functions (built-in or normal). Pure functions are bound to a context with just pure functions so they 
+have no access to any non-pure function or a word (variable) outside its scope (like global).
 
 ```clojure
 x: 101

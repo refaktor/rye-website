@@ -24,7 +24,8 @@ Fire up a random online Lisp REPL and enter:
 (print '(+ 11 22))
 ; prints: (+ 11 22)     -- we had to quote it so it doesn't evaluate the list
 ```
-When we give Lisp a block it evaluates it and prints the result. If we want to print the block we need to quote it. Lisp **evaluates by default**.
+
+When we give Lisp a block it evaluates it and prints the result. If we want to print the block, we need to quote it. Lisp **evaluates by default**.
 
 ## REBOL and Rye
 
