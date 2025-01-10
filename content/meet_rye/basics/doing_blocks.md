@@ -13,7 +13,7 @@ _"to do or not to do, is now the question"_
 
 In REBOL, contrary to Lisps, blocks or lists don't evaluate by default. For better or for worse, this little difference is what makes REBOL - REBOL.
 
-Fire up random online Lisp REPL and enter:
+Fire up a random online Lisp REPL and enter:
 
 ```lisp
 ; Lisp
@@ -28,7 +28,7 @@ When we give Lisp a block it evaluates it and prints the result. If we want to p
 
 ## REBOL and Rye
 
-Rye came out of REBOL's ideas and this is one of the core ones. So Rye and REBOL work the same here. What happens if we do the same in Rye shell ...
+Rye came out of REBOL's ideas and this is one of the core ones. So Rye and REBOL work the same here. What happens if we do the same in the Rye shell...
 
 ```clojure
 ; Rye
@@ -40,7 +40,7 @@ print do { _+ 11 22 }
 ; prints: 33            -- we had to *do* it, to evaluate it
 ```
 
-Just the contrary than in lisp. If we give print function a block, it doesn't evaluate it but prints it, and if we want to evaluate it, we have to **do** it. Rye **doesn't evaluate by default**.
+Just the contrary to Lisp. If we give the print function a block, it doesn't evaluate it but prints it, and if we want to evaluate it, we have to **do** it. Rye **doesn't evaluate by default**.
 
 ## Function Do
 

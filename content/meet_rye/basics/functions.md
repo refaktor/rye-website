@@ -9,11 +9,11 @@ mygroup: true
 
 ## Builtin functions
 
-Rye comes with many builtin functions. Functions that are defined in a host language (Go). While solving a problem you build functions of your own in Rye.
+Rye comes with many builtin functions, which are functions defined in a host language (Go). While solving a problem you build functions of your own in Rye.
 
 ## Rye functions
 
-Functions are like any other Rye values. You create them by calling a function. The most common is builitn function *fn*. It takes two arguments a block of arguments and a block of code.
+Functions are like any other Rye values. You create them by calling a function. The most common is the builitn function *fn*. It takes two arguments, a block of arguments and a block of code.
 
 It returns a function value which we assign to a word using a set-word, like any other value.
 
@@ -25,7 +25,7 @@ double: fn { x } { x * x }
 is-positive: fn { n } { if n > 0 { return 1 } 0 }
 ```
 
-Value of the last expression is retuned from function call. You don't need to use return statement (there is return function, for when you want to return in the middle of code).
+The value of the last expression is returned from function calls. You don't need to use return statements (there is a return function, for when you want to return in the middle of code).
 
 We call them like we call builtin functions, by naming them and providing the arguments.
 
@@ -42,10 +42,10 @@ is-positive -100
 
 ## Pure functions
 
-If you **probe** builtin functions in shell you will see that most of them show something like `[Pure BFunction ...]`. A function being Pure means that it has no side effects and that
+If you **probe** builtin functions in shell you will see that most of them show something like `[Pure BFunction ...]`. A function being pure means that it has no side effects and that
 it has referential transparency. This means that with the same inputs it will always produce same output. 
 
-Above **join** is a pure builtin functions, while print has a side effect, and function like `now` is not referentially transparent. It will return a different result each time you call it.
+Above **join** is a pure builtin function, while print has a side effect, and function like `now` is not referentially transparent. It will return a different result each time you call it.
 
 ```lisp
 probe ?join
@@ -59,7 +59,7 @@ probe ?now
 ```
 
 Function for creating pure function is **pfn**. Pure functions can only call other pure functions (builtin or normal). Pure functions are bound to a context with just pure functions so they 
-have no access to any unpure function or a word (variable) outside it's scope (like global).
+have no access to any unpure function or a word (variable) outside its scope (like global).
 
 ```clojure
 x: 101

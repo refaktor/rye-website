@@ -18,7 +18,7 @@ To recap: Context is used as **scope** for Rye words. It's also just another **v
 
 ## Basic context
 
-The  most common way to create or just use the features of a context is by function `context`. Function evaluates a block of code in it's newly created context and returns the context itself. It sets contexts parent to the *current-context* when created.
+The  most common way to create or just use the features of a context is by the function `context`. This function evaluates a block of code in its newly created context and returns the context itself. It sets the context's parent to the *current-context* when created.
 
 ```clojure
 pos-printer: context { 
@@ -31,7 +31,7 @@ pos-printer: context {
 
 ## Context path
 
-We can use a **context path**, another literal value type in Rye, to address values inside a context. Evaluator uses _cpath_ in the same manner as it uses words. If a word in a context is bound to a function it evaluates it, if not it returns the value bound to it.
+We can use a **context path**, another literal value type in Rye, to address values inside a context. The evaluator uses _cpath_ in the same manner as it uses words. If a word in a context is bound to a function it evaluates it, if not it returns the value bound to it.
 
 ```clojure
 print pos-printer/codepage
@@ -49,7 +49,7 @@ pos-printer/crlf
 
 ### No direct changes
 
-We can't use the equivalent of **set** or **mod-words**, to change the values inside a context. If you come from Rebol, this is possible there, but Rye tries to keep a much tighter control on modification in general. 
+We can't use the equivalent of **set** or **mod-words** to change the values inside a context. If you come from Rebol, this is possible there, but Rye tries to keep a much tighter control on modification in general.
 Rye only allows direct changes in the current context, but not in sub-contexts and not in the parent contexts. You can only _send messages_ i.e. make function calls there.
 
 
@@ -69,7 +69,7 @@ Besides calling into a context with cpath, we can also just evaluate our code in
 
 **Do** is a general Rye function that *does* the Rye dialect. A variation `do\in` exists that _does_ code in a specific context. 
 Well, not directly inside a context, since we believe things are better kept
-separate, not mashed together. Code is still evaluated in it's current context (like with _do_) but with specified context being a parent.
+separate, not mashed together. Code is still evaluated in it's current context (like with _do_) but with the specified context being the parent.
 
 ```clojure
 do\in pos-printer { 
@@ -85,7 +85,7 @@ do\in pos-printer {
 ;  Cp: latin2
 ```
 
-So how does this work? Evaluator finds values of **out**, **clrf**, **info** and **codepage** in it's now parent context, the context _pos-printer_ that we created above. It evaluates the first 3 because they are functions and retrieves the last. 
+So how does this work? The evaluator finds values of **out**, **clrf**, **info** and **codepage** in its now parent context, the context _pos-printer_ that we created above. It evaluates the first 3 because they are functions and retrieves the last.
 
 But it found _print_ and _loop_ in the parent context of the parent context, where all the built-ins are defined.
 
@@ -137,9 +137,9 @@ do\in math { pi * pipe-radius .sq |round\to 2 } :area
 
 ### Extends function
 
-Function **extends** accepts another context in addition to a block of code and sets the accepted context as a parent to a newly created one. 
+The function **extends** accepts another context in addition to a block of code and sets the accepted context as a parent to a newly created one.
 
-This is a general mechanism for creating contexts with specific parents, but it also behaves sort of like class\object inheritance. But Rye is not an OO language, so this is not a pattern around which we usually structure code.
+This is a general mechanism for creating contexts with specific parents, but it also behaves sort of like class/object inheritance. But Rye is not an OO language, so this is not a pattern around which we usually structure code.
 
 ```clojure
 
@@ -158,21 +158,21 @@ cat/voice
 ; prints: Meow
 ```
 
-Rye is context oriented language, where words get meaning in specific contexts, and we can construct contexts in a way that makes the most sense. In code below context `circle` isn't viewed as a subclass of math, but the programmer decided 
+Rye is a context-oriented language, where words get their meanings in specific contexts, and we can construct contexts in a way that makes the most sense. In the code below the context `circle` isn't viewed as a subclass of math, but the programmer decided
 that it makes sense to define context circle with context math as the first parent.
 
 ```clojure
 rye .needs { math } ; check if we have math module built-in
 
 circle: extends math { 
-	circuference: fn { r } { 2 * pi * r } 
+	circumference: fn { r } { 2 * pi * r }
 	area: fn { r } { pi * r .sq } 
 }
 
 print circle/area 10
 ; prints: 314.159265
 
-do\in circle { print circuference 10 }
+do\in circle { print circumference 10 }
 ; prints: 62.831853
 ```
 
@@ -181,7 +181,7 @@ This is a way of giving our code access to words defined in math context, and gi
 ### Private function
 
 
-Function **private** uses a context for a completely different reason. It creates a new context and executes code in it, but just returns the **last value**, not the context.
+The function **private** uses a context for a completely different reason. It creates a new context and executes code in it, but just returns the **last value**, not the context.
 
 This is useful if we need the result of some operations, but we don't want the intermediate words/variables to pollute our working context.
 
@@ -237,7 +237,7 @@ do\in ok-printer { pr msg }
 ; Error: word 'msg' not found
 ```
 
-Now we will add our context the ability to do basic looping. So our dialect can avoid some repetition.
+Now we will add to our context the ability to do basic looping. So our dialect can avoid some repetition.
 
 ```clojure
 ok-printer:: isolate { pr: ?print p: ?prn lo: ?loop }
@@ -260,7 +260,7 @@ do\in ok-printer { lo 3 { p "*" } nl pr "ER!" }
 ;  ER!
 ```
 
-Now lets give our remote programmer that uses the context (for example) the ability to create her own functions.
+Now let's give our remote programmer that uses the context (for example) the ability to create her own functions.
 
 ```clojure
 ok-printer:: isolate { 
@@ -277,8 +277,8 @@ do\in ok-printer { ln: f { c } { lo 3 { p c } } , ln "-" nl pr "QL!" }
 ;  QL!
 ```
 
-Now we wish to expose a function, but contrary to **nl** above, this function will use Rye's regular functions that aren't available inside a context in it's body.
-Well that is not a problem. We already saw rye can create functions that are executed in specific contexts, so we use that mechanism.
+Now we wish to expose a function, but in contrary to **nl** above, this function will use Rye's regular functions that aren't available inside a context in its body.
+Well that is not a problem. We already saw Rye can create functions that are executed in specific contexts, so we use that mechanism.
 
 
 ```clojure
@@ -307,7 +307,7 @@ do\in ok-printer {
 
 ### Fn\in
 
-Similar to **do\in** you can also define a function that is evaluated _in_ a specific context. You create these function with **fn\in**. The body of the function is evaluated in it's own context, like a normal function, but
+Similar to **do\in** you can also define a function that is evaluated _in_ a specific context. You create these function with **fn\in**. The body of the function is evaluated in its own context, like a normal function, but
 with parent set to the given context.
 
 <!--Rye has a functions **fn\in** and **fn\inside** which besides arguments list also accept a context. With it you can define a custom context in which you want function to be executed, but there are two
@@ -367,11 +367,11 @@ Above, we've seen a lot of what first class contexts can do and be used for. But
 
 ```clojure
 ; list current context
-ls
+lc
 ; might be empty or not, depends if you were evaluating code above
 
 ; list parent context for words matching "math"
-lsp\ "math"
+lcp\ "math"
 ; prints:
 ;  Context:
 ;   math: [ ....
