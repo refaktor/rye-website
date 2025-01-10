@@ -11,9 +11,9 @@ And we are finally here. First noticeable thing that probably hit you in the fac
 
 ## Calling functions
 
-Calling functions in Rye is simple. You use a word, that function is bound to, and provide the arguments.
+Calling functions in Rye is simple. You use a word that is bound to a function, and provide the arguments.
 
-When evaluator gets to a word bound to a function, it goes forward collecting necessary number of values for arguments and then evaluates the function. Here are few simple examples:
+When the evaluator gets to a word bound to a function, it goes forward collecting the necessary number of values for arguments and then evaluates the function. Here are few simple examples:
 
 ```clojure
 print "Call me"
@@ -34,7 +34,7 @@ replace "Hello World" "World" "Mars"
 
 ## Calling functions with op-words
 
-Now we will call the same functions with the same arguments, but we'll use op-words instead of regular words. Op-words begin with a dot. In case of an op-word, first argument 
+Now we will call the same functions with the same arguments, but we'll use op-words instead of regular words. Op-words begin with a dot. In case of an op-word, the first argument
 is taken from the left.
 
 ```clojure
@@ -45,7 +45,7 @@ is taken from the left.
 ; returns: 101
 ```
 
-As we see in next examples, only the first argument is taken from the left. The rest follow like with regular words. 
+As we see in the following examples, only the first argument is taken from the left. The rest follow like with regular words.
 
 ```clojure
 "Fizz" .concat "Buzz"
@@ -79,7 +79,7 @@ _* 3 2
 
 ## Pipe-words
 
-Pipe words behave similarly or in simple cases exactly the same. So you will get the same results in these examples if as we got them with op-words:
+Pipe words behave similarly or in simple cases exactly the same. So you will get the same results in these examples as with op-words:
 
 ```clojure
 "Call me" |print
@@ -165,7 +165,7 @@ read to-file msg .concat ".txt"
 ; writes "Mars" to file planet.txt
 ```
 
-From example above, in replace we expect active value to be the first argument, but printv and write would probably take template string or filename as the first argument in other languages.
+From the example above, in replace we expect the active value to be the first argument, but printv and write would probably take template string or filename as the first argument in other languages.
 
 
 ## Second argument from the left
@@ -208,7 +208,7 @@ _+ _+ 1 2 3
 ```
 
 And you can use the same function as pipe words using: `|_+ |_- |_* |_/` or shorter `|+ |- |* |/`. But what does all this means at functions (or operators) that are **not associative** and **comutative** like addition is?
-It means you have to be avare of the fact that operators are still op-words and behave like them, not like math operators.
+It means you have to be aware of the fact that operators are still op-words and behave like them, not like math operators.
 
 ```clojure
 ; add 12 and 3 and divide the result by 3 (prefix)
@@ -239,11 +239,11 @@ _/ _+ 12 3 3
 ; 11 * 10 = 110
 ```
 
-Why is that? Rye comes from the family of languages where whole language is uniform and math expressions are not threated any differently. These languages usually see it as a plus, that you don't have to learn (complex?) 
+Why is that? Rye comes from the family of languages where the whole language is uniform and math expressions are not treated any differently. These languages usually see it as a plus, that you don't have to learn (complex?)
 operators precedence rules. Yes, we all know precedence rules between `+ - * /` but what about all other operators or functions like `! and or & > < ...`, so they might have a point.
 
-In REBOL math expressions are always evaluated left to right, which is more natural than right to left, but you will get shot in the foot just the same if you are not avare of it. Lisp goes a step beyond and doesn't even
-have infix operators or functions. In forth the same, all functions (also operators) are postfix.
+In REBOL math expressions are always evaluated left to right, which is more natural than right to left, but you will get shot in the foot just the same if you are not aware of it. Lisp goes a step beyond and doesn't even
+have infix operators or functions. In Forth the same, all functions (also operators) are postfix.
 
 ```clojure
 ; in REBOL

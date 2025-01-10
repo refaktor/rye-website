@@ -13,7 +13,7 @@ Like conditionals (if, either, switch) looping _constructs_ in Rye are also just
 
 ## Simple loop
 
-Sometimes you just need to loop N times. And there is a function for that. It accepts an integer, a number of loops, and a block of code.
+Sometimes you just need to loop N times. And there is a function for that. It accepts integer - a number of loops, and a block of code.
 
 ```clojure
 loop 3 { print "Hey!" }
@@ -58,7 +58,7 @@ BTW: the comma shown above is called an expression guard, and is optional.
 
 ### Now a "for" loop
 
-For functions takes a block of values and a block of code. It iterates through values passing each as an injected value into the block as it evaluates the block.
+The `for` function takes a block of values and a block of code. It iterates through values passing each as injected value into the block as it evaluates the block.
 
 ```clojure
 names: { "Jim" "Jane" "Anne" }

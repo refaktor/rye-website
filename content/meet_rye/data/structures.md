@@ -6,7 +6,7 @@ weight: 200
 summary: "And combine those into more versatile structures."
 ---
 
-_"stone upon stona, a palace - value upon value, a structure"_
+_"stone upon stone, a palace - value upon value, a structure"_
 
 ## A list
 
@@ -24,7 +24,7 @@ We use *block* and *email* value types to construct this list of important email
 
 ## JSON
 
-Rye can recreate a structure typical for JSON. And array of JSON objects:
+Rye can recreate a structure typical for JSON. An array of JSON objects:
 
 ```json
 [
@@ -108,9 +108,9 @@ How would we best represent the validation rules for some input information. Bel
 Here a set-word (like _name:_) marks the field name **and** the start of the rules for it. We could pack each ruleset in a block, but it would  -->
 
 
-## A NPC dialogue
+## An NPC dialogue
 
-We could define dialog options for a specific NPC in an imaginary RPG game for example like this:
+We could define dialogue options for a specific NPC in an imaginary RPG game for example like this:
 
 ```clojure
 { 

@@ -8,7 +8,7 @@ _"Rye code is a block of Rye values. Block is also a Rye value."_
 
 ## Simple values
 
-Rye code can represent various value types. Here are few:
+Rye code can represent various value types. Here are a few:
 
 ```clojure
 1                   ; integer number
@@ -25,7 +25,7 @@ context/word        ; cpath (context path)
 
 Multiple compound value types exist in Rye, but a block type is the most important one. 
 
-It's similar to a List in other languages. It's main building _block_ for Rye code.
+It's similar to a List in other languages. It's the main building _block_ for Rye code.
 
 ```clojure
 { 1 3.14 "Jane" jane@example.com  }  ; a block of four values

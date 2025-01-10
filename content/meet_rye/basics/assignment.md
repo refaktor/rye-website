@@ -56,7 +56,7 @@ print message
 
 Values that get assigned to words can also come from expressions.
 
-Again we haven't looked at op-words yet, but effect of + is probably understandable.
+Again we haven't looked at op-words yet, but the effect of + is probably understandable.
 
 ```clojure
 meaning: 24 + 18

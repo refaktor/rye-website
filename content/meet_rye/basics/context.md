@@ -58,9 +58,9 @@ lc
 
 Words are just words. The context in which we evaluate the code, consisting of words and literal values, gives them meaning (values).
 
-When the evaluator gets to a word, it looks for word's bound value in the current context. If it doesn't find one, it goes up to the parent context, if a context has a parent, and looks there, and so on ...
+When the evaluator gets to a word, it looks for the word's bound value in the current context. If it doesn't find one, it goes up to the parent context, if a context has a parent, and looks there, and so on ...
 
-In the parent context of our opening context, `print` is bound to a built-in function that prints a text. Evaluator finds the word and since it's value is a function, it evaluates the function.
+In the parent context of our opening context, `print` is bound to a built-in function that prints a text. The evaluator finds the word and since its value is a function, it evaluates the function.
 
 ```clojure
 
@@ -81,7 +81,7 @@ speak               ; speak is found in current context and is bound to a functi
 
 ## Setting context values
 
-Evaluator can find _(read)_ a value from current or any parent context, but there is no syntax in Rye to directly set _(write)_ a value in parent or sub-contexts. 
+Evaluator can find _(read)_ a value from the current or any parent context, but there is no syntax in Rye to directly set _(write)_ a value in parent or sub-contexts.
 
 Set and mod words always set or change values of words in the context code is evaluated in.
 
