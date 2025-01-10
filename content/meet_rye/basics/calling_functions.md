@@ -14,7 +14,7 @@ _"all day I sit here and make function calls"_
 
 When you are writing programs in Rye, almost all that you actually _do_ is make function calls. Well, you do that in every language, but in Rye, this statement is much more true than in most of them. More on that in the next page.
 
-Many functions are already built into Rye runtime, they are written in it's host language Go. We call them **builtin functions** or **builtins** for short. Other functions, just **functions**, are written, or you write in Rye. You 
+Many functions are already built into Rye runtime, they are written in its host language Go. We call them **builtin functions** or **builtins** for short. Other functions, just **functions**, are written, or you write in Rye. You
 call both the same way.
 
 One such builin function is **print**. It prints a value to standard output and goes to the next line.
@@ -28,7 +28,7 @@ print "Hello World!"
 ; prints: Hello World!
 ```
 
-**Print** function takes one value (an argument) and prints it. We call it by naming it and provide an argument, in this case a text to print.
+The **print** function takes one value (an argument) and prints it. We call it by naming it and providing an argument, in this case a text to print.
 
 ## Return values
 
@@ -118,9 +118,9 @@ print capitalize name
 ## Convention: Function variants
 
 In Rye (like in REBOL) all functions have a fixed number of arguments. REBOL had something called refinements to remedy this, the idea was good on the first level, but you couldn't elegantly pass refinements to next calls. Refinements also 
-clashed syntatctically with context navigation. So Rye doesn't have this concept. 
+clashed syntactically with context navigation. So Rye doesn't have this concept.
 
-It has a naming convention. Where there is a primary function, but you need more variations or specialisations of it, we use "\\" character in the naming of function denote that. You saw one example above with join and join\with. Remember these are
+It has a naming convention. Where there is a primary function, but you need more variations or specialisations of it, we use a "\\" character in the name of function denote that. You saw one example above with join and join\with. Remember these are
 two different functions, it's just a naming convention.
 
 ```clojure

@@ -31,7 +31,7 @@ with msg { .print }
 
 ### Loop function
 
-Let's return back to **loop** function with knowing about injected blocks and op/pipe words. Now this example from before:
+Let's return back to the **loop** function with knowing about injected blocks and op/pipe words. Now this example from before:
 
 ```clojure
 loop 3 { ::i , prns i }
@@ -47,7 +47,7 @@ loop 3 { .prns }
 
 ### For function
 
-Similar for **for** function. We had this before:
+Similar for the **for** function. We had this before:
 
 ```clojure
 names: { "Jim" "Jane" "Anne" }
@@ -79,7 +79,7 @@ for range 1 5 { .prns }
 
 ### Flow combinators
 
-More functions use injected blocks mechanism. Some, like `pass`, `keep` and `wrap` are called flow combinators. They aren't used that much, but they 
+More functions use the injected block mechanism. Some, like `pass`, `keep` and `wrap` are called flow combinators. They aren't used that much, but they
 come handy here and there.
 
 ```clojure
@@ -136,8 +136,8 @@ fold words 'tx text { .replace* tx "****" }
 
 ### Functions
 
-As explained before, we have more than one _function_ for constructing functions. `fn1` is a function that takes one anonymouse argument, and it's 
-injected into function block. Either way, the first argument is always injected into the function block.
+As explained before, we have more than one _function_ for constructing functions. `fn1` is a function that takes one anonymouse argument, and
+injects it into the function block. Either way, the first argument is always injected into the function block.
 
 ```clojure
 add10: fn { a } { a + 10 }

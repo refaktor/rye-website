@@ -16,8 +16,8 @@ all the way.
 
 So when I returned after many years back to Python (and Java for mobile), I felt a sense of relief, that I'm back in a more boring, but safer world.
 
-_I returned to Rebol again a after couple years again, Python at the time forced me to think too imperatively. I then coded REBOL with more reserve 
-(I avoided runtime code manipulation) created the validation and SQL dialects, some tools to prevent my local variables from "escaping", etc ..._
+_I returned to Rebol again after a couple of years, Python at the time forced me to think too imperatively. I then coded REBOL with more reserve
+(I avoided runtime code manipulation), created the validation and SQL dialects, some tools to prevent my local variables from "escaping", etc ..._
 
 ## Separate things
 
@@ -27,7 +27,7 @@ Over the years I started seeing the difference. There is the language and there 
 * environment flexibility: ability to more easily manipulate environment / values / state **- bad**
 
 With Rye I try to increase language flexibility. I believe programming languages are nowhere as flexible as the languages we are all
-already used to, programmers or not. Imagine we would communicate just with nouns and verbs, no teneses, counts, ...
+already used to, programmers or not. Imagine we would communicate just with nouns and verbs, no tenses, counts, ...
 
 But I also try to limit how you can modify the environment. 
 
@@ -41,12 +41,12 @@ Rye imposes the folowing to make the changes you make more limited, explicit and
 * Rye set-word can only initialize values, if you want to modify them you have to use visually more costly mod-word so updates
   are visible and fewer in numbers
 
-Let's see some examples
+Let's see some examples.
 
 ### Immutable values
 
 Rye values on their own are immutable. I remember of using `list.append(1)` in Python a lot. `append` was a common function in Rebol too. I was
-never really sure if I am changing the original list/bloc or the returnd value will have the item appended. In Rye we use `+` or `concat`
+never really sure if I am changing the original list/block or the returnd value will have the item appended. In Rye we use `+` or `concat`
 to return a new block with a new element.
 
 ```Python
@@ -71,7 +71,7 @@ for family { .print }
 
 ### Modifying functions
 
-If you need them, for performance reason, Rye has option to change a block in place. You have to ref a block and the function that does it
+If you need them, for performance reason, Rye has the option to change a block in place. You have to ref a block and the function that does it
 has a "!" on end. You can use this if you have a concrete reason, but you wouldn't just be using this as default way to code. And in most
 cases you don't need it.
 

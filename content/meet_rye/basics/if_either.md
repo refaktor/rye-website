@@ -21,7 +21,7 @@ do { print "Hello" }
 
 ## If
 
-Now think of a function similar to **do** function. But it takes additional argument and only evaluates the block of code if the first argument is True (1). 
+Now think of a function similar to **do** function. But it takes an additional argument and only evaluates the block of code if the first argument is True (1).
 
 And so we get **if**, and it's just an ordinary builtin function, just like **do** is.
 
@@ -45,7 +45,7 @@ if is-integer value { print "Great!" }
 
 To achieve if-else behaviour we have another function called **either**. 
 
-It accepts conditional and two blocks. If condition is true it evaluates first block, if not the second.
+It accepts a condition and two blocks. If the condition is true it evaluates first block, if not the second.
 
 ```clojure
 either 1 { print "hello" } { print "yello" }
