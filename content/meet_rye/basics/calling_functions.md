@@ -14,10 +14,9 @@ _"all day I sit here and make function calls"_
 
 When you are writing programs in Rye, almost all that you actually _do_ is make function calls. Well, you do that in every language, but in Rye, this statement is much more true than in most of them. More on that in the next page.
 
-Many functions are already built into Rye runtime, they are written in it's host language Go. We call them **builtin functions** or **builtins** for short. Other functions, just **functions**, are written, or you write in Rye. You 
-call both the same way.
+Many functions are already built into Rye runtime, they are written in its host language Go. We call them **built-in functions** or **built-ins** for short. Other functions, just **functions**, are written, or you write in Rye. You call both the same way.
 
-One such builin function is **print**. It prints a value to standard output and goes to the next line.
+One such built-in function is **print**. It prints a value to standard output and goes to the next line.
 
 
 ```clojure
@@ -28,13 +27,13 @@ print "Hello World!"
 ; prints: Hello World!
 ```
 
-**Print** function takes one value (an argument) and prints it. We call it by naming it and provide an argument, in this case a text to print.
+**Print** function takes one value (an argument) and prints it. We call it by naming it and provide an argument, in this case some text to print.
 
 ## Return values
 
 Print or some variant of it (println, echo, ...) exists in almost every language, but most functions in Rye are not like print. We don't call them for effect, but for their return value.
 
-**Inc** (increment) accepts one integer value and returns a value that is an increment of the accepted value. It doesn't change anything and at the same input (the argument) it always returns the same result. 
+**Inc** (increment) accepts one integer value and returns a value that is an increment of the accepted value. It doesn't change anything and for same input (the argument), it always returns the same result. 
 
 ```clojure
 ; Functions taking one argument
@@ -51,7 +50,7 @@ join { "Hello" "World" }
 ; returns: "HelloWorld"
 ```
 
-As we said, big part of builtin functions are like that. And many of them take more than one argument.
+As we said, a big part of built-in functions are like that, and many of them take more than one argument.
 
 ```clojure
 ; Functions taking two arguments
@@ -76,7 +75,7 @@ All the lines above are expressions, because they return results and have no sid
 
 ## Words with values
 
-In the previous page we learned that we can assign values to words. Invoking a word is the simplest expression, if the value is not a function it returns the assigned value.
+In the previous page, we learned that we can assign values to words. Invoking a word is the simplest expression. If the value is not a function, it returns the assigned value.
 
 ```clojure
 name: "Jane"
@@ -91,7 +90,7 @@ print name
 
 ## Function composition
 
-Since functions calls produce a result we can compose them together. A result of one function call can be an argument to another.
+Since function calls produce a result, we can compose them together. A result of one function call can be an argument to another.
 
 ```clojure
 print inc 999
@@ -117,8 +116,7 @@ print capitalize name
 
 ## Convention: Function variants
 
-In Rye (like in REBOL) all functions have a fixed number of arguments. REBOL had something called refinements to remedy this, the idea was good on the first level, but you couldn't elegantly pass refinements to next calls. Refinements also 
-clashed syntatctically with context navigation. So Rye doesn't have this concept. 
+In Rye (like in REBOL) all functions have a fixed number of arguments. REBOL had something called refinements to remedy this, the idea was good on the first level, but you couldn't elegantly pass refinements to next calls. Refinements also clashed syntatically with context navigation. So Rye doesn't have this concept. 
 
 It has a naming convention. Where there is a primary function, but you need more variations or specialisations of it, we use "\\" character in the naming of function denote that. You saw one example above with join and join\with. Remember these are
 two different functions, it's just a naming convention.

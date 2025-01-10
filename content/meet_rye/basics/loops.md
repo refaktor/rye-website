@@ -13,7 +13,7 @@ Like conditionals (if, either, switch) looping _constructs_ in Rye are also just
 
 ## Simple loop
 
-Sometimes you just need to loop N times. And there is a function for that. It accepts integer - a number of loops and a block of code.
+Sometimes you just need to loop N times. And there is a function for that. It accepts an integer, a number of loops, and a block of code.
 
 ```clojure
 loop 3 { print "Hey!" }
@@ -26,14 +26,11 @@ loop 2 { prns "Bye" }
 ; prints: Bye Bye
 ```
 
-The use of left set-word might seem a little odd, but you will see the benefits later.
-
 ## For function
 
 ### Injected values - quick crash course
 
-We are getting ahead of ourselves. We will learn about injected values, op-words and similar things later, but we need to touch them a little. We could skip them at loop
-function, but the next one (for) doesn't make any sense without them.
+We are getting ahead of ourselves. We will learn about injected values, op-words and similar things later, but we need to touch them a little. We could skip them for the loop function above, but the next one (for) doesn't make any sense without them.
 
 ```clojure
 123 ::a                   ; you already learned about left leaning set-word or a mod-word
@@ -55,11 +52,13 @@ with 100 { ::x , print x } ; with takes an argument and injects it. Now why
 
 There are other functions that inject values into blocks, not just loop, with (and for). There are also other elements of the language that let you use that.
 
-BTW: comma is called expression guard and is optional.
+The use of left set-word above might seem a little odd, but you will see the benefits later.
+
+BTW: the comma shown above is called an expression guard, and is optional. 
 
 ### Now a "for" loop
 
-For functions takes a block of values and a block of code. It iterates through values passing each as injected value into the block as it evaluates the block.
+For functions takes a block of values and a block of code. It iterates through values passing each as an injected value into the block as it evaluates the block.
 
 ```clojure
 names: { "Jim" "Jane" "Anne" }

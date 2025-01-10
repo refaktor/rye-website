@@ -87,8 +87,7 @@ You will see _why_ later, but Rye also has set-words that take a value from the 
 
 ## Mod-words
 
-But set-word from above will only allow you to set the word once. If you use set-word on a word already defined in current context
-you will get an error. For cases, where you need change a value bound to a word, you must use mod-word.
+But set-word from above will only allow you to set the word once. If you use set-word on a word already defined in current context you will get an error. For cases, where you need change a value bound to a word, you must use mod-word syntax.
 
 It's a little harder to look at, but that is by design. The goal is that you modify values under words only when you explicitly need to.
 
