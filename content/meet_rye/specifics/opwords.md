@@ -7,7 +7,7 @@ summary: "A different ways to call regular functions that enable left to right c
 mygroup: true
 ---
 
-And we are finally here. First noticeable thing that probably hit you in the face if you looked at various Rye examples.
+And we are finally here. The following are the first noticeable things that probably hit you in the face when you looked at various Rye examples.
 
 ## Calling functions
 
@@ -34,8 +34,7 @@ replace "Hello World" "World" "Mars"
 
 ## Calling functions with op-words
 
-Now we will call the same functions with the same arguments, but we'll use op-words instead of regular words. Op-words begin with a dot. In case of an op-word, the first argument
-is taken from the left.
+Now we will call the same functions with the same arguments, but we'll use op-words instead of regular words. Op-words begin with a dot. In case of an op-word, the first argument is taken from the left.
 
 ```clojure
 "Call me" .print
@@ -45,7 +44,7 @@ is taken from the left.
 ; returns: 101
 ```
 
-As we see in the following examples, only the first argument is taken from the left. The rest follow like with regular words.
+As we see in the following examples, only the first argument is taken from the left. The rest follow like regular words.
 
 ```clojure
 "Fizz" .concat "Buzz"
@@ -60,10 +59,9 @@ As we see in the following examples, only the first argument is taken from the l
 
 ## Operators
 
-What are operators then. Operators in Rye are nothing special, they are just regular functions usually taking two arguments. The only difference is that one and two letter operator characters are by default recognized as **op-words**, they don't need 
-the dot in front. 
+What are operators then? Operators in Rye are nothing special, they are just regular functions usually taking two arguments. The only difference is that one and two letter operator characters are by default recognized as **op-words**, they don't need the dot in front. 
 
-The regular spelling of the word in this case is with added underscore in front op-word. For op-word `+`, regular word is `_+`.
+The regular spelling of the word in this case is with an added underscore in front of the op-word. For the op-word `+`, the regular word is `_+`.
 
 ```clojure
 _+ 3 2                  ; _+ regular word
@@ -79,7 +77,7 @@ _* 3 2
 
 ## Pipe-words
 
-Pipe words behave similarly or in simple cases exactly the same. So you will get the same results in these examples as with op-words:
+Pipe words behave similarly or in simple cases exactly the same as op-words. So you will get the same results in these examples as with op-words:
 
 ```clojure
 "Call me" |print
@@ -145,8 +143,7 @@ inc 10 |* 10
 
 Because first argument comes from previous expressions on the left, functions in Rye use the _active/input_ value as the first argument if possible. 
 
-It's not always strictly determinable, but in general
-in a function one value is the input, the active value and other values are often parameters / settings / options. This sometimes means the same order as we're already used to from other languages, 
+It's not always strictly determinable, but in general in a function one value is the input, the active value and other values are often parameters / settings / options. This sometimes means the same order as we're already used to from other languages, 
 but sometimes order is specific.
 
 Let's look at one such chain:
@@ -170,10 +167,9 @@ From the example above, in replace we expect the active value to be the first ar
 
 ## Second argument from the left
 
-In practice it shows it's sometimes very beneficial if you can take second argument from the left, not the first one. Be it that the value that is coming down the pipe is the second argument, or you want to 
-change the order of arguments to get the desired effect. Or with generic functions, more on that later, they dispatch on the _kind_ of first argument, and sometimes active value is second argument.
+In practice, sometimes it's very beneficial if you can take second argument from the left, not the first one. For example, the value that is coming down the pipe is the second argument, or you want to change the order of arguments to get the desired effect. Or with generic functions (more on that later), they dispatch on the _kind_ of first argument, and sometimes the active value is the second argument.
 
-So if an op or pipe-word ends with a **star** "*" at the end it takes the second argument from the left, not the first.
+So if an op or pipe-word ends with a **star** "*" at the end, it takes the second argument from the left, not the first.
 
 ```clojure
 ; let's say that the word to replace comes down the pipe, not input string 
@@ -193,7 +189,7 @@ word .concat* "- " |print
 
 ## Warning: math expressions
 
-We look at it above (title Operators) but let's do it again. 
+We saw Operators before, but let's review it again. 
 In Rye, operators like `+ - * /` are regular functions in the form of op-words. The only difference is that operators are loaded as op-words by default while regular `.words` need a dot in front to be
 op-words. Their non op-word (prefix) form is: `_+ _- _* _/ `, so: 
 
@@ -207,7 +203,7 @@ _+ _+ 1 2 3
 ; return 6
 ```
 
-And you can use the same function as pipe words using: `|_+ |_- |_* |_/` or shorter `|+ |- |* |/`. But what does all this means at functions (or operators) that are **not associative** and **comutative** like addition is?
+And you can use the same function as pipe words using: `|_+ |_- |_* |_/` or shorter `|+ |- |* |/`. But what does all this means for functions (or operators) that are **not associative** and **commutative** like addition is?
 It means you have to be aware of the fact that operators are still op-words and behave like them, not like math operators.
 
 ```clojure
@@ -224,13 +220,13 @@ _/ _+ 12 3 3
 ; returns 13 -- Oops!
 ; op-words evaluate from right to left, pipe-words left to right 
 
-; substracting 3 numbers also doesn't do what you would expect from math
+; subtracting 3 numbers also doesn't do what you would expect from math
 100 - 12 - 5
 ; returns 93
-; it first substracted 12 - 5 and got 7 and it substracted 7 from 100
+; it first subtracted 12 - 5 and got 7 and it subtracted 7 from 100
 
 ; addition and multiplicaton have same operator precedence
-; but if this was math expression we would expect result 56
+; but if this was a math expression, we would expect the result 56
 10 * 5 + 2 * 3
 ; returns 110
 ; from left to right it does:
@@ -240,10 +236,10 @@ _/ _+ 12 3 3
 ```
 
 Why is that? Rye comes from the family of languages where the whole language is uniform and math expressions are not treated any differently. These languages usually see it as a plus, that you don't have to learn (complex?)
-operators precedence rules. Yes, we all know precedence rules between `+ - * /` but what about all other operators or functions like `! and or & > < ...`, so they might have a point.
+operator precedence rules. Yes, we all know precedence rules between `+ - * /` but what about all other operators or functions like `! and or & > < ...`, so they might have a point.
 
-In REBOL math expressions are always evaluated left to right, which is more natural than right to left, but you will get shot in the foot just the same if you are not aware of it. Lisp goes a step beyond and doesn't even
-have infix operators or functions. In Forth the same, all functions (also operators) are postfix.
+In REBOL, math expressions are always evaluated left to right, which is more natural than right to left, but you will get shot in the foot just the same if you are not aware of it. Lisp goes a step beyond and doesn't even
+have infix operators or functions. In Forth it's the same, all functions (also operators) are postfix.
 
 ```clojure
 ; in REBOL
@@ -261,7 +257,7 @@ All 3 languages value internal consistency above conventions and so does Rye. So
 
 ```clojure
 ; in Rye (and REBOL) we can use parenthesis to explicitly define the order
-; of operations we like, and this is IMO the most natural way to do this
+; of operations we want, and this is IMO the most natural way to do this
 
 ( 10 * 5 ) + ( 2 * 3 )
 ; or just
@@ -272,8 +268,8 @@ All 3 languages value internal consistency above conventions and so does Rye. So
 10 * 5 |+ 2 * 3
 ; returns 56
 
-; and Rye has math dialect, which follows math precedence rules
-; it's defined in math context, where you can find plenty of math
+; and Rye has a math dialect, which follows math precedence rules
+; it's defined in anmath context, where you can find plenty of math
 ; specific functions (do `cc math lc` to see them)
 
 math/calc { 10 * 5 + 2 * 3 }
