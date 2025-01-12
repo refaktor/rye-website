@@ -268,9 +268,8 @@ All 3 languages value internal consistency above conventions and so does Rye. So
 10 * 5 |+ 2 * 3
 ; returns 56
 
-; and Rye has a math dialect, which follows math precedence rules
-; it's defined in a math context, where you can find plenty of math
-; specific functions (do `cc math lc` to see them)
+; and Rye has a math dialect that follows math precedence rules, and you can
+; find plenty of math-specific functions (do `cc math lc` to see them)
 
 math/calc { 10 * 5 + 2 * 3 }
 ; returns 56
