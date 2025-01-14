@@ -89,7 +89,7 @@ More functions use the injected block mechanism. Some, like `pass`, `keep` and `
 ; 303
 ; 505
 
-; keep evaluates the first block, then the second, but passesforward the result of the first
+; keep evaluates the first block, then the second, but passes forward the result of the first
 
 4 .keep { * 11 } { + 11 |print }
 ; prints: 15
