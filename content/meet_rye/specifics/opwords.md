@@ -190,21 +190,21 @@ word .concat* "- " |print
 ## Warning: math expressions
 
 We saw Operators before, but let's review it again. 
-In Rye, operators like `+ - * /` are regular functions in the form of op-words. The only difference is that operators are loaded as op-words by default while regular `.words` need a dot in front to be
+In Rye, operators like `+ - * /` are regular functions in the form of op-words. The only difference is that these math operators are loaded as op-words by default while regular `.words` need a dot in front to be
 op-words. Their non op-word (prefix) form is: `_+ _- _* _/ `, so: 
 
 ```clojure
 1 + 2 + 3
-; return 6
+; returns 6
 
 _+ 1 _+ 2 3
 ; or
 _+ _+ 1 2 3
-; return 6
+; returns 6
 ```
 
 And you can use the same function as pipe words using: `|_+ |_- |_* |_/` or shorter `|+ |- |* |/`. But what does all this means for functions (or operators) that are **not associative** and **commutative** like addition is?
-It means you have to be aware of the fact that operators are still op-words and behave like them, not like math operators.
+It means you have to be aware of the fact that operators are still op-words and behave like them, not like regular math operators.
 
 ```clojure
 ; add 12 and 3 and divide the result by 3 (prefix)
@@ -220,16 +220,16 @@ _/ _+ 12 3 3
 ; returns 13 -- Oops!
 ; op-words evaluate from right to left, pipe-words left to right 
 
-; subtracting 3 numbers also doesn't do what you would expect from math
+; subtracting 3 numbers also doesn't do what you would expect from regular math
 100 - 12 - 5
 ; returns 93
-; it first subtracted 12 - 5 and got 7 and it subtracted 7 from 100
+; first 5 is subtracted from 12, which gives 7, and then 7 is subtracted from 100
 
-; addition and multiplicaton have same operator precedence
-; but if this was a math expression, we would expect the result 56
+; addition and multiplication have same operator precedence
+; but if this was a regular math expression, we would expect 56 as the result
 10 * 5 + 2 * 3
 ; returns 110
-; from left to right it does:
+; when calculated from right to left (due to op-word operation order):
 ; 2 * 3 = 6
 ; 6 + 5 = 11
 ; 11 * 10 = 110
@@ -246,7 +246,7 @@ have infix operators or functions. In Forth it's the same, all functions (also o
 10 * 5 + 2 * 3
 ; returns 156 (left to right)
 
-; in Lisp this would be written, which has it's estetics too
+; in Lisp this would be written, which has it's aesthetics too
 (+ (* 10 5) (* 2 3))
 
 ; and in Forth (Factor)
@@ -256,7 +256,7 @@ have infix operators or functions. In Forth it's the same, all functions (also o
 All 3 languages value internal consistency above conventions and so does Rye. So what can you do in Rye in this case:
 
 ```clojure
-; in Rye (and REBOL) we can use parenthesis to explicitly define the order
+; in Rye (and REBOL) we can use parentheses to explicitly define the order
 ; of operations we want, and this is IMO the most natural way to do this
 
 ( 10 * 5 ) + ( 2 * 3 )
@@ -268,7 +268,7 @@ All 3 languages value internal consistency above conventions and so does Rye. So
 10 * 5 |+ 2 * 3
 ; returns 56
 
-; and Rye has a math dialect that follows math precedence rules, and you can
+; and Rye has the below function that follows math precedence rules, and you can
 ; find plenty of math-specific functions (do `cc math lc` to see them)
 
 math/calc { 10 * 5 + 2 * 3 }
