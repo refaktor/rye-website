@@ -32,11 +32,11 @@ n .month?
 
 n .day?
 
-n .hours?
+n .hour?
 
-n .minutes?
+n .minute?
 
-n .seconds?
+n .second?
 ```
 
 ## Datetime math
