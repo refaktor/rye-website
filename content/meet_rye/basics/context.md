@@ -103,7 +103,7 @@ print friend/name
 What you can do, is "send messages" to other contexts, that means "call functions" there. But in Rye, a limited number of functions that change values in-place (hence can change state) need to end with "!" (exclamation mark), so the calls to such modifying functions are visible and explicit.
 
 ```clojure
-count: 0
+var 'count 0
 
 actuator: context { loop 100 { inc! 'count } }
 
@@ -147,13 +147,14 @@ Both approaches mean that you have to _scan the code higher up_ in a function to
 ```clojure
 messages: { }
 
-add-message: fn { m } { .append! 'messages }     ; will work
+add-message!: fn { m } { .append! 'messages }     ; will work
 
-init-messages: fn { } { messages: { "First!" } } ; won't work, will set local messages
+init-messages: fn { } { messages: { "First!" } } 
+; won't work, will set local messages word
 
 init-messages
 
-add-message "Hello"
+add-message! "Hello"
 
 probe messages
 ; [Block: [String: Hello] ]

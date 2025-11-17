@@ -10,7 +10,7 @@ _"Rye code is a block of Rye values. Block is also a Rye value."_
 
 Rye code can represent various value types. Here are a few:
 
-```clojure
+```
 1                   ; integer number
 3.14                ; decimal number
 "Jane"              ; string
@@ -21,13 +21,13 @@ blue                ; word
 context/word        ; cpath (context path)
 ```
 
-## Block
+## Blocks
 
 Multiple compound value types exist in Rye, but a block type is the most important one. 
 
 It's similar to a List in other languages. It's the main building _block_ for Rye code.
 
-```clojure
+```lisp
 { 1 3.14 "Jane" jane@example.com  }  ; a block of four values
 
 { { "Jane" 320 } { "Jim" 290 } }     ; a block of two blocks
@@ -58,13 +58,13 @@ is-this-a...word?
 Rye has many types of words. It might seem a little strange at first, but you will see that they can be useful.
 
 ```clojure
-word      ; normal word
-'word     ; lit-word
-word:     ; set-word
-:word     ; lset-word
-word::    ; mod-word
-::word    ; lmod-word
-?word     ; get-word
-.word     ; op-word
-|word     ; pipe-word
+word   ; word (evaluates to a bound value, if it's a func. calls it)
+'word  ; lit-word (literal word, evaluates to a word)
+word:  ; set-word (binds a value on the right to a constant word)
+:word  ; lset-word (binds a value on the left to a constant word)
+word:: ; mod-word (binds a value on the right, to a variable word)
+::word ; lmod-word ( ... left ... )
+?word  ; get-word (always returns the bound value, also when func.)
+.word  ; op-word (evaluates a func. taking first arg from left)
+|word  ; pipe-word (same, but evals all expressions on the left first)
 ```

@@ -14,7 +14,7 @@ We've seen that Rye code can consist of literal values, for example:
 
 ```clojure
 33                     ; integer
-"Hello word"           ; text
+"Hello world"          ; text
 https://example.com    ; URL
 'word                  ; literal word
 { 1 2 3 }              ; block of integers
@@ -25,7 +25,6 @@ https://example.com    ; URL
 
 These values can be assigned to words using set-words, i.e. words that have a colon on their right.
 
-
 ```clojure
 age: 33
 message: "Hello World"
@@ -35,7 +34,7 @@ numbers: { 1 2 3 }
 words: { "Hello" "World" }
 ```
 
-If you've programmed in any language before, the concept is the same as with variables.
+If you've programmed in any language before, these would be the constants. The default assignment in Rye is to a constant.
 
 ## Using bound words
 
@@ -85,21 +84,30 @@ You will see _why_ later, but Rye also has set-words that take a value from the 
 12 + 21 :apples + 100 :fruits
 ```
 
-## Mod-words
+## Variables and mod-words
 
-But set-word from above will only allow you to set the word once. If you use set-word on a word already defined in current context you will get an error. For cases, where you need change a value bound to a word, you must use mod-word syntax.
+All of the above assigns (binds) a value to a word and makes that word a constant in the current context, meaning, we can't later change it. This makes
+code more predictable.
 
-It's a little harder to look at, but that is by design. The goal is that you modify values under words only when you explicitly need to.
+A word can also become a variable in its context by using a function **var** and a lit-word (literal word). Such words can be modified using 
+the modifying functions (ending with a !) or a mod-word.
 
 ```clojure
-age: 42
+; 5 minutes to midnight
 
-sleep 3 .seconds                            ; todo make .seconds compat.
+var 'age 42
 
-; age: 43
-; Would produce an Error
+sleep ( 5 * 60 ) .seconds
+
+; age: 43                              ; Would produce an Error
 
 age:: 43
+
+sleep 365 .days                        ; you would wait a while :)
+
+change! 44 'age                        ; returns true if changed
 ```
+
+Mod words are a little harder to look at, but that is by design. The goal is that you modify values under words only when you really need to.
 
 The same holds true for the left mod-words. `::age`.

@@ -1,5 +1,5 @@
 ---
-title: "Date and time*"
+title: "Date and time"
 weight: 50
 date: 2024-09-29T19:30:08+10:00
 draft: false
@@ -13,65 +13,68 @@ mygroup: true
 
 ## Now
 
+Get current date-time.
 
 ```clojure
 x> now
-[Time: .........]
+[Time: 2025-11-05 01:06:22]
 ```
 
 ## Components of Datetime
 
 ```clojure
-now :n
-
-; convention: ? at the end of the word (noun) means get-noun 
-
-n .year?
-
-n .month?
-
-n .day?
-
-n .hour?
-
-n .minute?
-
-n .second?
+x> now :n
+[Time: 2025-11-05 01:08:53]
+x> n .year?
+[Integer: 2025]
+x> n .month?
+[Integer: 11]
+x> n .day?
+[Integer: 5]
+x> n .hour?
+[Integer: 1]
+x> n .minute?
+[Integer: 8]
+x> n .second?
+[Integer: 53]
 ```
 
 ## Datetime math
 
+Simple calculation with date-time and comparisson.
 
 ```clojure
-now :n
-
-; convention: ? at the end of the word (noun) means get-noun 
-
-n + 10 .seconds
-
-n + 10 .minutes
-
-n - 5 .hours
-
-n + 1 .days
-
-( n + 5 .hours ) > n + 5 .seconds  ; or
-
-n + 5 .hours |> n + 5 .seconds
-
+x> now :m
+[Time: 2025-11-05 01:10:59]
+x> m + 10 .seconds
+[Time: 2025-11-05 01:11:09]
+x> m + 10 .minutes
+[Time: 2025-11-05 01:20:59]
+x> m - 3 .hours
+[Time: 2025-11-04 22:10:59]
+x> m - 7 .days
+[Time: 2025-10-29 01:10:59]
+x> ( n + 5 .minutes ) > n + 50 .seconds
+[Boolean: true]
 ```
 
 ## Difference
 
+You can substract time to get the difference
 
 ```clojure
-now :n1
-
-; wait a little
-
-now :n2
-
-n1 - n2 :nd
-
-print nd / 1 .seconds " seconds passed between"
+x> n: now
+[Time: 2025-11-05 07:26:28]
+; slowly count to ten
+x> m: now
+[Time: 2025-11-05 07:26:38]
+x> m - n :mn
+[Integer: 10591]
+x> print ( mn / 1 .seconds ) ++ " seconds passed between"
+; Prints: 
+; 10.591 seconds passed between
 ```
+
+## More functions
+
+Look at [function reference](https://ryelang.org/info/base.html#heading-Date%20and%20Time%20) for more Date and Time related functions.

@@ -33,7 +33,9 @@ Rye can recreate a structure typical for JSON. An array of JSON objects:
 ]
 ```
 
-Could be something like this in Rye.
+Could be something like this in Rye. But be aware that second level blocks are still just blocks. 
+Rye doesn't have any special syntax for more specific collection types, like dictionaries. It does have dictionaries
+and a function that turns a block like below to one.
 
 ```clojure
 {
@@ -42,7 +44,7 @@ Could be something like this in Rye.
 }
 ```
 
-Rye has more available value types than JSON. Here we used:
+Otherwise, Rye has more value types available than JSON. Here we used:
 
 ```clojure
 { }           ; block
@@ -54,7 +56,7 @@ jim@json.org  ; email
 
 ## XML
 
-XML nodes can have data and also attributes.
+XML nodes have a number of attributes and also main data or content.
 
 ```xml
 <users current="1">
@@ -76,7 +78,7 @@ In Rye we could do something like this:
 
 With Rye we often ask ourselves how would we represent the problem in our code, and we have a lot of freedom to do so. 
 
-Let's say we have a logo turtle, that can rotate and move in the direction it's turned. We could represent commands like this:
+Let's say we have a logo turtle, that can rotate and move in the direction it is turned. We could represent a series of commands like this:
 
 ```clojure
 { 
@@ -89,11 +91,11 @@ Let's say we have a logo turtle, that can rotate and move in the direction it's 
 } 
 ```
 
-Newlines have no special meaning in Rye. They are just spacing.
+Here we use words, like pen, move, rotate, literal words like 'down and 'up and integers. Newlines have no special meaning in Rye. They are just spacing.
 
 ## Validation rules
 
-How would we best represent the validation rules for some input information. Below is one example.
+How would we best represent the validation rules for some input information. Below is a validation dialect, that is a part of base Rye:
 
 ```clojure
 { 
@@ -110,7 +112,7 @@ Here a set-word (like _name:_) marks the field name **and** the start of the rul
 
 ## An NPC dialogue
 
-We could define dialogue options for a specific NPC in an imaginary RPG game for example like this:
+We could define a dialogue tree with desired probabilities for a specific NPC in an imaginary RPG game for example like this:
 
 ```clojure
 { 
@@ -121,7 +123,7 @@ We could define dialogue options for a specific NPC in an imaginary RPG game for
         0.6 { "I hate early drinkers." }
       }
       "I'm so tired ..." { 
-        1.0 { "Here, have and apple!" do { add-health 25 } }
+        1.0 { "Here, have an apple!" do { add-health 25 } }
       }
     }
   }
@@ -135,10 +137,13 @@ We could define dialogue options for a specific NPC in an imaginary RPG game for
 Let's imagine rules for another, more direct NPC that stands in front of the hotel and greets the player in the morning and evening:
 
 ```clojure
-if hour < 8 { say "Good morning, sire!" }
-
-if hour > 18 { say "Good evening, mr.!" }
+{ 
+  if hour < 8 { say "Good morning, sire!" }
+  
+  if hour > 18 { say "Good evening, mr.!" }
+}
 ```
 
-Well, if **hour** and **say** are functions in our context, the above is just regular **Rye language code**. The same goes for the Logo Turtle example above, if we make functions _pen_, _move_ and _rotate_ each taking one argument, we can evaluate it as normal Rye. Note that the NPC dialog example has Rye code in its _do_ blocks.
+Again, if **hour** and **say** are functions in our context, the above is just regular **Rye language code**. 
 
+The same goes for the **Logo Turtle** example above, if we make functions _pen_, _move_ and _rotate_ each taking one argument, we can evaluate it as normal Rye. Note that the NPC dialog example has Rye code in its _do_ blocks.

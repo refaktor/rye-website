@@ -1,20 +1,26 @@
 ---
-title: "Rye binary*"
+title: "Rye Executable"
 weight: 50
 date: 2024-09-29T19:30:08+10:00
 draft: false
 group: true
-weight: 50
-summary: "An growing list of simple GUI examples."
+summary: "Using the Rye binary as a command-line tool."
 mygroup: true
 
 ---
 
-*work-in-progress*
+The Rye executable is more than just a language runtime - it's a versatile command-line tool for evaluation, scripting, and interactive exploration.
 
-Rye binary tries to not be just a language runtime, but a useful tool. You can find the files used in these examples in `examples/cookbook/`.
+## Basic usage
 
-# Rye --help
+```bash
+rye                    # Interactive console (REPL)
+rye script.rye         # Execute a Rye script
+rye .                  # Execute main.rye in current directory
+rye -do "1 + 2"        # Evaluate expression and exit
+```
+
+## Command-line flags
 
 We'll run `rye --help` first and see what we get. Rye follows the default Go flags **convention** where flags can have one or two "-" to be valid.
 
@@ -135,27 +141,24 @@ rye -do 'load\csv %friends.csv |autotype 1.0 |column? "Soc score" |avg'
 
 ### -do and -silent flags
 
-Evaluate the `-do` code withot printing the result. 
+Evaluate the `-do` code without printing the result. 
 
-`-do` flag normally prints a result, so without the -silent 
-flag we would print last 17 twice, because that is also a returned value.
+The `-do` flag normally prints a result, so without the `-silent` 
+flag we would print the last value twice.
 
 ```bash
-# print out the number of characters for each line in a file
-
-rye -do 'read\lines %friends.csv |for { .length? print }' -silent
+# Print the number of characters for each line in a file
+rye -do 'Read\lines %friends.csv |for { .length? .print }' -silent
 # prints:
 # 21
 # 16
 # 13
 # 17
 ```
-&nbsp;
 
 ### -do and here command
 
-Here command evaluates the local .rye-here file and then the -do code. Here we store our helper function
-into rye-here and then use it three t
+The `here` command evaluates the local `.rye-here` file and then the `-do` code. Store helper functions in `.rye-here` and reuse them:
 
 ```bash
 cat > .rye-here
@@ -164,73 +167,57 @@ load-csv: does { load\csv %friends.csv }
 rye -do "load-csv |columns? { 'Id 'Age } |save\csv %ages.csv" here
 # creates file ages.csv
 
-rye -do 'load-csv |where-lesser "Soc score" 50 |save\csv bad.csv' here
+rye -do 'load-csv |where-lesser "Soc score" 50 |save\csv %bad.csv' here
 # creates file bad.csv
-
-rye -do "load\csv %bad.csv |to-json |post* https://distop.ia 'json"
-# makes HTTP POST with json to distop.ia
 ```
-
-&nbsp;
 
 ### -do and -console flags
 
-Do the code and then enter Rye console.
+Execute code and then enter the Rye console:
 
 ```bash
-rye -do "load\csv %friends.csv :friends" -console
+rye -do "friends: load\csv %friends.csv" -console
 # evaluates the code and enters console
-x> spr .where-greater "Age" 50 |display
+x> friends .where-greater "Age" 50 |display
 x> ...
 ```
 
-&nbsp;
+### -do flag with filenames
 
-### -do flag and a filename
-
-In this case Rye evaluates the filename and then does the `-do` code. This lets you evaluate a filename, but enter console after it, so you
-can interact with it from Rye console
+Rye evaluates the file first, then executes the `-do` code. This allows you to run a script and then interact with its environment:
 
 ```bash
 cat > friends.rye
 spr: load\csv %friends.csv
 save: fn { s } { .save\csv %friends.csv }
 
-
 rye -do 'spr .add-column! { 191 "Bob D" 72 133 } |save' friends.rye
-
 rye -do 'spr .display' friends.rye
 ```
 
-&nbsp;
-
 ## -console flag
 
-This flag forces that you get into console. So you can avaluate a rye file and after it get to the console. 
+Forces entry into the console after evaluating a file. Useful for debugging and interactive exploration:
 
 ```bash
-# we use the friends.rye file we create above
-
 rye -console friends.rye
-# We evaluated a file friends.rye, then we eneter the console, so we can work with data interactv
+# Evaluates friends.rye, then enters console for interactive work
 ```
 
-## Save current state and continue
+## State persistence
 
-Sometimes you work in Rye console and you have to end. You can save the state you are in with function `save\current`.
-This saves the "data", variables, but also functions you defined. To enter back into console use th `cont` (continue) 
-command.
+Save and restore console sessions with all variables and functions:
 
 ```bash
-# enter Rye console
+# Enter Rye console
 rye
 x> name: "Jim Beam"
 x> say-hi: fn { x } { print "Hi " + x }
 x> save\current
-# saved do file console_<date>_<time>.
+# Saves to console_<date>_<time>.rye
 
-# continue Rye console from last saved state
-rye continue
+# Continue from last saved state
+rye cont
 x> lc                    ; list context
 Context:
  name: [String: Jim]
@@ -239,50 +226,36 @@ x> say-hi name
 Hi Jim Beam
 ```
 
-## -lang flag
+## Language dialects
 
-Rye runtime has multiple evaluators / dialects. While ones are highly specialised (like validation or sql) there are more general ones, that can
-be used on their own. 
-
+Rye supports multiple evaluators and dialects. Use `-lang` to switch between them:
 
 ```bash
-# start rye console with Eyr (a stack based dialect)
-rye --lang eyr
-x> 1010
-[Stack: ^[Integer: 1010] ]
-x> 101
-[Stack: ^[Integer: 1010] [Integer: 101] ]
-x> +
+# Stack-based Eyr dialect
+rye -lang eyr
+x> 1010 101 +
 [Stack: ^[Integer: 1111] ]
 x> 2 3 + *
 [Stack: ^[Integer: 5555] ]
-x> .
-[Stack: ]
-x> { x y } { y x } fn :swap
-[Stack: ]
-x> { "Hi " swap concat print . } does :say-hi
-[Stack: ]
-x> "Anne" say-hi
-; prints: Hi Anne
+
+# Math-focused dialect
+rye -lang math
 ```
 
-## -ctx flag
+## Context selection
 
-Rye runtima also holds multiple contexts and you can start a Rye console as a specific context as a parent. You can also define multiple context and Rye console will
-start with that chain of contexts as parents.
-
+Start the console with specific contexts loaded, giving you access to specialized functions:
 
 ```bash
-# start rye console with os context as parent
-# this gives you functions like ls, cd, mkdir
-# use lcp to explore the functions
-rye --ctx 'os pipes'
+# Start with OS context (ls, cd, mkdir, etc.)
+rye -ctx os
+x> ls |first
+
+# Chain multiple contexts
+rye -ctx 'os pipes'
 x> mkdir %test |cd
-[Uri: file://test]
-x> cwd
-[Uri: file:///home/ryefaktor/rye/examples/cookbook/test]
-x> echo "World" |into-file %hello.txt
-[Integer: 5]
+x> echo "Hello" |into-file %hello.txt
 x> ls
-[Block: ^[Uri: file://hello.txt] ]
 ```
+
+Use `lcp` in the console to explore available functions in the loaded contexts.

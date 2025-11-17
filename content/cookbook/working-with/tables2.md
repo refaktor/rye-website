@@ -1,7 +1,7 @@
 ---
-title: "Tables 2/3"
-weight: 51
-date: 2025-03-21T09:36:00+01:00
+title: "Rye Tables 2/2"
+weight: 52
+date: 2025-05-21T09:36:00+01:00
 draft: false
 group: true
 summary: "Advanced functions for working with table value type."
@@ -11,15 +11,15 @@ toc: true
 
 &nbsp;
 
-In the [first part](tables.md) of our tables cookbook, we explored the basics of creating, loading, and manipulating tables in Rye. Now, we'll dive deeper into more advanced operations that make tables even more powerful.
+If you haven't you really **shoud read the [first part](tables.md)** of our tables cookbook. There we explored the basics of creating, loading, and manipulating tables in Rye. 
 
-Tables in Rye are not just static data structures - they're dynamic, transformable collections that can adapt to your needs. Whether you're joining datasets, creating new columns from existing data, or performing complex aggregations, Rye's table functions provide elegant solutions.
+Now, we'll look into more advanced operations that make tables even more powerful.
 
-![Data analysis](../data_analysis.webp)
+<!-- ![Data analysis](../data_analysis.webp) -->
 
-## Endomorphic functions 2/2
+## Symmetric functions 2/2
 
-In the first part, we explored several endomorphic functions - functions that accept a table and return a new table. Here we'll continue with more powerful endomorphic functions that transform tables in various ways.
+For the lack of better word,symmtre - functions that accept a table and return a new table. Here we'll continue with more powerful symmetric functions.
 
 ### Adding rows
 

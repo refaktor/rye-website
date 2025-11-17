@@ -1,24 +1,27 @@
 ---
-title: "Console*"
-weight: 200
+title: "Console"
+weight: 220
 ---
 
-You can use Rye console, to evaluate Rye code. But Rye has some specific functions that usually aren't used
-in normal Rye programming, but can be very handy in the console. For one thing, the console helps you explore
-the Rye environment.
+The Rye console is an interactive environment for evaluating Rye code and exploring the language. It provides specialized functions for navigating contexts, discovering available functions, and understanding the structure of your program's environment.
 
-Rye environment is formed by Words and words come in Contexts. You can navigate, list, use and modify contexts
-and assign words.
+## Entering the Rye console
 
-## Entering Rye console
+When you start Rye with the `rye` command, you enter the interactive console. A new context is created with the builtin functions available as the parent context.
 
-When you enter a console in a usual way by calling `rye` for example, a new Context is created and the parent context
-of it is the context where all the Builtins are defined. 
+```
+$ rye
+Welcome to Rye console
+x> ; your cursor will be here
+```
 
-## List context
+## Exploring contexts
 
-You can use function `lc` (list context) to see the current
-empty context.
+The Rye environment is organized around **contexts** - containers for words (variables and functions). You can navigate and explore these contexts using console-specific functions.
+
+### List current context
+
+Use `lc` (list context) to see what's defined in your current context:
 
 ```
 x> lc
@@ -26,117 +29,182 @@ Empty context
 [Bool: true]    ; the returned value
 ```
 
-Empty context is not that interesting, but let's check out the parent context.
+### List parent context
 
-## List context parent
-
-Rye has function `lcp` (list context parent). If you call this function in your console a long list of words, mostly bound t
-BFunction-s (builtin functions) will appear.
+Use `lcp` (list context parent) to see the builtin functions available:
 
 ```
 x> lcp
-Context:
+Context: Context of builtins
  ^check: [BFunction(2): Returning Check. (core) (^check)]
  ^fail: [BFunction(1): Returning Fail. (core) (^fail)]
  ^fix: [BFunction(2): Fix as a returning function. If Arg 1 is failure, do the block and return to caller. (core) (^fix)]
- ^if: [Pure BFunction(2): Basic conditional with a Returning mechanism when true. Takes a condition and a block of code. (core) (^if)]
- ^otherwise: [Pure BFunction(2): Basic conditional with a Returning mechanism when true. Takes a condition and a block of code. (core) (^otherwise)]
- ^require: [BFunction(2): Returning Require. (core) (^require)]
- ^tidy-switch: [BFunction(2):  (core) (^tidy-switch)]
- _*: [Pure BFunction(2): Multiplies two numbers. (core) (_*)]
  _+: [Pure BFunction(2): Adds or joins two values together (Integers, Strings, Uri-s and Blocks) (core) (_+)]
  _-: [Pure BFunction(2): Subtracts two numbers. (core) (_-)]
- ...
- etc.
+ _*: [Pure BFunction(2): Multiplies two numbers. (core) (_*)]
+ ...and hundreds more...
 ```
 
-## Change context
+### Filtering context listings
 
-In fact you can move into contexts in similar (but not the same) way as you move into directories on your hard drive. Function `cc ctx-name` changes / moves
-you to that context. But since we are in an empty context let's first move to a parent context using `ccp` (change context to parent). If you then use `lc` command
-you will see the difference.
-
-```
-x> ccp
-; Returns and so displays the context we are moving from
-
-x> lc
-Context:
- ^check: [BFunction(2): Returning Check. (core) (^check)]
- ^fail: [BFunction(1): Returning Fail. (core) (^fail)]
- ^fix: [BFunction(2): Fix as a returning function. If Arg 1 is failure, do the block and return to caller. (core) (^fix)]
- ^if: [Pure BFunction(2): Basic conditional with a Returning mechanism when true. Takes a condition and a block of code. (core) (^if)]
- ...
- etc.
-```
-
-## List with a filter
-
-In Rye we have a convention of naming variations of functions in the form of `word\variation`. This is still just a regular word. So another convention says, if
-you want to make sort of default variation with some more arguments, you can use just `word\`. This function usually takes 1 more argument thatn function `word`.
-
-So we have a function `ls\` that takes another argument which it filters on the results. If the argument is string it filters over matching words.
+Use `lc\` with a string to filter functions by name:
 
 ```
 x> lc\ "print"
 Context: Context of builtins
  print: [BFunction(1): Prints a value and adds a newline. (core) (print)]
- print\csv: [BFunction(1): Prints a value and adds a newline. (core) (print\csv)]
- print\json: [BFunction(1): Prints a value and adds a newline. (core) (print\json)]
- print\ssv: [BFunction(1): Prints a value and adds a newline. (core) (print\ssv)]
- printv: [BFunction(2): Prints a value and adds a newline. (core) (printv)]
+ print\csv: [BFunction(1): Prints CSV formatted output. (core) (print\csv)]
+ print\json: [BFunction(1): Prints JSON formatted output. (core) (print\json)]
+ printv: [BFunction(2): Prints a value with custom formatting. (core) (printv)]
 ```
 
-If the argument is a word, the filter is applied over the type of the value. [TODO]
+Filter by value type using a word:
 
 ```
 x> lc\ 'context
 Context: Context of builtins
- math: [Context: ...]
- pipes: [Context: ...]
- os: [Context: ...]
+ math: [Context: Mathematical functions]
+ os: [Context: Operating system functions]
+ pipes: [Context: Pipeline functions]
 ```
 
-## List with a full text search [TODO]
+## Navigating contexts
+
+### Change to a context
+
+Use `cc` (change context) to move into a specific context:
 
 ```
-x> lc\full "table add"
-Context: Context of builtins
- add-column!: [BFunction: ...]
- add-column: [BFunction: ...]
- add-row!: [BFunction: ...]
+x> cc math
+x> lc
+Context: Mathematical context
+ sin: [BFunction(1): Sine function]
+ cos: [BFunction(1): Cosine function]
  ...
 ```
 
-## List generic functions [TODO]
+### Change to context parent
 
-Rye has a concept of generic functions. Functions that dispatch of the kind of the first argument. They live in a differently structured namespace.
-To `lg` (list generic) you have to add a kind of the function you are looking for.
+Use `ccp` (change to context parent) to move up one level:
 
 ```
-x> lg 'uri-scheme
-Context: Generic context
- open: [BFunction: ...]
+x> ccp
+; Returns the context you're moving from
+x> lc
+; Now shows the parent context
+```
+
+### Change to previous context
+
+Use `ccb` (change context back) to move back to the previous context. Runtime stores a stack of contexts you navigated through:
+
+```
+x> ccp
+; Returns the context you're moving from
+x> lc
+; Now shows the parent context
+```
+
+## Generic functions
+
+Rye supports **generic functions** that dispatch based on the type of their first argument. These are listed separately from regular functions.
+
+### Listing kinds
+
+Use `lk` (list kinds) to list available kinds.
+
+```
+x> lk
+ Ed25519-priv-key
+ Ed25519-pub-key
+ Gin-context
+ Gin-group
+ Gin-router
+ Go-server
+ Go-server-request
+ ...
+
+x> lk\ "uri"
+ file-uri
+ ftp-uri
+ http-uri
+ https-uri
+ mqtt-uri
+ mysql-uri
  ...
 ```
-&nbsp;
 
-`lg\` accepts the kind of the first argument and a string to filter by.
 
-```
-x> lg\ 'rye-pipe "out"
-Context: Generic context
- open: [BFunction: ...]
- ...
-```
+### List generic functions
 
-If the first function is a string it does aproximate match on kind also.
+Use `lg` (list generic) to see generic functions that work with specific types:
 
 ```
-x> lg "file"
-Context: Generic context
- ; lists all generic functions that dispatc on kinds related to files
- ...
+x> lg 'https-uri
+Methods (https-uri):
+ Get [Builtin(1): Makes a HTTPS GET request and returns the response body as a string. (io) (https-uri//Get)]
+ Open [Builtin(1): Opens a HTTPS GET request and returns a reader for the response body. (io) (https-uri//Open)]
+ Post [Builtin(3): Makes a HTTPS POST request and returns the response body as a string. (io) (https-uri//Post)]
+ Request [Builtin(3): Creates a new HTTPS request object. (io) (https-uri//Request)]
 ```
 
+## Console keyboard shortcuts
 
+The Rye console supports various keyboard shortcuts for efficient editing and navigation:
+
+### Tab completion
+
+This is still in development and fine tuning.
+
+Currently, if you press Tab without any text entered console will display words in current context and 
+you will be able to cycle over them and see their values.
+
+If you already antered text and then press tab console will show suggestions based on all indexed words.
+You will again be able to cycle over them and see their values.
+
+```
+x> <Tab>
+; [name] say-hi
+; [String: Anne]
+
+: prin<Tab>
+; [print] print2 print\csv print\ssv
+```
+
+### Control key commands
+
+- **Ctrl+A**: Move cursor to beginning of line
+- **Ctrl+E**: Move cursor to end of line  
+- **Ctrl+B**: Move cursor backward (left) one character
+- **Ctrl+F**: Move cursor forward (right) one character
+- **Ctrl+D**: Delete character under cursor (or exit console if line is empty)
+- **Ctrl+K**: Delete from cursor to end of line
+- **Ctrl+U**: Delete from cursor to beginning of line
+- **Ctrl+W**: Delete word before cursor
+- **Ctrl+L**: Clear screen
+- **Ctrl+C**: Interrupt current input and start fresh prompt
+
+### Multi-line input
+
+If blocks or strings don't finish by the end of the line
+console will go into multiline mode and you will be able to write
+multiple lines until you close the block or string.
+
+```
+x> list {
+... 1 2 3
+... 4 5 6
+}
+[List: [1 2 3 4 5 6]]
+```
+
+## Tips for effective console use
+
+- Use **Tab completion** to discover available functions and avoid typos
+- Use `lc\` or `lcp\` with search terms to quickly find functions related to your task
+- Use `lk` or `lg` to discover generic functions that work with specific kinds of values
+- The console maintains command history - use **up arrow / down arrow** to recall previous commands
+- Use `enter-console "description"` within your programs to drop into console
+- Use **Ctrl+L** to clear the screen when output gets cluttered
+
+The Rye console is designed for exploration and experimentation - don't hesitate to try functions and inspect the environment to learn how the language works!

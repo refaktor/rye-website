@@ -8,6 +8,10 @@ summary: "An growing list of simple GUI examples."
 mygroup: true
 ---
 
+> **These are examples of Rye-fyne v0.1. In the meantime we changed the concepts a little, Fyne got upgraded with some changes to code and Rye got changed in details as well.**
+
+> **Visit [Fyne - Examples v2](../examples-2) for the updated code! There are two additional examples there.**
+
 Rye started out focused on 'backed development' and 'interactive use in console' and it still is. But **[Go's Fyne GUI library](https://fyne.io/)** was just too tempting not to try to integrate. It's easy to deploy, works on desktop and mobile platforms and keeps getting better.
 
 If the code below doesn't always make sense to you, check out [Meet Rye](https://ryelang.org/meet_rye/), especially the part about [op and pipe-words](https://ryelang.org/meet_rye/specifics/opwords/).
@@ -454,9 +458,7 @@ Current version: **09/24/2024**
 
 ## Related links
 
-* [Rye language](https://ryelang.org)
-* [Fyne GUI library](https://fyne.io)
-
 * [Rye language](https://github.com/refaktor/rye) - main language repository
 * [Rye-Fyne project](https://github.com/refaktor/rye-fyne) - Rye extended with Fyne
+* [Fyne GUI library](https://fyne.io)
 * [ryegen](https://github.com/refaktor/rye-fyne) - binding generator

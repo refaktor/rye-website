@@ -26,7 +26,7 @@ loop 2 { prns "Bye" }
 ; prints: Bye Bye
 ```
 
-## For function
+## For loop (function)
 
 ### Injected values - quick crash course
 
@@ -56,7 +56,7 @@ The use of left set-word above might seem a little odd, but you will see the ben
 
 BTW: the comma shown above is called an expression guard, and is optional. 
 
-### Now a "for" loop
+### Now about the for loop (function)
 
 The `for` function takes a block of values and a block of code. It iterates through values passing each as injected value into the block as it evaluates the block.
 

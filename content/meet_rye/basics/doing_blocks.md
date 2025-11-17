@@ -84,3 +84,44 @@ print do print who-are-u
 ```
 
 Everything in Rye returns something, so print returns the value it's printing.
+
+## The Do-block
+
+`{ }` denotes a normal passive / quoted bock in Rye. But you don't have to use `do` to do a block. `( )` is called the do block and is the same as `do { }`.
+
+So examples from above could also be:
+
+```clojure
+; Rye
+
+print do { _+ 11 22 }
+; prints: 33            -- we have to *do* it, to evaluate it
+
+print ( _+ 11 22 )
+; prints: 33            -- we have to *do* it, to evaluate it
+
+; you could also do, but it's not needed
+( print ( _+ 11 22 ) )
+; prints: 33            -- we have to *do* it, to evaluate it
+; contrary to Lisp Rye requires spacing between tokens
+```
+
+Do block, is automatically also good at declaring priority of execution with Rye expressions. It's what parenthesis are naturally used for.
+
+```clojure
+; Rye
+
+( 10 + 4 ) * 3
+; returns 42
+
+10 + ( 4 * 3 )
+; returns 22
+
+( get https://exampl.com ) .parse-json .first
+; returns first value in JSON
+```
+
+You will learn more about what are operators (op-words) and how they are evaluated later. Given the difference between op and pipe-words
+(later) parenthesis aren't needed for priority that often, but they have its place.
+
+

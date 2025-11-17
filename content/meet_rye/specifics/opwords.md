@@ -246,7 +246,7 @@ have infix operators or functions. In Forth it's the same, all functions (also o
 10 * 5 + 2 * 3
 ; returns 156 (left to right)
 
-; in Lisp this would be written, which has it's aesthetics too
+; in Lisp this would be written, which has its aesthetics too
 (+ (* 10 5) (* 2 3))
 
 ; and in Forth (Factor)
@@ -274,4 +274,3 @@ All 3 languages value internal consistency above conventions and so does Rye. So
 math/calc { 10 * 5 + 2 * 3 }
 ; returns 56
 ```
-

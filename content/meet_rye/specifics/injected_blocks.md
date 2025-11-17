@@ -52,7 +52,7 @@ Similar for the **for** function. We had this before:
 ```clojure
 names: { "Jim" "Jane" "Anne" }
 
-for names { ::name , print "Hi " + name }
+for names { ::name , print "Hi " ++ name }
 ; prints:
 ; Hi Jim
 ; Hi Jane
@@ -185,7 +185,7 @@ But the comma also has another effect in injected block, since we explicitly det
 ; prints:
 ; Max: 21
 ; Min: 4
-	; Avg: 11.0
+; Avg: 11.0
 ; ---------
 ; Sum: 44
 ```

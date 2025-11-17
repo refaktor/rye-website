@@ -22,10 +22,10 @@ also the sad people! :P
 
 $ rye
 
-read %test.txt
+Read %test.txt
 ; returns string with two lines
 
-read\lines %test.txt
+Read\lines %test.txt
 ; returns block with two strings
 ; one for each line
 ```
@@ -35,10 +35,10 @@ read\lines %test.txt
 
 ```lisp
 "Save me to a disc"
-|write %save.txt
+|Write* %save.txt
 
 "Me too"
-|write\append %save.txt   ; TODO
+|Write\append* %save.txt   ; TODO
 ```
 
 
@@ -52,7 +52,7 @@ hello copy!
 
 $ rye
 
-open %source.txt |copy create %destination.txt
+Open %source.txt |Copy Create %destination.txt
 ```
 
 ## Appending to file
@@ -60,9 +60,9 @@ open %source.txt |copy create %destination.txt
 Append next number to a file each second, forever.
 
 ```lisp
-open\append %seconds.txt :wr
+Open\append %seconds.txt :wr
 
-forever { .to-string + "\n" |write\string* wr , sleep 1000 }
+forever { .to-string ++ "\n" |Write\string* wr , sleep 1000 }
 
 [Ctrl-z]
 
@@ -70,17 +70,17 @@ $ tail -f seconds.txt
 ```
 &nbsp;
 
-_TODO: #bug Ctrl-z or Ctrl-c don't work when in forever loop._
+> #bug Ctrl-z or Ctrl-c don't work when in forever loop
 
 ## Tailing a file
 
 The `tail -f` opens a file and waits for appends to a file and prints them. We can also to this in Rye, retrieving additions to a file as they come.
 
 ```lisp
-open %seconds.txt :f
-.seek\end
-.reader :r
-forever { read\string r "\n" |print }
+Open %seconds.txt :f
+.Seek\end
+.Reader :r
+forever { Read\string r "\n" |print }
 ```
 
 ## HTTP Download
@@ -88,8 +88,8 @@ forever { read\string r "\n" |print }
 Downloading a bigger file without loading it into memmory. Open with htts URI opens a reader, and copy copies (streams) it over to a writer, which we can create with create and a file path.
 
 ```lisp
-open https://fu.gov.si/fileadmin/prenosi/DURS_zavezanci_PO_csv.zip
-|copy open %download.zip
+Open https://fu.gov.si/fileadmin/prenosi/DURS_zavezanci_PO_csv.zip
+|Copy Open %download.zip
 ```
 
 ## Downloading from FTP
@@ -98,11 +98,11 @@ FTP is more complex (stateful?) protocol, but we can use it similarly as HTTP ab
 
 ```lisp
 ; load the ftp username and password from a file
-info: context { do load %.ftpinfo }
+info: context { do Load %.ftpinfo }
 
-open ftp://prenos.example.com:21
-|login info/user info/pwd
-|retrieve "rtr/MES/BIG_FILE.zip"
-|copy create %local3.zip
+Open ftp://download.example.com:21
+|Login info/user info/pwd
+|Retrieve "rtr/MES/BIG_FILE.zip"
+|Copy Create %local3.zip
 ```
 

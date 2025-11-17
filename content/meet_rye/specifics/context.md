@@ -25,7 +25,7 @@ pos-printer: context {
   codepage: "latin2" 
   out: fn { x } { prn x } 
   crlf: does { print "" } 
-  info: does { out "Cp: " + codepage , crlf } 
+  info: does { out "Cp: " ++ codepage , crlf } 
 }
 ```
 

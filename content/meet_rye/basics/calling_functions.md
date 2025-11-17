@@ -34,7 +34,7 @@ The **print** function takes one value (an argument) and prints it. We call it b
 
 Print or some variant of it (println, echo, ...) exists in almost every language, but most functions in Rye are not like print. We don't call them for effect, but for their return value.
 
-**Inc** (increment) accepts one integer value and returns a value that is an increment of the accepted value. It doesn't change anything and for same input (the argument), it always returns the same result. 
+**Inc** (increment) accepts one integer value and returns a value that is an increment of the accepted value. It doesn't change anything and for the same input (the argument), it always returns the same result. 
 
 ```clojure
 ; Functions taking one argument
@@ -104,7 +104,7 @@ Let me tell you a story:
   * there it finds a word **capitalize**, also bound to a function with one argument. So it again goes forward seeking
     * it finds a word **name** which is bound to a text value "bob", it takes it and passes it to **capitalize**
   * capitalize returns text "Bob" which it now passes back to **print**
-* and function behind **print** displays it on the screen
+* and the function behind **print** displays it on the screen
 
 ```clojure
 name: "bob"
@@ -113,14 +113,14 @@ print capitalize name
 ; prints: Bob
 ```
 
-<!-- Conctructor functions are no different than any other function. Their only difference is in functionality and we try to name them consistently.-->
+<!-- Constructor functions are no different than any other function. Their only difference is in functionality and we try to name them consistently.-->
 
 ## Convention: Function variants
 
 In Rye (like in REBOL) all functions have a fixed number of arguments. REBOL had something called refinements to remedy this, the idea was good on the first level, but you couldn't elegantly pass refinements to next calls. Refinements also 
 clashed syntactically with context navigation. So Rye doesn't have this concept. 
 
-It has a naming convention. Where there is a primary function, but you need more variations or specialisations of it, we use a "\\" character in the name of function denote that. You saw one example above with join and join\with. Remember these are
+It has a naming convention. Where there is a primary function, but you need more variations or specializations of it, we use a "\\" character in the name of the function to denote that. You saw one example above with join and join\with. Remember these are
 two different functions, it's just a naming convention.
 
 ```clojure
@@ -153,4 +153,3 @@ map\idx { 10 100 1000 } 'i { * i } ; Rye distinguishes between index (offset)
 
 map\pos { 10 100 1000 } 'i { * i } ; and position (first, second, ... )
 ; returns: { 10 200 3000 }
-```

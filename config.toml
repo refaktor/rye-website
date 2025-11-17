@@ -15,6 +15,15 @@ pygmentsUseClasses = true
     extended = true
     min = "0.55.0"
 
+[markup]
+  [markup.highlight]
+    codeFences = false  # This is the key setting to disable Chroma for fenced code blocks
+    # You might also want to set guessSyntax = false if it's not already
+    guessSyntax = false # Prevents Hugo from trying to guess language if no tag is provided
+    # If you were using the {{< highlight >}} shortcode, you might need to
+    # adjust or avoid it, or create a custom render hook for it.
+    # For a clean slate with highlight.js, it's best to disable all of Chroma.
+
 # Controls how many words are printed in the content summary on the docs homepage.
 # See https://gohugo.io/content-management/summaries/
 summaryLength = 30

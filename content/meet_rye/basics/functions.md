@@ -13,7 +13,7 @@ Rye comes with many built-in functions, which are functions defined in a host la
 
 ## Rye functions
 
-Functions are like any other Rye values. You create them by calling a function. The most common is the builitn function *fn*. It takes two arguments, a block of arguments and a block of code.
+Functions are like any other Rye values. You create them by calling a function. The most common is the built-in function *fn*. It takes two arguments, a block of arguments and a block of code.
 
 It returns a function value which we assign to a word using a set-word, like any other value.
 
@@ -43,9 +43,9 @@ is-positive -100
 ## Pure functions
 
 If you **probe** built-in functions in shell you will see that most of them show something like `[Pure BFunction ...]`. A function being pure means that it has no side effects and that
-it has referential transparency. This means that with the same inputs it will always produce same output. 
+it has referential transparency. This means that with the same inputs it will always produce the same output. 
 
-Above **join** is a pure built-in function, while print has a side effect, and function like `now` is not referentially transparent. It will return a different result each time you call it.
+Above **join** is a pure built-in function, while print has a side effect, and functions like `now` are not referentially transparent. They will return a different result each time you call them.
 
 ```lisp
 probe ?join
@@ -82,26 +82,43 @@ BTW: `+ * >` we used above are also pure functions. One or two letter operator c
 
 ## Functions with no arguments
 
-Continuing REBOL's convention function that accept no arguments can be created with **does** function. 
+Continuing REBOL's convention, functions that accept no arguments can be created with **does** function.
 
 ```clojure
 say-hi: does { print "Hi!" }
 
 say-hi
-; prinsts: Hi!
+; prints: Hi!
 ```
 
 Since there is no special keyword like: `func, def, function, ...`, but functions are
 like other Rye values constructed with functions (and you can load these as a library or make your own), we tend to use more words for specific cases of constructing functions than just one keyword.
 
+## Functions with one anonymous argument
+
+Rye has a concept of *injected blocks* where a value is injected to the left side of the first expression when evaluating a block. This holds true also for functions.
+
+```clojure
+say-hello: fn1 { .embed "Hello {}!" |print }
+
+say-hello "Anne"
+; prints: Hello Anne!
+
+add5: fn1 { + 5 }
+
+add5 50
+; returns: 55
+```
+
+
 ## Closure
 
-It turns out closures are just a simpler variant of this. Closure is a function that's executed in the context it was defined in.
+It turns out closures are just a simpler variant of this. A closure is a function that's executed in the context it was defined in.
 
 ```clojure
 me: context { 
 	name: "Jim" 
-	intro: closure { } { print { "I'm" name } 
+	intro: closure { } { print { "I'm" name } }
 }
 
 name: "Joe"
@@ -109,13 +126,16 @@ name: "Joe"
 me/intro
 ; prints: I'm Jim
 
-; also i we take closure out it's context and assign it locally
+; also if we take closure out of its context and assign it locally
 me -> 'intro :my-intro
+
+; you could also use a get-cpath
+; my-intro: ?me/intro
 
 my-intro
 ; prints: I'm Jim
 ```
-A more typical use of closures is that they are returned from functions while enclosing on function's context. Each function runs in its own context, so it's not that different than the example above.
+A more typical use of closures is that they are returned from functions while enclosing the function's context. Each function runs in its own context, so it's not that different from the example above.
 
 ```clojure
 make-adder: fn { a } { closure { b } { a + b } }
@@ -130,4 +150,29 @@ add5 5
 
 add10 5
 ; returns: 15
+```
+
+Another interesting example is to create something like a counter, with enclosed state that it also changes:
+
+```clojure
+make-counter: fn { } { var 'c 0 , closure { } { inc! c } }
+
+cnt1: make-counter
+cnt2: make-counter
+
+loop 3 { print cnt1 }
+; Prints:
+;  1
+;  2
+;  3
+loop 3 { print cnt2 }
+; Prints:
+;  1
+;  2
+;  3
+loop 3 { print cnt1 }
+; Prints:
+;  4
+;  5
+;  6
 ```

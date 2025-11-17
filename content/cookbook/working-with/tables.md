@@ -1,6 +1,6 @@
 ---
-title: "Tables 1/3"
-weight: 50
+title: "Rye Tables 1/2"
+weight: 51
 date: 2024-09-29T19:30:08+10:00
 draft: false
 group: true
@@ -406,7 +406,7 @@ dsp: fn1 { .head 3 |display }
 
 ![Cyberpunk docks](../cyberpunk_docks_2.webp)
 
-## Endomorphic functions 1/2
+## Symmetric functions 1/2
 
 Functions in this section have something in common. They accept a table and return a new table. And they don't change any state.
 
@@ -537,7 +537,7 @@ spr .columns? { 'Name 'Year 'Species }
 ```
 &nbsp;
 
-Now we want to see earlyest 3 AI related adversaries and their keywords, but sorted by name. How do we get there.
+Now we want to see the earliest 3 AI related adversaries and their keywords, but sorted by name. How do we get there.
 
 We can filter by species, order that by year, take top 3, select just the columns we want and order by name.
 
@@ -557,16 +557,13 @@ spr .where-contains 'Species "AI"
 ```
 &nbsp;
 
-The fancy word "endomorphism" means that each of these functions accept a table and return a new table. This
-means that we can combine and keep combining them freely. It's all apples to apples to apples ...
-
 ![Cyberpunk docks](../cyberpunk_docks_3.webp)
 
 &nbsp;
 
 ## Next pages
 
-We will find more endomorphic function on page 2 of this series. Functions like `add-column`, `group-by`, and `inner-join`.
+We will find more symmetric function on page 2 of this series. Functions like `add-column`, `group-by`, and `inner-join`.
 
 We will also look into functions that do change tables **in-place**. The reason for using those could be big dataset and
 optimisation. Or that we want to use table explicitly to store state in our program.
@@ -685,7 +682,7 @@ That's why I think it's not shorter and more complex, but shorter and simpler at
 
 Now I will quote what I wrote right at the top of this page, to drive the point home :)
 
-> You can not have a higher level (closer to human) langauge, without also higher level (closer to human) value types. These then enable higher level operations on information you are working with.
+> You can not have a higher level (closer to human) language, without also higher level (closer to human) value types. These then enable higher level operations on information you are working with.
 
 &nbsp;
 

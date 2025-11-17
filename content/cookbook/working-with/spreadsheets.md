@@ -2,10 +2,10 @@
 title: "Spreadsheets"
 weight: 50
 date: 2024-09-29T19:30:08+10:00
-draft: false
-group: true
+draft: true
+group: false
 summary: "Spreadsheets got renamed to Tables"
-mygroup: true
+mygroup: false
 toc: true
 ---
 
