@@ -7,6 +7,8 @@ summary: "A powerful approach to error handling that treats failures as first-cl
 mygroup: true
 ---
 
+> We're still working on this page
+
 In most programming languages, errors are something to be feared - unwelcome interruptions that break your flow. But in Rye, failures are first-class citizens, designed to be created, inspected, transformed, and handled with elegance.
 
 ## Creating Errors
@@ -86,16 +88,16 @@ db/query "SELECT * FROM users" |check "Error querying users database"
 
 ; In a chain of operations, add context at each step
 file/read "config.json" 
-  |check "Failed to read config file" 
+  |^check "Failed to read config file" 
   |json/parse 
-  |check "Config file contains invalid JSON"
+  |^check "Config file contains invalid JSON"
 ```
 
 The `^check` variant also sets the return flag, immediately exiting the current function with the wrapped error:
 
 ```clojure
 ; If db/query fails, immediately return from the function with a wrapped error
-db/query "SELECT * FROM users" |^check "Error querying users database"
+db/query  "SELECT * FROM users" |^check "Error querying users database"
 ```
 
 ### The Ensure Pattern
@@ -105,10 +107,10 @@ The `ensure` combinator lets you validate conditions and fail if they're not met
 ```clojure
 ; Validate user input
 user-age > 0 |ensure "Age must be positive"
-user-email |contains "@" |ensure "Email must contain @"
+user-email .contains "@" |ensure "Email must contain @"
 
 ; Check preconditions before proceeding
-db/connected? |ensure "Database connection required"
+db/connected? .ensure "Database connection required"
 user/has-permission? 'admin |ensure "Admin permission required"
 ```
 
@@ -132,21 +134,6 @@ get-user 123 |continue {
 ```
 
 ### The Fix\Continue Pattern
-
-The `fix\continue` combinator lets you provide both success and failure handlers:
-
-```clojure
-; Different handling for success and failure cases
-get-user 123 |fix\continue {
-  ; Error handler
-  log/error "User not found"
-  default-user
-} {
-  ; Success handler
-  .name |print
-  .email |send-welcome-email
-}
-```
 
 ## Advanced Error Handling
 
@@ -190,13 +177,7 @@ if result |failed? [
 
 The `failed?` function tests if a value is an error:
 
-```clojure
-; Check if a value is an error
-if result |failed? [
-  ; Handle error case
-] else [
-  ; Handle success case
-]
+```
 ```
 
 ## Real-World Examples
@@ -211,9 +192,9 @@ fetch-user-data: fn { user-id } {
   user-id > 0 |^ensure "User ID must be positive"
   
   ; Try to fetch the user, with multiple layers of error handling
-  http/get (join "https://api.example.com/users/" user-id)
+  Get https://api.example.com/users/ ++ user-id
     |check "API request failed" 
-    |json/parse 
+    |parse-json 
     |check "Invalid JSON response"
     |fix { 
       ; If anything failed, return a default user
@@ -225,66 +206,9 @@ fetch-user-data: fn { user-id } {
 ### Example 2: Database Transaction with Retry
 
 ```clojure
-save-user: fn { user } {
-  ; Retry the database operation up to 3 times
-  retry 3 {
-    ; Ensure we have a valid user
-    user/valid? user |^ensure "Invalid user data"
-    
-    ; Try to save, with timeout protection
-    timeout 5000 {
-      db/begin-transaction
-      
-      ; Use defer to ensure transaction is rolled back on any failure
-      defer { db/rollback-transaction }
-      
-      db/insert "users" user
-        |^check "Failed to insert user"
-      
-      db/commit-transaction
-        |^check "Failed to commit transaction"
-      
-      "User saved successfully"
-    }
-  }
-}
 ```
 
 ### Example 3: Cascading Error Handling
 
 ```clojure
-process-order: fn { order } {
-  ; A chain of operations where any step can fail
-  validate-order order
-    |fix\continue {
-      ; Error handler
-      log/error "Order validation failed"
-      fail "Invalid order"
-    } {
-      ; Success handler - continues the chain
-      check-inventory order
-        |fix\continue {
-          log/error "Inventory check failed"
-          fail "Items out of stock"
-        } {
-          process-payment order
-            |fix\continue {
-              log/error "Payment processing failed"
-              fail "Payment declined"
-            } {
-              ship-order order
-                |fix {
-                  log/error "Shipping failed"
-                  fail "Shipping error"
-                }
-            }
-        }
-    }
-}
 ```
-
-## The Philosophy of Failure
-
-Rye's approach to error handling reflects a deeper philosophy: failures are normal, expected parts of a program's execution. Rather than treating them as exceptional cases to be avoided, we embrace them as values that can be passed around, transformed, and handled just like any other data.
-
-This leads to code that's more robust, more expressive, and often more concise than traditional error handling approaches. Instead of deeply nested try/catch blocks or error codes that must be checked after every operation, Rye lets you express your error handling logic as a natural part of your data flow.

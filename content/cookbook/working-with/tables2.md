@@ -1,7 +1,7 @@
 ---
 title: "Rye Tables 2/2"
 weight: 52
-date: 2025-05-21T09:36:00+01:00
+___date: 2025-05-21T09:36:00+01:00
 draft: false
 group: true
 summary: "Advanced functions for working with table value type."

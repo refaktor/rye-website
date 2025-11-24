@@ -1,11 +1,12 @@
 ---
 title: 'Limiting Side Effects'
-date: 2023-04-02T09:30:00+10:00
 draft: false
 weight: 200
 summary: "How Rye provides certainty and safety by strictly controlling state changes."
 mygroup: true
 ---
+
+> we're still working on this page
 
 One of Rye's core design principles is to be strict about state changes. By limiting how and where side effects can occur, Rye programs become more predictable, easier to reason about, and less prone to bugs. This document explains how Rye achieves this through various language features.
 
@@ -144,69 +145,17 @@ user-ctx: context {
 user-ctx/age:: 31  ; Error: Cannot modify value in another context
 
 ; Instead, you must use functions that operate within that context
-update-age: func [ctx new-age] [
-    do/in ctx [
+update-age!: func { ctx new-age } {
+    do/in ctx {
         age:: new-age  ; This works because we're inside the context
-    ]
-]
-
-; Now you can update the age properly
-update-age user-ctx 31
-```
-
-Functions that modify state in other contexts should also follow the ! naming convention:
-
-```clojure
-update-age!: func [ctx new-age] [
-    do/in ctx [
-        age:: new-age
-    ]
-    ctx  ; Return the modified context
-]
-```
-
-This context isolation ensures that state changes are localized and predictable, making it easier to reason about your code and avoid unexpected side effects.
-
-## Real-World Example
-
-Let's look at a more complete example that demonstrates these principles in action:
-
-```clojure
-; Define a function to process an order
-process-order: func [order] [
-    ; Create a new order with validated fields
-    validated-order: validate order {
-        customer-id: required integer
-        items: required
-        total: required decimal
     }
-    
-    ; Process payment (returns a new order with payment info)
-    paid-order: process-payment validated-order
-    
-    ; Update inventory (note the ! indicating state change)
-    update-inventory! paid-order/items
-    
-    ; Return the final order with status
-    paid-order ++ { "status" "completed" }
-]
-
-; Using the function
-order: {
-    "customer-id" "1001"
-    "items" { { "id" "A123" "qty" 2 } { "id" "B456" "qty" 1 } }
-    "total" "99.95"
 }
 
-; Process the order (note that the original order is unchanged)
-result: process-order order
+; Now you can update the age properly
+update-age! user-ctx 31
 ```
 
-In this example:
-- The original order is not modified
-- The function returns a new order with additional information
-- The only side effect is explicitly marked with the ! suffix
-- All transformations are expressed as data flowing through functions
+### TODO
 
 ## Benefits of Limiting Side Effects
 

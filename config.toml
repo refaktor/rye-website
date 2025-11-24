@@ -91,3 +91,13 @@ summaryLength = 30
       standard  = "/images/logo.png"
       # standard  = "/images/logo.svg"
       
+
+# config.toml (or hugo.toml)
+# Enable Git Info to use the last Git commit date as the last modification date
+enableGitInfo = true
+
+[frontmatter]
+# Specify the order in which to look for the last modified date
+# This will look for 'lastmod' in the content file's front matter first,
+# and if not found, it will fall back to the last Git commit date (':git').
+lastmod2 = [":git" ]
