@@ -1,6 +1,11 @@
 ---
 title: "Options*"
-weight: 200
+weight: 300
+_date: 2024-09-29T19:30:08+10:00
+draft: false
+group: true
+summary: "Options of deploying your Rye programs"
+mygroup: true
 ---
 
 *heavily-work-in-progress*

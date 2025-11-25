@@ -1,6 +1,11 @@
 ---
 title: "Console"
-weight: 220
+weight: 200
+_date: 2024-09-29T19:30:08+10:00
+draft: false
+group: true
+summary: "Using Rye console (REPL)"
+mygroup: true
 ---
 
 The Rye console is an interactive environment for evaluating Rye code and exploring the language. It provides specialized functions for navigating contexts, discovering available functions, and understanding the structure of your program's environment.

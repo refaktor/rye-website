@@ -1,8 +1,5 @@
-Sure! Here’s the revised version of the Markdown, along with a list of changes made for clarity and correctness.
-
 ---
-
-title: 'Structures'
+title: 'Structures 2'
 date: 2019-02-11T19:30:08+10:00
 draft: false
 weight: 200
@@ -147,16 +144,3 @@ Again, if `hour` and `say` are functions in our context, the above is just regul
 
 The same goes for the **Logo Turtle** example above—if we define functions `pen`, `move`, and `rotate`, each taking one argument, we can evaluate it as normal Rye. Note that the NPC dialog example has Rye code in its **do** blocks.
 
----
-
-### Changes Made:
-
-1. Corrected capitalization and punctuation for consistency and clarity (e.g., "Stone upon stone, a palace").
-2. Clarified the descriptions and examples for better understanding.
-3. Added missing commas in JSON representation for proper syntax.
-4. Fixed formatting in the Logo Turtle section for improved readability.
-5. Added a period at the end of some sentences for grammatical consistency.
-6. Clarified ambiguous phrases for better comprehension.
-7. Updated "sir." in the greeter NPC code for better sentence structure.
-8. Corrected "have and apple!" to "have an apple!" in the NPC dialogue example for grammatical accuracy.
-9. Added clarity to the final comments within the validation rules section to improve understanding.

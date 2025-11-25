@@ -1,9 +1,9 @@
 ---
-title: 'Generic functions'
+title: Methods (generic functions)
 date: 2025-02-11T19:30:08+10:00
 draft: false
 weight: 1800
-summary: ""
+summary: "Methods are functions that are dispatched based on Kind of first argument."
 mygroup: true
 ---
 

@@ -4,7 +4,7 @@ date: 2024-10-24T19:30:08+10:00
 draft: false
 group: true
 weight: 250
-summary: ""
+summary: "Testing Rye runtime and base library"
 mygroup: true
 ---
 
