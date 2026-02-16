@@ -1,5 +1,5 @@
 ---
-title: "One source of truth*"
+title: "One source of truth"
 date: 2024-10-24T19:30:08+10:00
 draft: false
 group: true
@@ -7,8 +7,6 @@ weight: 150
 summary: "Basic building blocks of Rye are builtin functions. To have them tested, documented is work and unifying the position."
 mygroup: true
 ---
-
-*work in progress*
 
 # Builtins
 
@@ -140,44 +138,7 @@ rbit ../../evaldo/builtins.go > ../../info/base.info.rye
 
 &nbsp;
 
-# Running tests
+# Running and generating tests
 
-You can enter the `info/` folder and since there is a `main.rye` you can run it with a dot and you will get the following:
-
-```
-(mycomp) -> cd info/
-(mycomp) -> rye .
-# Rye's simple testing tool
-	
- use test or doc command
-
-Examples: 
- rye . test           # runs all tests
- rye . doc            # generates the docs out of tests
- rye . test ls        # lists the test sections available
- rye . test basics    # runs a specific test section
-```
-&nbsp;
-
-So you can use `-ls` to list files or run a specific file. `demo` is a very short one, main builtins are in `base`.
-
-```
-(mycomp) -> rye . test demo
-
-# DEMO #
-
-demo
- just testing the testing
-
- demo1 ✓ 
- demo2 ✓ 
-```
-&nbsp;
-
-There is also a `./regen` script in the same folder, that will regenerate all info files. The CLI interfaces will get unified between these tools.
-
-&nbsp;
-
-# Generating HTML Reference
-
-_TODO_
+For information about running tests, generating info files, and generating HTML reference documentation, 
+see the [Testing page](../testing/).

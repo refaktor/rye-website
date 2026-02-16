@@ -1,5 +1,5 @@
 ---
-title: "Improving Rye*"
+title: "Improving Rye"
 weight: 2150
 ---
 

@@ -6,9 +6,16 @@ summary: "How Rye provides certainty and safety by strictly controlling state ch
 mygroup: true
 ---
 
-> we're still working on this page
+One of Rye's core design principles is to be **strict about state handling**. By limiting how and where side effects can occur, Rye programs become more predictable, easier to reason about, and less prone to bugs. 
 
-One of Rye's core design principles is to be strict about state changes. By limiting how and where side effects can occur, Rye programs become more predictable, easier to reason about, and less prone to bugs. This document explains how Rye achieves this through various language features.
+Rye achieves this through four key principles:
+
+1. **Constants by default** - Words defined with set-words are constants
+2. **Explicit about modifying words** - Mod-words (double colon) required to change values
+3. **Constrained in-place modification** - Functions that mutate must end with `!`
+4. **No direct changes outside current scope** - Can't modify variables in outer/nested scopes
+
+This document explains how Rye achieves these principles through its language features.
 
 ## Expressions Over Statements
 
@@ -61,7 +68,7 @@ When you do need to modify values in place (perhaps for performance reasons), Ry
 
 ```clojure
 ; Creating a reference to a mutable list
-vat 'names ref { "Alice" "Bob" "Charlie" }
+var 'names ref { "Alice" "Bob" "Charlie" }
 
 ; Modifying the list in place
 append! names "David"
@@ -75,7 +82,7 @@ Other examples of functions that modify state in place include:
 
 ```clojure
 ; Incrementing a number in place
-var 'count: 0
+var 'count 0
 inc! count  ; count is now 1
 
 ; Changing a value in a dictionary
@@ -155,7 +162,11 @@ update-age!: func { ctx new-age } {
 update-age! user-ctx 31
 ```
 
-### TODO
+### Why This Matters
+
+This restriction prevents unexpected side effects and makes code more **local to reason about**. You don't need to scan code higher up in a function or across files to understand what might be changed - all state changes happen in the current context.
+
+When you do need to interact with other scopes, you must do so through explicit function calls (using functions ending with `!`), making those interactions visible and intentional.
 
 ## Benefits of Limiting Side Effects
 

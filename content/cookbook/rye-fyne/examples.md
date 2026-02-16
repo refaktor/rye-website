@@ -1,11 +1,11 @@
 ---
 title: "Examples"
 date: 2024-08-13T19:30:08+10:00
-draft: false
+draft: true
 group: true
 weight: 50
 summary: "An growing list of simple GUI examples."
-mygroup: true
+mygroup: false
 ---
 
 > **These are examples of Rye-fyne v0.1. In the meantime we changed the concepts a little, Fyne got upgraded with some changes to code and Rye got changed in details as well.**

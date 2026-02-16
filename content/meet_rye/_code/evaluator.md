@@ -43,7 +43,7 @@ For now we need just 3 special word types.
 
 **Lit-word** (literal word) evaluates to the word itself. Word is an indexed entity and can be used in similar way as enums would be.
 
-**Set-words** bind values to words. Code on the right of them get's evaluated, if needed, to get the value. The value is returned from such expression.
+**Set-words** bind values to words. Code on the right of them gets evaluated, if needed, to get the value. The value is returned from such expression.
 
 **Get-words** always gets the value they are bound to. We need them because if word is bound to a function, with normal word we run the function and get the result, but sometimes we need the function itself.
 

@@ -153,41 +153,92 @@ Methods (https-uri):
  Request [Builtin(3): Creates a new HTTPS request object. (io) (https-uri//Request)]
 ```
 
-## Console keyboard shortcuts
+## Tab completion
 
-The Rye console supports various keyboard shortcuts for efficient editing and navigation:
+Tab completion is a central feature of the Rye console, designed for rapid exploration and discovery.
 
-### Tab completion
+### Quick start
 
-This is still in development and fine tuning.
+| Key | Action |
+|-----|--------|
+| **Tab** | Start completion / cycle through suggestions |
+| **Ctrl+S** | Switch completion mode (local → all → methods) |
+| **Enter** | Accept suggestion |
+| **Escape** | Cancel |
 
-Currently, if you press Tab without any text entered console will display words in current context and 
-you will be able to cycle over them and see their values.
+### Three completion modes
 
-If you already antered text and then press tab console will show suggestions based on all indexed words.
-You will again be able to cycle over them and see their values.
+The console has three modes, shown by an indicator in the suggestion line:
+
+| Indicator | Mode | Shows |
+|-----------|------|-------|
+| `[local]` | Local context | Words you've defined in current session |
+| `[index]` | All words | Every word in Rye (builtins, loaded modules, etc.) |
+| `[methods]` | Generic methods | Methods available for your last result's type |
+
+### Smart auto-detection
+
+Tab intelligently picks the right mode:
 
 ```
-x> <Tab>
-; [name] say-hi
-; [String: Anne]
+x> <Tab>                         ; empty line → [local] shows your defined words
+[local] name  data  process
 
-: prin<Tab>
-; [print] print2 print\csv print\ssv
+x> pri<Tab>                      ; typed text → [local], auto-falls back to [index] if no match
+[index] print  prn  probe  
+
+x> %config.rye                   ; evaluate a file path
+%file-uri: config.rye
+x> .re<Tab>                      ; dot-prefix → [methods] for file-uri
+[methods] read  reader  
 ```
 
-### Control key commands
+### Switching modes with Ctrl+S
 
-- **Ctrl+A**: Move cursor to beginning of line
-- **Ctrl+E**: Move cursor to end of line  
-- **Ctrl+B**: Move cursor backward (left) one character
-- **Ctrl+F**: Move cursor forward (right) one character
-- **Ctrl+D**: Delete character under cursor (or exit console if line is empty)
-- **Ctrl+K**: Delete from cursor to end of line
-- **Ctrl+U**: Delete from cursor to beginning of line
-- **Ctrl+W**: Delete word before cursor
+Press **Ctrl+S** anytime to cycle through modes. This is especially useful when:
+
+- You want to see **all available functions** → switch to `[index]`
+- You have a value and want to see **what you can do with it** → switch to `[methods]`
+- You want to see **only your local definitions** → switch to `[local]`
+
+```
+x> .wr<Tab>                      ; starts in [methods] - shows methods
+[methods] write  
+x> <Ctrl+S>                      ; switch to [index] - shows ALL words starting with "wr"  
+[index] write  wrap  wrap\in
+```
+
+### Method discovery workflow
+
+A powerful pattern for exploring what you can do with a value:
+
+```
+x> https://api.example.com       ; create a URL
+%https-uri: api.example.com
+x> .<Tab>                        ; immediately see available methods
+[methods] get  post  open  request
+
+x> .get                          ; pick one and use it
+{ "data": ... }
+```
+
+### File path completion
+
+Type `%` to get file and directory suggestions:
+
+```
+x> %src/<Tab>
+%src/main.rye  %src/utils.rye  %src/lib/
+```
+
+### Other shortcuts
+
+The console supports standard readline-style shortcuts (Ctrl+A, Ctrl+E, Ctrl+K, Ctrl+U, Ctrl+W, etc.) for cursor movement and text editing.
+
+Additional Rye-specific shortcuts:
+- **Ctrl+X**: Display and navigate the last result interactively
 - **Ctrl+L**: Clear screen
-- **Ctrl+C**: Interrupt current input and start fresh prompt
+- **Ctrl+D**: Exit console (when line is empty)
 
 ### Multi-line input
 

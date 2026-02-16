@@ -173,7 +173,7 @@ Here's a more complete example showing how validation might be used in a web app
 
 ```clojure
 ; Define a function to handle user registration
-register-user: func [request] [
+register-user: fn { request } {
     ; Validate the request data
     user-data: validate>ctx request/body {
         username: required string
@@ -183,14 +183,14 @@ register-user: func [request] [
     }
     
     ; If validation succeeded, proceed with registration
-    if error? user-data [
+    if failed? user-data {
         return response 400 user-data
-    ]
+    }
     
     ; Use the validated data
     create-user user-data
     response 201 "User registered successfully"
-]
+}
 ```
 
 The validation dialect provides a powerful yet concise way to ensure your data meets your requirements, with automatic type conversion and detailed error reporting when validation fails.

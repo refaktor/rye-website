@@ -7,7 +7,7 @@ summary: "Injecting values in blocks that evaluate."
 mygroup: true
 ---
 
-We've been dancing around this language feature so far, but it's such a natural way to code in Rye that it's used a lot and we couldn't escape it when showing how to use `for` loop, so we already did a little [crash course](). 
+We've been dancing around this language feature so far, but it's such a natural way to code in Rye that it's used a lot and we couldn't escape it when showing how to use `for` loop, so we already did a little crash course in the loops section. 
 
 But we also didn't know op-words then, so we could use just left leaning set-words. Now we will finally be able to use full Rye.
 

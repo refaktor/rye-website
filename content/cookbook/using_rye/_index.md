@@ -1,5 +1,5 @@
 ---
-title: "Using Rye*"
+title: "Using Rye"
 weight: 50
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Deployment*"
+title: "Deployment"
 weight: 1150
 ---
 

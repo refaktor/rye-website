@@ -44,15 +44,20 @@ summaryLength = 30
     weight = 3
 
 [[menu.main]]
+    name = "Fyne"
+    url = "/fyne/"
+    weight = 4
+
+[[menu.main]]
     name = "Reference"
     url = "/info/base.html"
-    weight = 4
+    weight = 5
 
 [[menu.main]]
     name = "Blog"
 #    url = "https://ryelang.blogspot.com/"
     url = "/blog/"
-    weight = 5
+    weight = 6
 
 #[[menu.main]]
 #    name = "Reddit"
@@ -62,7 +67,7 @@ summaryLength = 30
 [[menu.main]]
     name = "Github"
     url = "https://github.com/refaktor/rye"
-    weight = 6
+    weight = 7
 
 [params]
   mainSections = [ "cookbook", "meet_rye" , "subprojects" ] 

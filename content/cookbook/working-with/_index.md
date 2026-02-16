@@ -1,5 +1,5 @@
 ---
-title: "Working with*"
+title: "Working with"
 weight: 220
 ---
 

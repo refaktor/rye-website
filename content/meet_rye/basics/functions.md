@@ -20,7 +20,7 @@ It returns a function value which we assign to a word using a set-word, like any
 ```clojure
 say-hi: fn { name } { print join { "Hi " name } }
 
-double: fn { x } { x * x }
+square: fn { x } { x * x }
 
 is-positive: fn { n } { if n > 0 { return 1 } 0 }
 ```
@@ -33,7 +33,7 @@ We call them like we call built-in functions, by naming them and providing the a
 say-hi "Jane"
 ; prints: "Hi Jane"
 
-double 5
+square 5
 ; returns: 25
 
 is-positive -100
@@ -42,8 +42,7 @@ is-positive -100
 
 ## Pure functions
 
-If you **probe** built-in functions in shell you will see that most of them show something like `[Pure BFunction ...]`. A function being pure means that it has no side effects and that
-it has referential transparency. This means that with the same inputs it will always produce the same output. 
+If you **probe** built-in functions in shell you will see that most of them show something like `[Pure BFunction ...]`. A **pure function** has no side effects and always produces the same output for the same inputs.
 
 Above **join** is a pure built-in function, while print has a side effect, and functions like `now` are not referentially transparent. They will return a different result each time you call them.
 
@@ -111,9 +110,9 @@ add5 50
 ```
 
 
-## Closure
+## Closures
 
-It turns out closures are just a simpler variant of this. A closure is a function that's executed in the context it was defined in.
+A **closure** is a function that executes in the context where it was defined, not where it's called. This lets closures "remember" values from their defining context.
 
 ```clojure
 me: context { 

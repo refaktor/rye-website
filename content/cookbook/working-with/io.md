@@ -1,5 +1,5 @@
 ---
-title: "IO (Input Output)*"
+title: "IO (Input Output)"
 weight: 70
 date: 2024-11-21T19:30:08+10:00
 draft: false
@@ -11,98 +11,193 @@ mygroup: true
 
 *work-in-progress*
 
-## Working with file paths
+## File paths and operations
 
-### Reading a file
+Rye file names and file paths are prefixed with `%`, which is a shorthand for **file-uri**. `%somefile.txt` is a shorthand for `file://somefile.txt`. So we are using methods on `file-uri` Kind.
 
-```lisp
-$ cat > test.txt
-can we all be happy!
-also the sad people! :P
+Use `lg 'file-uri` to see all related methods.
 
-$ rye
+### Analyzing Path
 
+```clojure
+; Get file extension (including the dot)
+File-ext? %data/file.txt        ; returns ".txt"
+File-ext? %data/file.temp.png   ; returns ".png"
+
+; Get filename with extension
+Filename? %path/to/document.pdf ; returns "document.pdf"
+
+; Get filename without extension (stem)
+Stem? %path/to/document.pdf     ; returns "document"
+
+; Get directory path
+Dir? %path/to/document.pdf      ; returns "path/to"
+
+; Split path into components
+Split %path/to/document.pdf     ; returns { "path" "to" "document.pdf" }
+
+; Check if path is absolute
+Is-absolute %/home/user/file.txt  ; returns true
+Is-absolute %relative/path.txt    ; returns false
+
+; Check if file exists
+Does-exist %data/file.txt         ; returns true or false
+```
+
+### Reading files
+
+```clojure
+; Read entire file as string
 Read %test.txt
-; returns string with two lines
+; returns string with full content
 
+; Read file as block of lines
 Read\lines %test.txt
-; returns block with two strings
-; one for each line
-```
-&nbsp;
+; returns block with one string per line
 
-### Writing to a file
-
-```lisp
-"Save me to a disc"
-|Write* %save.txt
-
-"Me too"
-|Write\append* %save.txt   ; TODO
+; Read file as bytes
+Read\bytes %binary.dat
+; returns native bytes object
 ```
 
+### Writing files
 
-## Copying a file
+```clojure
+; Write string to file (creates or overwrites)
+Write %output.txt "Hello, World!\n"
+; returns the content that was written
+```
 
-Rye can copy a file directly from reader to writer without loading it full into memory.
+### File natives
 
-```lisp
-$ cat > source.txt
-hello copy!
+For more control, you can work with opened file natives directly. These are of kind file. Use `lg 'file` to see all related methods.
 
-$ rye
+```clojure
+; Create a new file and write to it
+Create %output.txt
+|Write "Hello, World!\n"
+|Write "Second line\n"
+|Close
 
+; Open existing file for reading
+Open %data.txt :file
+|Read :content
+Close file
+print content
+
+; Get file information
+file: Open %data.txt
+info: Stat file
+print "File size:" ++ to-string Size? info
+file .Close
+```
+
+## Reader/Writer pattern
+
+Rye uses a reader/writer pattern for streaming data. This allows processing large files without loading everything into memory.
+
+### Creating readers
+
+```clojure
+; Reader from file-uri
+reader: Reader %data.txt
+
+; Reader from file object
+Open %data.txt |Reader
+
+; Reader from string (for testing/processing)
+reader "some string content"
+```
+
+```bash
+# Standard input, example from bash
+$ echo "Hello world" | rye -do 'stdin |Read\string'
+```
+
+### Creating writers
+
+```clojure
+; Writer from file object
+; Here we use defer variation that lets us
+; set deferred close of native inline
+Create %output.txt |defer\ 'Close
+|Writer |defer\ 'Close
+|Write "some\n" 
+|Write "data\n"
+```
+
+```bash
+$ rye -silent -do 'stdout |Write "hello\nawk\n"' | awk '{ print $1 }'
+# hello
+# awk
+```
+
+### Reading content
+
+```clojure
+; Read all content as string
+Reader %data.txt :reader |Read\string
+reader .Close
+print content
+```
+
+### Copying between reader and writer
+
+```clojure
+; Copy without loading into memory
 Open %source.txt |Copy Create %destination.txt
+
+; Or using reader explicitly
+reader: Reader %source.txt
+writer: Writer Create %dest.txt
+reader .Copy writer
 ```
 
-## Appending to file
+## Appending to files
 
-Append next number to a file each second, forever.
-
-```lisp
-Open\append %seconds.txt :wr
-
-forever { .to-string ++ "\n" |Write\string* wr , sleep 1000 }
-
-[Ctrl-z]
-
-$ tail -f seconds.txt
-```
-&nbsp;
-
-> #bug Ctrl-z or Ctrl-c don't work when in forever loop
-
-## Tailing a file
-
-The `tail -f` opens a file and waits for appends to a file and prints them. We can also to this in Rye, retrieving additions to a file as they come.
-
-```lisp
-Open %seconds.txt :f
-.Seek\end
-.Reader :r
-forever { Read\string r "\n" |print }
+```clojure
+; Open file for appending
+Open\append %log.txt |defer\ 'Close
+|.Write "New log entry\n"
 ```
 
-## HTTP Download
+## File tailing (monitoring)
 
-Downloading a bigger file without loading it into memmory. Open with htts URI opens a reader, and copy copies (streams) it over to a writer, which we can create with create and a file path.
+The `tail-file` builtin monitors files for new content - useful for log file monitoring:
 
-```lisp
-Open https://fu.gov.si/fileadmin/prenosi/DURS_zavezanci_PO_csv.zip
-|Copy Open %download.zip
+```clojure
+; Tail a file, following new contenta
+tailer: tail-file %app.log true true
+; Arguments: path, follow (true), reopen on rotation (true)
+
+; Read lines as they are added
+forever {
+    line: tailer .Read-line
+    print "New line: " ++ line
+}
+
+; Close when done
+tailer .Close
 ```
 
-## Downloading from FTP
+## Console input
 
-FTP is more complex (stateful?) protocol, but we can use it similarly as HTTP above to download big files with directly streaming them to disc for example.
-
-```lisp
-; load the ftp username and password from a file
-info: context { do Load %.ftpinfo }
-
-Open ftp://download.example.com:21
-|Login info/user info/pwd
-|Retrieve "rtr/MES/BIG_FILE.zip"
-|Copy Create %local3.zip
+```clojure
+; Prompt user for input
+name: input "Enter your name: "
+print "Hello, " ++ name
 ```
 
+<!-- ## Bytes operations
+
+```clojure
+; Read file as bytes
+bytes1: Read\bytes %file1.bin
+
+; Append two byte arrays
+combined: append\bytes bytes1 bytes2
+
+; Write bytes to file
+write\bytes combined "output.bin"
+```
+-->

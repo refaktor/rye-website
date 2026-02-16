@@ -135,6 +135,35 @@ get-user 123 |continue {
 
 ### The Fix\Continue Pattern
 
+The `fix\continue` combinator executes one of two blocks depending on whether the value is in failure state:
+
+```clojure
+; Execute different logic based on success or failure
+result |fix\continue { 
+  "error handler" 
+} { 
+  "success handler" 
+}
+```
+
+There's also `fix\either` which works similarly:
+
+```clojure
+fix\either result { 
+  "error: " ++ message? result 
+} { 
+  "success: " ++ result 
+}
+```
+
+And `fix\else` executes a block only if the value is **not** in failure state:
+
+```clojure
+result |fix\else { 
+  "success - value is: " ++ result 
+}
+```
+
 ## Advanced Error Handling
 
 Rye provides several advanced error handling mechanisms:
@@ -166,18 +195,61 @@ timeout 5000 {
 The `disarm` function clears the failure flag while preserving the error object, allowing you to inspect an error without propagating it:
 
 ```clojure
-; Check if an operation failed without propagating the error
+; Check if an value is a failure without propagating the error
 result: operation |disarm
-if result |failed? [
-  log/error result |message?
-]
+if is-failure result {
+  print "Error: " ++ message? result
+}
 ```
 
 ### Error Testing
 
-The `failed?` function tests if a value is an error:
+The `has-failed` function tests if a failure happened.
 
+```clojure
+has-failed fail "error"     ; Returns true
+has-failed "not an error"   ; Returns false
+
+; Check if something failed and handle it
+some-operation :result .has-failed |if {
+  print "An error occurred: " ++ message? result
+}
 ```
+
+### Error Chaining
+
+Errors can be chained to provide context. Use `failure\wrap` to wrap an existing error:
+
+```clojure
+db-err: failure "Database connection failed"
+app-err: failure\wrap "Application error" db-err
+
+; Extract the root cause
+cause? app-err  ; Returns the inner db-err error
+```
+
+<!-- ### Finally (Resource Cleanup)
+
+The `finally` function ensures cleanup code runs regardless of errors:
+
+```clojure
+finally {
+  potentially-failing-operation
+} {
+  cleanup-code
+}
+```
+-->
+
+### Try
+
+The `try` function executes a block and clears any failure flags:
+
+```clojure
+try { potentially-failing-operation }
+
+; try-all returns a tuple [success, result]
+{ success result }: try-all { potentially-failing-operation }
 ```
 
 ## Real-World Examples
@@ -193,11 +265,12 @@ fetch-user-data: fn { user-id } {
   
   ; Try to fetch the user, with multiple layers of error handling
   Get https://api.example.com/users/ ++ user-id
-    |check "API request failed" 
+    |^check "API request failed" 
     |parse-json 
-    |check "Invalid JSON response"
-    |fix { 
-      ; If anything failed, return a default user
+    |^check "Invalid JSON response"
+    |first 
+    |^fix { 
+      ; If empty, return a default user
       { "id" user-id "name" "Unknown" "status" "error" }
     }
 }
@@ -206,9 +279,54 @@ fetch-user-data: fn { user-id } {
 ### Example 2: Database Transaction with Retry
 
 ```clojure
+save-user: fn { user } {
+  ; Validate input
+  user/valid? user |^ensure "Invalid user data"
+  
+  ; Retry the database operation up to 3 times
+  retry 3 {
+    db/begin-transaction
+    
+    ; Use finally to ensure cleanup on failure
+    finally {
+      db/insert "users" user |^check "Failed to insert user"
+      db/commit-transaction |^check "Failed to commit"
+    } {
+      db/rollback-transaction
+    }
+  }
+  
+  "User saved successfully"
+}
 ```
 
-### Example 3: Cascading Error Handling
+<!-- ### Example 3: Cascading Error Handling
 
 ```clojure
+; Each step adds context to any errors
+process-order: fn { order-id } {
+  fetch-order order-id
+    |^check "Failed to fetch order"
+    |validate-order
+    |^check "Order validation failed"  
+    |calculate-total
+    |^check "Failed to calculate total"
+    |process-payment
+    |^check "Payment processing failed"
+    |send-confirmation
+    |^check "Failed to send confirmation"
+}
 ```
+
+### Example 4: Pattern Matching on Error Status
+
+```clojure
+handle-http-response: fn { response } {
+  ^fix\match response {
+    404 { "Not Found - Resource doesn't exist" }
+    500 { "Server Error - Try again later" }
+    429 { "Too Many Requests - Please slow down" }
+    _ { "Unknown error: " ++ message? response }
+  }
+}
+```-->

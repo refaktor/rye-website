@@ -1,5 +1,5 @@
 ---
-title: "Examples v2"
+title: "Examples"
 date: 2024-10-03T09:22:00+02:00
 draft: false
 group: true
