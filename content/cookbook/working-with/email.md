@@ -19,57 +19,57 @@ Use the gomail-based builtins to compose and send emails via SMTP.
 
 ### Creating and configuring a message
 
-```rye
+```clojure
 ; Create a new email message
-msg: email-message
+email-message
 
 ; Set headers
-msg .Set-header "Subject" "Hello from Rye"
-msg .Set-header 'To "recipient@example.com"
-msg .Set-header 'From "sender@example.com"
+|Set-header "Subject" "Hello from Clojure"
+|Set-header 'To "recipient@example.com"
+|Set-header 'From "sender@example.com"
 
 ; Or use address header with display name
-msg .Set-address-header "From" "sender@example.com" "John Doe"
-msg .Set-address-header "To" "recipient@example.com" "Jane Smith"
+|Set-address-header "From" "sender@example.com" "John Doe"
+|Set-address-header "To" "recipient@example.com" "Jane Smith"
 
 ; Set the body - plain text
-msg .Set-body "text/plain" "Hello, this is the email body."
+|Set-body "text/plain" "Hello, this is the email body."
 
 ; Or HTML body
-msg .Set-body "text/html" "<h1>Hello</h1><p>This is HTML content.</p>"
+|Set-body "text/html" "<h1>Hello</h1><p>This is HTML content.</p>"
 ```
 
 ### Multipart emails (text + HTML)
 
-```rye
-msg: email-message
-msg .Set-header "Subject" "Multipart email"
-msg .Set-address-header "From" "sender@example.com" "Sender"
-msg .Set-address-header "To" "recipient@example.com" "Recipient"
+```clojure
+email-message
+|Set-header "Subject" "Multipart email"
+|Set-address-header "From" "sender@example.com" "Sender"
+|Set-address-header "To" "recipient@example.com" "Recipient"
 
 ; Set plain text as primary body
-msg .Set-body "text/plain" "Plain text version for simple clients."
+|Set-body "text/plain" "Plain text version for simple clients."
 
 ; Add HTML as alternative
-msg .Add-alternative "text/html" "<p>HTML version with <b>formatting</b>.</p>"
+|Add-alternative "text/html" "<p>HTML version with <b>formatting</b>.</p>"
 ```
 
 ### Adding attachments
 
-```rye
-msg: email-message
-msg .Set-header "Subject" "Email with attachment"
-msg .Set-header 'To "recipient@example.com"
-msg .Set-body "text/plain" "Please see the attached file."
+```clojure
+email-message :msg
+|Set-header "Subject" "Email with attachment"
+|Set-header 'To "recipient@example.com"
+|Set-body "text/plain" "Please see the attached file."
 
 ; Attach a file
-msg .Attach %file://document.pdf
-msg .Attach %file://image.jpg
+|Attach %file://document.pdf
+|Attach %file://image.jpg
 ```
 
 ### Sending the email
 
-```rye
+```clojure
 ; Create SMTP dialer with server details
 dialer: new-email-dialer "smtp.gmail.com" 587 "user@gmail.com" "app-password"
 
@@ -83,7 +83,7 @@ Parse email files (EML format) to extract content.
 
 ### Basic parsing
 
-```rye
+```clojure
 ; Parse email from file
 Reader %email.eml |Parse-email :eml
 
@@ -96,8 +96,8 @@ print Message-id? eml
 
 ### Example script for parsing
 
-```rye
-; main.rye - parse email file from command line arg
+```clojure
+; main.clojure - parse email file from command line arg
 file: first args
 
 Reader to-file file |Parse-email :eml
@@ -107,7 +107,7 @@ print "---"
 print Text-body? eml
 ```
 
-Run with: `rye main.rye myemail.eml`
+Run with: `clojure main.clojure myemail.eml`
 
 ## Reading email (IMAP)
 
@@ -115,7 +115,7 @@ Connect to an IMAP server to read emails from mailboxes.
 
 ### Connecting
 
-```rye
+```clojure
 ; Connect with username/password
 client: imap-client "user@gmail.com" "app-password" "imap.gmail.com" 993
 
@@ -125,7 +125,7 @@ client: imap-client\oauth2 "user@gmail.com" "access-token" "imap.gmail.com" 993
 
 ### Listing folders
 
-```rye
+```clojure
 client: imap-client "user@gmail.com" "password" "imap.gmail.com" 993
 
 ; Get list of available folders
@@ -136,7 +136,7 @@ folders |for { .print }
 
 ### Selecting a folder
 
-```rye
+```clojure
 ; Select the inbox
 client .Select-folder "INBOX"
 
@@ -149,7 +149,7 @@ client .Select-folder "Drafts"
 
 Search using IMAP search criteria and get UIDs of matching emails:
 
-```rye
+```clojure
 ; Search for unread emails
 uids: client .Search-emails "UNSEEN"
 
@@ -167,7 +167,7 @@ uids: client .Search-emails "SINCE \"01-Jan-2024\""
 
 Get headers only - fast for listing many emails:
 
-```rye
+```clojure
 uids: client .Search-emails "UNSEEN"
 overviews: client .Get-overviews uids
 
@@ -183,7 +183,7 @@ overviews |for { ::email
 
 Get complete email content including bodies and attachments:
 
-```rye
+```clojure
 uids: client .Search-emails "UNSEEN"
 emails: client .Get-emails uids
 
@@ -199,7 +199,7 @@ emails |for { ::email
 
 ### Managing emails
 
-```rye
+```clojure
 ; Mark email as read
 client .Mark-seen 12345
 
@@ -215,13 +215,13 @@ client .Expunge
 
 ### Closing the connection
 
-```rye
+```clojure
 client .Close
 ```
 
 ### Complete IMAP example
 
-```rye
+```clojure
 ; Connect and process unread emails
 client: imap-client "user@gmail.com" "app-password" "imap.gmail.com" 993
 

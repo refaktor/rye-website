@@ -44,7 +44,7 @@ summaryLength = 30
     weight = 3
 
 [[menu.main]]
-    name = "Fyne"
+    name = "Fyne GUI"
     url = "/fyne/"
     weight = 4
 

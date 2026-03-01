@@ -7,54 +7,18 @@ summary: "A different ways to call regular functions that enable left to right c
 mygroup: true
 ---
 
-And we are finally here. The following are the first noticeable things that probably hit you in the face when you looked at various Rye examples.
+This page covers operators and pipe-words. For the basics of dot-words (op-words), see [Dot-words](/meet_rye/specifics/dotwords).
 
-## Calling functions
+## Quick recap: op-words
 
-Calling functions in Rye is simple. You use a word that is bound to a function, and provide the arguments.
-
-When the evaluator gets to a word bound to a function, it goes forward collecting the necessary number of values for arguments and then evaluates the function. Here are few simple examples:
+Op-words (dot-words) take the first argument from the left:
 
 ```clojure
-print "Call me"
-; prints: Call me
-
-inc 100
-; returns: 101
-
-concat "Fizz" "Buzz"
-; returns: "FizzBuzz"
-
-factor-of 15 3
-; returns: 1
-
-replace "Hello World" "World" "Mars"
+"Hello World" .replace "World" "Mars"
 ; returns: "Hello Mars"
-```
-
-## Calling functions with op-words
-
-Now we will call the same functions with the same arguments, but we'll use op-words instead of regular words. Op-words begin with a dot. In case of an op-word, the first argument is taken from the left.
-
-```clojure
-"Call me" .print
-; prints: Call me
 
 100 .inc
 ; returns: 101
-```
-
-As we see in the following examples, only the first argument is taken from the left. The rest follow like regular words.
-
-```clojure
-"Fizz" .concat "Buzz"
-; returns: "FizzBuzz"
-
-15 .factor-of 3
-; returns: 1
-
-"Hello World" .replace "World" "Mars"
-; returns: "Hello Mars"
 ```
 
 ## Operators

@@ -153,3 +153,16 @@ map\idx { 10 100 1000 } 'i { * i } ; Rye distinguishes between index (offset)
 
 map\pos { 10 100 1000 } 'i { * i } ; and position (first, second, ... )
 ; returns: { 10 200 3000 }
+```
+
+## Other calling styles
+
+Rye also supports calling functions with the first argument from the left using 
+dot-words and pipe-words. This enables left-to-right code flow:
+
+```clojure
+"bob" .capitalize .concat " Smith" |print
+; prints: Bob Smith
+```
+
+See [Dot-words](/meet_rye/specifics/dotwords) and [Op and Pipe-words](/meet_rye/specifics/opwords).
