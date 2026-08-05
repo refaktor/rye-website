@@ -76,7 +76,7 @@ say-hi "Anne"
 ; Error: word print not found
 ```
 
-BTW: `+ * >` we used above are also pure functions. One or two letter operator characters are _op-words_ by default. More on this later.
+BTW: `+ * >` we used above are also pure functions. One or two letter operator characters are [op-words](/meet_rye/specifics/opwords) by default. More on this later.
 
 
 ## Functions with no arguments

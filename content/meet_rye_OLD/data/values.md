@@ -34,7 +34,7 @@ It's Rye's main building _block_. All Rye values (and code) resides inside Block
 
 ```
 
-These two groups of data types can solve a lot of your data definition needs. But another important group can help also.
+These two groups of data types can solve a lot of your data definition . But another important group can help also.
 
 ---
 -- bonus --

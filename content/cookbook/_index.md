@@ -13,7 +13,7 @@ At a high level program could be seen as very flexible, composable, serializable
 
 Program composition is a process of translating from computation verbiage and data structures to the problem domain verbiage and structures, and at the end the end-user verbiage.
 
-In Rye we try to explore these things. For a language to be higher level than what we're used to it also needs higher level (closer to problem/human) data structures.  -->
+In Rye we try to explore these things. For a language to be higher level than what we're used to it also  higher level (closer to problem/human) data structures.  -->
 
 <!-- Programming is translating from computer domain to user / problem domain (or reverse). Rye works closer to the user / problem domain. -->
 

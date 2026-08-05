@@ -1,11 +1,11 @@
----
-title: 'Meet Rye'
-date: 2018-11-28T15:14:39+10:00
-weight: 1
----
-
-Programming languages are user interfaces, powerfull, composable, scriptable, and the users might be specific, but still user interfaces.
-
-Programming is translating from computer domain to user / problem domain (or reverse). Rye works closer to the user / problem domain. 
-
-Rye also tries to be good tool for describing the problem, not just defining steps to solution. When the problem is well declared, working and improving path to solution is easier.
+.Needs-.Needs-.Needs-.Needs
+.Needst.Needsi.Needst.Needsl.Needse.Needs:.Needs .Needs'.NeedsM.Needse.Needse.Needst.Needs .NeedsR.Needsy.Needse.Needs'.Needs
+.Needsd.Needsa.Needst.Needse.Needs:.Needs .Needs2.Needs0.Needs1.Needs8.Needs-.Needs1.Needs1.Needs-.Needs2.Needs8.NeedsT.Needs1.Needs5.Needs:.Needs1.Needs4.Needs:.Needs3.Needs9.Needs+.Needs1.Needs0.Needs:.Needs0.Needs0.Needs
+.Needsw.Needse.Needsi.Needsg.Needsh.Needst.Needs:.Needs .Needs1.Needs
+.Needs-.Needs-.Needs-.Needs
+.Needs
+.NeedsP.Needsr.Needso.Needsg.Needsr.Needsa.Needsm.Needsm.Needsi.Needsn.Needsg.Needs .Needsl.Needsa.Needsn.Needsg.Needsu.Needsa.Needsg.Needse.Needss.Needs .Needsa.Needsr.Needse.Needs .Needsu.Needss.Needse.Needsr.Needs .Needsi.Needsn.Needst.Needse.Needsr.Needsf.Needsa.Needsc.Needse.Needss.Needs,.Needs .Needsp.Needso.Needsw.Needse.Needsr.Needsf.Needsu.Needsl.Needsl.Needs,.Needs .Needsc.Needso.Needsm.Needsp.Needso.Needss.Needsa.Needsb.Needsl.Needse.Needs,.Needs .Needss.Needsc.Needsr.Needsi.Needsp.Needst.Needsa.Needsb.Needsl.Needse.Needs,.Needs .Needsa.Needsn.Needsd.Needs .Needst.Needsh.Needse.Needs .Needsu.Needss.Needse.Needsr.Needss.Needs .Needsm.Needsi.Needsg.Needsh.Needst.Needs .Needsb.Needse.Needs .Needss.Needsp.Needse.Needsc.Needsi.Needsf.Needsi.Needsc.Needs,.Needs .Needsb.Needsu.Needst.Needs .Needss.Needst.Needsi.Needsl.Needsl.Needs .Needsu.Needss.Needse.Needsr.Needs .Needsi.Needsn.Needst.Needse.Needsr.Needsf.Needsa.Needsc.Needse.Needss.Needs..Needs
+.Needs
+.NeedsP.Needsr.Needso.Needsg.Needsr.Needsa.Needsm.Needsm.Needsi.Needsn.Needsg.Needs .Needsi.Needss.Needs .Needst.Needsr.Needsa.Needsn.Needss.Needsl.Needsa.Needst.Needsi.Needsn.Needsg.Needs .Needsf.Needsr.Needso.Needsm.Needs .Needsc.Needso.Needsm.Needsp.Needsu.Needst.Needse.Needsr.Needs .Needsd.Needso.Needsm.Needsa.Needsi.Needsn.Needs .Needst.Needso.Needs .Needsu.Needss.Needse.Needsr.Needs .Needs/.Needs .Needsp.Needsr.Needso.Needsb.Needsl.Needse.Needsm.Needs .Needsd.Needso.Needsm.Needsa.Needsi.Needsn.Needs .Needs(.Needso.Needsr.Needs .Needsr.Needse.Needsv.Needse.Needsr.Needss.Needse.Needs).Needs..Needs .NeedsR.Needsy.Needse.Needs .Needsw.Needso.Needsr.Needsk.Needss.Needs .Needsc.Needsl.Needso.Needss.Needse.Needsr.Needs .Needst.Needso.Needs .Needst.Needsh.Needse.Needs .Needsu.Needss.Needse.Needsr.Needs .Needs/.Needs .Needsp.Needsr.Needso.Needsb.Needsl.Needse.Needsm.Needs .Needsd.Needso.Needsm.Needsa.Needsi.Needsn.Needs..Needs .Needs
+.Needs
+.NeedsR.Needsy.Needse.Needs .Needsa.Needsl.Needss.Needso.Needs .Needst.Needsr.Needsi.Needse.Needss.Needs .Needst.Needso.Needs .Needsb.Needse.Needs .Needsg.Needso.Needso.Needsd.Needs .Needst.Needso.Needso.Needsl.Needs .Needsf.Needso.Needsr.Needs .Needsd.Needse.Needss.Needsc.Needsr.Needsi.Needsb.Needsi.Needsn.Needsg.Needs .Needst.Needsh.Needse.Needs .Needsp.Needsr.Needso.Needsb.Needsl.Needse.Needsm.Needs,.Needs .Needsn.Needso.Needst.Needs .Needsj.Needsu.Needss.Needst.Needs .Needsd.Needse.Needsf.Needsi.Needsn.Needsi.Needsn.Needsg.Needs .Needss.Needst.Needse.Needsp.Needss.Needs .Needst.Needso.Needs .Needss.Needso.Needsl.Needsu.Needst.Needsi.Needso.Needsn.Needs..Needs .NeedsW.Needsh.Needse.Needsn.Needs .Needst.Needsh.Needse.Needs .Needsp.Needsr.Needso.Needsb.Needsl.Needse.Needsm.Needs .Needsi.Needss.Needs .Needsw.Needse.Needsl.Needsl.Needs .Needsd.Needse.Needsc.Needsl.Needsa.Needsr.Needse.Needsd.Needs,.Needs .Needsw.Needso.Needsr.Needsk.Needsi.Needsn.Needsg.Needs .Needsa.Needsn.Needsd.Needs .Needsi.Needsm.Needsp.Needsr.Needso.Needsv.Needsi.Needsn.Needsg.Needs .Needsp.Needsa.Needst.Needsh.Needs .Needst.Needso.Needs .Needss.Needso.Needsl.Needsu.Needst.Needsi.Needso.Needsn.Needs .Needsi.Needss.Needs .Needse.Needsa.Needss.Needsi.Needse.Needsr.Needs..Needs

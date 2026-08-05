@@ -10,7 +10,7 @@ mygroup: true
 
 Rye-fyne has undergone a major upgrade with a new import system and updated syntax. This page contains examples updated for the new system. The new approach uses explicit Go module imports and namespaced widget/container calls for better clarity and maintainability.
 
-If the code below doesn't always make sense to you, check out [Meet Rye](https://ryelang.org/meet_rye/), especially the part about [op and pipe-words](https://ryelang.org/meet_rye/specifics/opwords/).
+If the code below doesn't always make sense to you, check out [Meet Rye](https://ryelang.org/meet_rye/), especially [dot, op and pipe-words](https://ryelang.org/meet_rye/specifics/opwords/).
 
 **Rye-fyne examples won't work with regular Rye. You need to use [Rye-fyne](https://github.com/refaktor/rye-fyne). You can download [release binaries](https://github.com/refaktor/rye-fyne/releases/tag/v0.2.6) for Linux, Windows and Mac or [build your own](https://github.com/refaktor/rye-fyne?tab=readme-ov-file#building-from-source). The documentation on generation and build process is comming. Also tooling to generate APKs.**
 
@@ -143,7 +143,7 @@ lab: widget/label "<date & time>"
 go does {
     forever {
         fyne/do does {
-            lab .set-text now .to-string
+            lab .set-text now .string
         }
         sleep 500
     }
@@ -183,7 +183,7 @@ img .fill-mode! 2  ; original size
 go does {
     sleep 3000  ; waiting for sensors to wake up
     forever {
-        temp-val:: Sensors/get-temperature .to-string ++ " °C"
+        temp-val:: Sensors/get-temperature .string ++ " °C"
         fyne/do does {
             temp .set-text "Outside temp: " ++ temp-val
         }
@@ -256,7 +256,7 @@ widget: import\go "fyne/widget"
 lst: widget/list
     does { 1000000 }
     does { widget/label "num" }
-    fn { i item } { item .set-text to-string i + 1 }
+    fn { i item } { item .set-text string i + 1 }
 
 w: app/new .window "1 million list"
 w .resize fyne/size 220.0 200.0
@@ -288,7 +288,7 @@ lst: widget/list
         name-label: 0 <- box .objects?
         score-label: 1 <- box .objects?
         name-label .set-text 0 <- player
-        score-label .set-text to-string 1 <- player
+        score-label .set-text string 1 <- player
     }
 
 a: app/new
@@ -317,7 +317,7 @@ tab: widget/table
     fn { i o } {
         r: 1 + i .row
         c: 1 + i .col
-        o .set-text r * c .to-string
+        o .set-text r * c .string
     }
 
 a: app/new
@@ -371,7 +371,7 @@ go does {
         n: now
         year: n .year
         fyne/do does {
-            ly .set-text "Year " ++ year .to-string
+            ly .set-text "Year " ++ year .string
             py .set-value n .year-day / days-in year
             ph .set-value n .hour / 24.0
             pm .set-value n .minute / 60.0
@@ -564,7 +564,7 @@ var 'page 1
 next-page: closure { } { if page < 3 { change! inc page 'page } }
 back-page: closure { } { if page > 1 { change! decr page 'page } }
 load-page: closure { } {
-	rich-text .parse-markdown Read to-file join [ "page" page ".md" ]
+	rich-text .parse-markdown Read file join [ "page" page ".md" ]
 	page-label .set-text join [ "Page: " page ]
 }
 
@@ -701,7 +701,7 @@ score-entry: widget/entry
 
 update-entries: does {
     name-entry .set-text "name" <- Movies/current?
-    score-entry .set-text to-string "score" <- Movies/current? }
+    score-entry .set-text string "score" <- Movies/current? }
 
 do\inside Movies { ; seems cleaner this way
     'movies .on-change { update-entries } 
@@ -713,7 +713,7 @@ new-btn: widget/button "New" does { Movies/new-index! }
 
 save-btn: widget/button "Save" does {
     name: name-entry .text? 
-    score: score-entry .text? .to-integer
+    score: score-entry .text? .integer
     do\in Movies {
         either is-new { insert! name score } 
                       { update! current-id? name score }

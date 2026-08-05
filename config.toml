@@ -2,7 +2,7 @@ baseURL = "https://ryelang.org"
 languageCode = "en-us"
 title = "Rye Language"
 themesDir = "../.."
-theme = "hugo-whisper-theme"
+theme = "hugo-whisper-theme-v2"
 
 ignoreFiles = ["meet_rye/_code/", "meet_rye/load_do/" ]
 
@@ -31,6 +31,11 @@ summaryLength = 30
 #[[menu.main]]
 #    name = "Home"
 #    url = "/"
+#    weight = 1
+
+#[[menu.main]]
+#    name = "Install"
+#    url = "/install/"
 #    weight = 1
 
 [[menu.main]]
@@ -70,6 +75,7 @@ summaryLength = 30
     weight = 7
 
 [params]
+  release_version = "v0.2.58"
   mainSections = [ "cookbook", "meet_rye" , "subprojects" ] 
   google_analytics_id=""
   homepage_button_link = '/cookbook'
@@ -92,8 +98,8 @@ summaryLength = 30
     #meta_twitter_creator = "@refaktor"
 
   [params.logo]
-      mobile = "/images/logo.png"
-      standard  = "/images/logo.png"
+      # mobile = "/images/logo_v2.png"
+      # standard  = "/images/logo_v2.png"
       # standard  = "/images/logo.svg"
       
 

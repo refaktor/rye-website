@@ -31,7 +31,7 @@ Instead of the server exposing fixed functions like `getUser(id)` and `getPosts(
 The server receives this code, verifies it (more on security soon!), executes it within the pre-defined "user profile reader" context, and sends the result (the combined name and post titles map) back to the client.
 Why is this Interesting?
 
-    Flexibility & Composability: Clients aren't limited to predefined API calls. They can compose complex queries or operations on the fly, tailored to their exact needs, using the functions available in the remote context.
+    Flexibility & Composability: Clients aren't limited to predefined API calls. They can compose complex queries or operations on the fly, tailored to their exact , using the functions available in the remote context.
     Reduced Network Chattiness: Operations that might take multiple back-and-forth API calls could potentially be performed in a single remote evaluation, reducing latency.
     Powerful Interaction: Imagine connecting to a remote context via a REPL! You could interactively explore data, debug issues, or orchestrate tasks manually by executing Rye code directly on the remote system within its secure context.
 
@@ -42,7 +42,7 @@ Executing arbitrary remote code sounds dangerous, and it absolutely can be witho
     Code Signing (Mandatory): Code sent for evaluation must be digitally signed (e.g., using Ed25519 keys, similar to SSH key pairs). The server verifies the signature against a list of trusted public keys before even looking at the code. This confirms who sent the code.
     Secure Contexts (Capability Control): The context definition is the core authorization mechanism. If a function isn't explicitly included in the context the code runs in, it cannot be called. Contexts must be carefully defined to grant least privilege – only the functions absolutely necessary for the intended purpose. This limits what the code can do.
     Resource Limiting: Evaluations must be strictly constrained. CPU time limits, memory allocation limits, and instruction count limits are essential to prevent denial-of-service attacks from resource-hungry code (malicious or accidental).
-    Sandboxing: The Rye interpreter itself needs to enforce context boundaries, and ideally, the entire evaluation process should run within OS-level sandboxes (containers, microVMs, syscall filters) for an extra layer of containment.
+    Sandboxing: The Rye interpreter itself  to enforce context boundaries, and ideally, the entire evaluation process should run within OS-level sandboxes (containers, microVMs, syscall filters) for an extra layer of containment.
 
 Security isn't an afterthought here; it has to be woven into the very fabric of the system.
 Connecting Systems

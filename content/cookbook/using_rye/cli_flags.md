@@ -289,6 +289,6 @@ rye -ctx 'os pipes' -do 'data: load\csv %data.csv |autotype 1.0' -console
 
 ## Conclusion
 
-Rye's command line flags offer tremendous flexibility and power. By combining these flags in creative ways, you can build efficient workflows for development, data processing, security, and automation. Experiment with different combinations to discover the approach that works best for your specific needs.
+Rye's command line flags offer tremendous flexibility and power. By combining these flags in creative ways, you can build efficient workflows for development, data processing, security, and automation. Experiment with different combinations to discover the approach that works best for your specific .
 
 -->

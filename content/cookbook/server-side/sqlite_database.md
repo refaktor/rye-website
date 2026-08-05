@@ -24,7 +24,7 @@ SQLite databases are file-based and easy to work with. Use the `open` function w
 What's new: `Open` `sqlite-schema`
 
 ```lisp
-rye .needs { sqlite }
+rye .Needs { sqlite }
 
 db: Open sqlite://sample.s3db
 ```
@@ -127,6 +127,25 @@ db .Query { select * from pets where id > ?min-id and species = ?pet-species }
 
 The `?variable` syntax automatically creates prepared statements with proper parameter binding, making your code both safe and readable.
 
+### Alternate parameter blocks (SQL string + params)
+
+For quick one-offs, you can also pass SQL as a string followed by positional parameters inside a block. The first value must be a string (the SQL with ? placeholders); the rest are the argument values.
+
+```lisp
+; Query with positional parameters
+db .Query { "select * from pets where id >= ? and species = ?" 2 "dog" }
+|display
+
+; Exec with positional parameters
+db .Exec { "insert into pets ( name , species ) values ( ? , ? )" "Milo" "dog" }
+```
+
+Commas inside the block are optional and may be used for readability:
+
+```lisp
+db .Query { "select * from pets where id >= ? and species = ?" , 2 , "dog" }
+```
+
 ## Debugging SQL
 
 Use `Show-SQL` to see the generated SQL and parameter values without executing the query.
@@ -144,6 +163,14 @@ db .Show-SQL { select * from pets where species = ?search-term and id >= ?min-id
 ```
 
 This is useful for debugging complex queries and understanding how parameters are bound.
+
+## Closing the database
+
+When you're done with the connection, close it to free resources.
+
+```lisp
+db .Close
+```
 
 <!-- ## Working with results
 
@@ -176,7 +203,7 @@ The `htmlize` function is particularly useful for web applications where you nee
 Here's a complete example showing how to build a simple blog system with SQLite.
 
 ```lisp
-rye .needs { sqlite }
+rye .Needs { sqlite }
 
 ; Open database
 blog-db: open sqlite://blog.db

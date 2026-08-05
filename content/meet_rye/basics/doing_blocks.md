@@ -121,7 +121,6 @@ Do block, is automatically also good at declaring priority of execution with Rye
 ; returns first value in JSON
 ```
 
-You will learn more about what are operators (op-words) and how they are evaluated later. Given the difference between op and pipe-words
-(later) parenthesis aren't needed for priority that often, but they have its place.
+You will learn more about [dot, op and pipe-words](/meet_rye/specifics/opwords) later. Given the difference between them, parentheses aren't needed for priority that often, but they have their place.
 
 

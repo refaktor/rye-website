@@ -1,240 +1,203 @@
 ---
-title: 'Op and Pipe-words'
+title: 'Pins, Bridges and Walls'
 date: 2019-02-11T19:30:08+10:00
 draft: false
-weight: 300
-summary: "A different ways to call regular functions that enable left to right code flow."
+weight: 292
+summary: "Three word types that take their first argument from the left: dot-words (pins), op-words (bridges), and pipe-words (walls)."
 mygroup: true
 ---
 
-This page covers operators and pipe-words. For the basics of dot-words (op-words), see [Dot-words](/meet_rye/specifics/dotwords).
+Rye's base dialect has no special forms — all code evaluates the same way, based only on the types of words in a block. Three word types take their first argument from the **left**, enabling left-to-right code flow, each with a different behavior. Think of them as physical elements:
 
-## Quick recap: op-words
+- **Pins** (dot-words) attach tightly to what's immediately beside them
+- **Bridges** (op-words) connect two peers
+- **Walls** (pipe-words) block everything until it's fully evaluated
 
-Op-words (dot-words) take the first argument from the left:
+## Four ways to call a function
+
+The same function can be called in four positions:
+
+| Position | Syntax | First argument from | Associativity |
+|----------|--------|---------------------|---------------|
+| Regular word (front) | `word` | right | - |
+| Dot-word (pin) | `.word` | left (immediate) | left-to-right |
+| Op-word (bridge) | `+` or `<word>` | left | left-to-right |
+| Pipe-word (wall) | `\|word` | left (after full eval) | left-to-right |
+
+```clojure
+add: ?_+        ; assign a function bound to _+ to add word
+
+add 10 20       ; regular word
+10 .add 20      ; dot-word (pins to 10)
+10 + 20         ; operator (op-word, bridges 10 and 20)
+10 <add> 20     ; op-word with angle brackets
+5 + 5 |add 10   ; pipe-word (waits for 5 + 5 first)
+```
+
+## Dot-words: The Pin
+
+Dot-words pin to the first value on the left and **create atoms** — tightly bound units that complete before other operations can interfere.
+
+```clojure
+inc 100        ; regular word - argument from the right
+; returns: 101
+
+100 .inc       ; dot-word - pins to 100
+; returns: 101
+```
+
+### Chaining dot-words: left-to-right
+
+When dot-words are chained, they evaluate **left-to-right** — each forms its atom and passes the result to the next:
+
+```clojure
+5 .+ 3 .* 2
+; first atom: 5 .+ 3 = 8
+; second atom: 8 .* 2 = 16
+; returns: 16
+
+10 .inc .inc .string
+; 10 .inc = 11, 11 .inc = 12, 12 .string = "12"
+
+"hello world" .upper .length?
+; "HELLO WORLD" .length? = 11
+```
+
+### Atoms don't leak
+
+When a pin collects its arguments, it **doesn't consume other pins or bridges**:
+
+```clojure
+10 .+ 3 .string     ; PIN grabs 3, not .string → atom: 13 → "13"
+10 .* 2 + 5         ; PIN grabs 2, leaves + 5   → atom: 20 → 25
+10 - 10 .dec        ; .dec pins to right 10 = 9  → 10 - 9 = 1
+```
+
+### With multiple arguments
+
+Only the first argument comes from the left. Additional arguments are collected normally:
 
 ```clojure
 "Hello World" .replace "World" "Mars"
 ; returns: "Hello Mars"
 
-100 .inc
-; returns: 101
+10 .+ 5 .string
+; .+ takes 10 from left, 5 from right → atom: 15 → "15"
 ```
 
-## Operators
+## Op-words: The Bridge
 
-What are operators then? Operators in Rye are nothing special, they are just regular functions usually taking two arguments. The only difference is that one and two letter operator characters are by default recognized as **op-words**, they don't need the dot in front. 
+Op-words create bridges between two expressions. Unlike pins, bridges **allow atoms to form** in their arguments.
 
-The regular spelling of the word in this case is with an added underscore in front of the op-word. For the op-word `+`, the regular word is `_+`.
+All operators like `+ - * /` are op-words and evaluate **left-to-right**:
 
 ```clojure
-_+ 3 2                  ; _+ regular word
-; returns: 5
-_* 3 2
-; returns: 6
+12 - 6 - 4
+; (12 - 6) - 4 = 2
 
-3 + 2                   ; + op-word
-; returns: 5
-3 * 2
-; returns: 6
+10 * 5 + 2 * 3
+; ((10 * 5) + 2) * 3 = 156
 ```
 
-## Pipe-words
+The prefix form of an operator uses an underscore: for `+`, the regular word is `_+`.
 
-Pipe words behave similarly or in simple cases exactly the same as op-words. So you will get the same results in these examples as with op-words:
+### Bridges allow atoms inside
 
 ```clojure
-"Call me" |print
-; prints: Call me
+10 - 10 .dec
+; right atom: 10 .dec = 9 → bridge: 10 - 9 = 1
 
-100 |inc
-; returns: 101
-
-"Fizz" |concat "Buzz"
-; returns: "FizzBuzz"
-
-15 |factor-of 3
-; returns: 1
-
-"Hello World" |replace "World" "Mars"
-; returns: "Hello Mars"
-
-3 |+ 2
-; returns: 5
-3 |* 2
-; returns: 6
+10 .inc - 10 .dec
+; left atom: 11, right atom: 9 → bridge: 2
 ```
 
+### Angle brackets
 
-## The difference
-
-The difference is in how they combine into larger _sentences_, how they combine with values, regular words and other op/pipe-words. 
-
-Op-word applies to the first value it can on the left, and pipe-word lets all expressions on the left evaluate and then takes the result as the first argument.
-
-This simple example shows the difference:
+Any word can be turned into an op-word with angle brackets `< >`:
 
 ```clojure
-13 + 14 .print |print
-; prints:
-; 14
-; 27
+"Hello" <concat> "World"    ; returns: "HelloWorld"
+{ "Jim" "Jane" } <join\with> ", "  ; returns: "Jim, Jane"
 ```
 
-More examples
+## Pipe-words: The Wall
+
+Pipe-words act as a **wall** — everything on the left must fully evaluate before the pipe-word takes the result.
 
 ```clojure
-inc 10 * 10
-; returns: 101
-
-inc 10 |* 10
-; returns: 110
-
-"hi " .concat to-upper "joe " .concat "doe"
-; returns: "Hi JOE DOE"
-
-"hi " .concat to-upper "joe " |concat "doe"
-; returns: "Hi JOE doe"
-
-"Fizz" .print .concat "Buzz" .print |print
-; prints:
-; Fizz
-; Buzz
-; FizzBuzz
+inc 10 * 10     ; * bridges 10 and 10: inc 100 = 101
+inc 10 |* 10    ; wall: inc 10 = 11, then 11 * 10 = 110
 ```
 
-## First argument choice
-
-Because first argument comes from previous expressions on the left, functions in Rye use the _active/input_ value as the first argument if possible. 
-
-It's not always strictly determinable, but in general in a function one value is the input, the active value and other values are often parameters / settings / options. This sometimes means the same order as we're already used to from other languages, 
-but sometimes order is specific.
-
-Let's look at one such chain:
-
-```lisp
-; file hello.txt contains "Hello World"
-
-msg: "hello"
-
-read to-file msg .concat ".txt"
-|replace "World" "Mars"
-|split " "
-|second |printv "Planet {}"
-; prints: Planet Mars
-|write %planet.txt
-; writes "Mars" to file planet.txt
-```
-
-From the example above, in replace we expect the active value to be the first argument, but printv and write would probably take template string or filename as the first argument in other languages.
-
-
-## Second argument from the left
-
-In practice, sometimes it's very beneficial if you can take second argument from the left, not the first one. For example, the value that is coming down the pipe is the second argument, or you want to change the order of arguments to get the desired effect. Or with generic functions (more on that later), they dispatch on the _kind_ of first argument, and sometimes the active value is the second argument.
-
-So if an op or pipe-word ends with a **star** "*" at the end, it takes the second argument from the left, not the first.
+### Building pipelines
 
 ```clojure
-; let's say that the word to replace comes down the pipe, not input string 
+read %data.txt
+|parse-json
+|filter { .active }
+|length?
+|print
+```
 
+Each `|` ensures the previous step completes before continuing.
+
+## Combining All Three
+
+```clojure
+; Pins create atoms, bridge connects, wall separates stages
+data .filter { .age > 18 }
+|map { .name .upper }
+|join\with ", "
+|print
+```
+
+Debugging with `.print` vs `|print`:
+
+```clojure
+10 + 3 .print * 100 |print / 3
+; .print pins to 3 → prints: 3
+; |print waits for whole left → prints: 1300
+; returns: 433.333...
+```
+
+## Priority summary
+
+| Type | Syntax | Associativity | Captures |
+|------|--------|---------------|----------|
+| Pin (`.word`) | `.word` | left-to-right | immediate left value + own args |
+| Bridge (`<word>`, `+`) | `<word>` or operator | left-to-right | one peer on each side |
+| Wall (`\|word`) | `\|word` | left-to-right | full left evaluation |
+| Set-word | `x::` | right | everything to the right |
+| Left set-word | `::x` | left | like pipe-word |
+
+**Set-words and mod-words** have even higher priority than pipe-words — they capture everything that follows (or precedes) to the end of the expression:
+
+```clojure
+x:: 12 - 6 - 4       ; x = 2
+x:: inc 10 |* 10      ; x = 110
+
+12 - 6 - 4 ::x        ; x = 2
+101 ::x + 1 |+ 2 |* 3 ::y
+; x = 101, y = 312
+```
+
+When in doubt, parentheses give explicit control:
+
+```clojure
+( 12 - 6 ) - 4   ; result: 2
+12 - ( 6 - 4 )   ; result: 10
+```
+
+## Second Argument from the Left
+
+Sometimes you need the **second** argument from the left. Add a star `*` at the end:
+
+```clojure
 word: "apple"
-
 str: "did snake eat the apple?"
 
 word .replace* str "****" |print
 ; prints: did snake eat the ****?
-
-; or we want a reverse effect
-
-word .concat* "- " |print 
-; prints: - apple
 ```
 
-## Warning: math expressions
-
-We saw Operators before, but let's review it again. 
-In Rye, operators like `+ - * /` are regular functions in the form of op-words. The only difference is that these math operators are loaded as op-words by default while regular `.words` need a dot in front to be
-op-words. Their non op-word (prefix) form is: `_+ _- _* _/ `, so: 
-
-```clojure
-1 + 2 + 3
-; returns 6
-
-_+ 1 _+ 2 3
-; or
-_+ _+ 1 2 3
-; returns 6
-```
-
-And you can use the same function as pipe words using: `|_+ |_- |_* |_/` or shorter `|+ |- |* |/`. But what does all this means for functions (or operators) that are **not associative** and **commutative** like addition is?
-It means you have to be aware of the fact that operators are still op-words and behave like them, not like regular math operators.
-
-```clojure
-; add 12 and 3 and divide the result by 3 (prefix)
-_/ _+ 12 3 3
-; returns 5
-
-; using pipe word for division
-12 + 3 |/ 3
-; returns 5
-
-; using just op-words
-12 + 3 / 3
-; returns 13 -- Oops!
-; op-words evaluate from right to left, pipe-words left to right 
-
-; subtracting 3 numbers also doesn't do what you would expect from regular math
-100 - 12 - 5
-; returns 93
-; first 5 is subtracted from 12, which gives 7, and then 7 is subtracted from 100
-
-; addition and multiplication have same operator precedence
-; but if this was a regular math expression, we would expect 56 as the result
-10 * 5 + 2 * 3
-; returns 110
-; when calculated from right to left (due to op-word operation order):
-; 2 * 3 = 6
-; 6 + 5 = 11
-; 11 * 10 = 110
-```
-
-Why is that? Rye comes from the family of languages where the whole language is uniform and math expressions are not treated any differently. These languages usually see it as a plus, that you don't have to learn (complex?)
-operator precedence rules. Yes, we all know precedence rules between `+ - * /` but what about all other operators or functions like `! and or & > < ...`, so they might have a point.
-
-In REBOL, math expressions are always evaluated left to right, which is more natural than right to left, but you will get shot in the foot just the same if you are not aware of it. Lisp goes a step beyond and doesn't even
-have infix operators or functions. In Forth it's the same, all functions (also operators) are postfix.
-
-```clojure
-; in REBOL
-10 * 5 + 2 * 3
-; returns 156 (left to right)
-
-; in Lisp this would be written, which has its aesthetics too
-(+ (* 10 5) (* 2 3))
-
-; and in Forth (Factor)
-10 5 * 2 3 * +
-```
-
-All 3 languages value internal consistency above conventions and so does Rye. So what can you do in Rye in this case:
-
-```clojure
-; in Rye (and REBOL) we can use parentheses to explicitly define the order
-; of operations we want, and this is IMO the most natural way to do this
-
-( 10 * 5 ) + ( 2 * 3 )
-; or just
-( 10 * 5 ) + 2 * 3
-; return 56
-
-; technically we could use the distinction between op and pipe words
-10 * 5 |+ 2 * 3
-; returns 56
-
-; and Rye has the below function that follows math precedence rules, and you can
-; find plenty of math-specific functions (do `cc math lc` to see them)
-
-math/calc { 10 * 5 + 2 * 3 }
-; returns 56
-```
+This works for all three types: `.word*`, `<word>*`, `|word*`.

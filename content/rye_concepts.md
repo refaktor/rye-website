@@ -45,11 +45,11 @@
 
    ```clojure
    ; Using pipe-words for data flow
-   "Hello World" |replace "World" "Rye" |to-upper |print
+   "Hello World" |replace "World" "Rye" |upper |print
    ; Prints: HELLO RYE
    
    ; Using op-words for method-like calls
-   "Hello World" .replace "World" "Rye" .to-upper .print
+   "Hello World" .replace "World" "Rye" .upper .print
    ; Prints: HELLO RYE
    ```
 
@@ -424,7 +424,7 @@
 4. **Security-Critical Applications**
    - Applications requiring strict control over system resources
    - Scripts with limited permissions
-   - Code that needs to be verified for authenticity
+   - Code that  to be verified for authenticity
 
    ```clojure
    ; Running a script with security constraints

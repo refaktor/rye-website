@@ -74,7 +74,7 @@ square: pfn { x } { x * x }              ; creates a pure function
 ; Imagine you are loading a list of 1 million JSON objects. If we don't prematurely
 ; turn all values to Rye values (box them) we can load them as fast as Go does.
 ; Then we can select a smaller section of them, or aggregate them in this raw mode. 
-; So Rye directly usually only needs to work with a subset of that full data.
+; So Rye directly usually only  to work with a subset of that full data.
 user: dict { "id" 103 "name" "jime" }    ; creates a dict
 primes: list { 2 3 5 7 11 13 }           ; creates a list
 ```

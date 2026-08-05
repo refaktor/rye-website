@@ -27,7 +27,7 @@ This is the simplest HTTP server example in Rye. It demonstrates the basic build
 What's new: `http-server` `Handle` `Write` `Serve`
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 http-server ":8081"
 |Handle "/hello" fn { w r } { .Write "Hello world" }
@@ -46,7 +46,7 @@ Static file serving is essential for web applications that need to serve HTML, C
 Keywords: `http` `static` `folder`
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 http-server ":8085"
 |Handle "/" static-handler %public_html
@@ -62,7 +62,7 @@ This example demonstrates how to create a simple API endpoint that returns syste
 What's new: `http` `os` `load-avg?` `to-json` 
 
 ```lisp
-rye .needs { http os }
+rye .Needs { http os }
 
 http-server ":8086"
 |Handle "/" fn { w r } { do\in os { load-avg? |to-json |Write* w } }
@@ -78,7 +78,7 @@ WebSockets enable real-time bidirectional communication between client and serve
 What's new: `handle-ws` `read` `write`
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 http-server ":9090"
 |Handle-ws "/echo" fn { s ctx } { forever { Read s |Write* s } }
@@ -103,7 +103,7 @@ What's new: `Write-header` `Set-header` `Copy`
 Accept a key, hash it, if the file with that name exists return it.
 
 ```lisp
-rye |needs { http bcrypt }
+rye |Needs { http bcrypt }
 
 handle-file-get: fn { w r } {
 
@@ -123,7 +123,7 @@ handle-file-get: fn { w r } {
 	with w {
 		.Write-header 200 ,
 		.Set-header 'Content-Type "application/octet-stream" ,
-		.Set-header 'Content-Length probe to-string info .size? ,
+		.Set-header 'Content-Length probe string info .size? ,
 		.Set-header 'Content-Disposition "attachment; filename=mycert.p12"
 	}
 
@@ -148,15 +148,15 @@ What's new: `parse-multipart-form!` `form-file?`
 Serve static files on /static/ route and offer file upload on /upload
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 ; generate path in uploads dir using curr. time,
 ; file extension. example: uploads/2023-03-06013601.png
 
 gen-path: fn1 {
 	.Filename? .File-ext? :ext
-	now .to-string .replace-all* regexp "[ :]" ""
-	|concat* "uploads/" |+ ext |to-file 
+	now .string .replace-all* regexp "[ :]" ""
+	|concat* "uploads/" |+ ext |file 
 }
 
 ; handle upload
@@ -183,7 +183,7 @@ Keywords: `http` `API` `bleve` `search` `CSV`
 
 
 ```lisp
-rye .needs { http bleve }
+rye .Needs { http bleve }
 
 private\ "opens or creates a bleve index" {
         %companies.bleve :db |open-bleve
@@ -219,7 +219,7 @@ This example shows how to extract and process URL query parameters, demonstratin
 What's new: `Query?` `Url?` `Path?`
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 handle-greet: fn { w r } {
 	name: Query? r "name" |fix { "Anonymous" }
@@ -245,7 +245,7 @@ This example demonstrates how to set and retrieve cookies, and manage user sessi
 What's new: `cookie-store` `get` `set` `save` `cookie-val?`
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 store: cookie-store "my-secret-key-change-in-production"
 
@@ -285,7 +285,7 @@ This example shows comprehensive form handling, including both simple form field
 What's new: `full-form?` `set-content-type`
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 handle-contact: fn { w r } {
 	form-data: full-form? r |^fix { 
@@ -297,7 +297,7 @@ handle-contact: fn { w r } {
 	
 	html: "<h2>Form Data Received:</h2><ul>"
 	form-data |each key val {
-		html: html + "<li><strong>" + key + ":</strong> " + to-string val + "</li>"
+		html: html + "<li><strong>" + key + ":</strong> " + string val + "</li>"
 	}
 	html: html + "</ul>"
 	
@@ -327,7 +327,7 @@ This example demonstrates advanced static file serving with path stripping, usef
 What's new: `http-dir` `strip-prefix`
 
 ```lisp
-rye .needs { http }
+rye .Needs { http }
 
 ; Serve files from ./assets folder on /static/ URL path
 static-handler: static-handler %assets |strip-prefix "/static/"
@@ -359,7 +359,7 @@ What's new: `validate` `Full-form?` `sqlite`
 ;
 ; Code uses SQL and Validation dialects which are the usual part of Ryelang
 
-rye |needs { sqlite http }
+rye |Needs { sqlite http }
 
 assure-requests-table: fn { db } {
       Exec db {
@@ -384,13 +384,13 @@ handle-paypal-ipn: fn { w r } {
 	}
 	|^fix {
 		Write-header w 403 ,
-		.to-string .Write* w
+		.string .Write* w
 	}
 	|pass {
 		db: Open sqlite://paypal_ipn.db
 		|assure-requests-table
 	}
-	|to-context .do-in {
+	|context .do-in {
 		Exec db {
             insert into requests ( id , payment_status , business , receiver_email , mc_gross  )
             values               ( null , ?payment_status , ?business , ?receiver_email , ?mc_gross )

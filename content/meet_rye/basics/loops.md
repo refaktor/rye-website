@@ -39,7 +39,7 @@ print a                   ; prints: 123
 
 loop 3 { ::i , prns i }   ; loop function injects loop number into the 
                           ; code block and left set-word can pick it up
-; prints: 1 2 3
+; prints: 0 1 2
 
 	                      ; because loop is repeater i is assigned multiple
 						  ; times, hence the need for a mod-word
@@ -63,7 +63,7 @@ The `for` function takes a block of values and a block of code. It iterates thro
 ```clojure
 names: { "Jim" "Jane" "Anne" }
 
-for names { ::name , print "Hi " + name }
+for names { ::name , print "Hi " ++ name }
 ; prints:
 ; Hi Jim
 ; Hi Jane

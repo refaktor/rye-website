@@ -14,7 +14,7 @@ mygroup: false
 
 Rye started out focused on 'backed development' and 'interactive use in console' and it still is. But **[Go's Fyne GUI library](https://fyne.io/)** was just too tempting not to try to integrate. It's easy to deploy, works on desktop and mobile platforms and keeps getting better.
 
-If the code below doesn't always make sense to you, check out [Meet Rye](https://ryelang.org/meet_rye/), especially the part about [op and pipe-words](https://ryelang.org/meet_rye/specifics/opwords/).
+If the code below doesn't always make sense to you, check out [Meet Rye](https://ryelang.org/meet_rye/), especially [dot, op and pipe-words](https://ryelang.org/meet_rye/specifics/opwords/).
 
 <!-- Rye started out focused on 'backed development' and 'interactive use in console'. However, with the continuous improvement of Go's Fyne GUI framework, we were tempted to explore integrating it to see how Rye could handle GUI code.
 
@@ -135,7 +135,7 @@ do\in fyne {
 
 	lab: label "<date & time>"
 
-	update-time: does { lab .set-text now .to-string }
+	update-time: does { lab .set-text now .string }
 
 	go does { forever { sleep 100 , update-time } }
 	
@@ -173,7 +173,7 @@ do\par fyne {
 	go fn { } {
 		sleep 3 .seconds  ; waiting for sensors to wake up
 		forever {
-			Sensors/get-temperature .to-string + " °C"
+			Sensors/get-temperature .string + " °C"
 			|concat* "Outside temp: "
 			|set-text* temp ,
 			sleep 1 .seconds
@@ -235,7 +235,7 @@ do\par fyne {
 
 	lst: list does { 1000000 }
 	does { label "num" }
-	fn { i item } { item .set-text to-string i + 1 }
+	fn { i item } { item .set-text string i + 1 }
 
 	app .window "1 million list"
 	|resize size 220.0 200.0
@@ -263,7 +263,7 @@ do\par fyne {
 	does { h-box [ label "name" label "score" ] }
 	fn { i box } { set! box .objects? { name score }
 		name .set-text 0 <- i <- players
-		score .set-text to-string 1 <- i <- players }
+		score .set-text string 1 <- i <- players }
 	
 	with win {
 		.resize size 220.0 200.0 ,
@@ -291,7 +291,7 @@ do\par fyne {
 	does { label "..." }
 	fn { i o } {
 		r: 1 + i .row? , c: 1 + i .col?
-		o .set-text to-string r * c
+		o .set-text string r * c
 	}
 	
 	with win {
@@ -368,7 +368,7 @@ do\par fyne {
 	}
 	|show-header-row! true
 	|update-header! fn { i o } {
-		team .header? -> i .col? |to-string .set-text* o
+		team .header? -> i .col? |string .set-text* o
 	}
 	
 	with win {
@@ -390,7 +390,7 @@ efficietly used as a app-level "database". We are changing some things so they c
 ![shoping list app](../shopping_list.png)
 
 ```lisp
-rye .needs { fyne }
+rye .Needs { fyne }
 
 Data: context {
 
@@ -417,19 +417,19 @@ do\par fyne {
 		idx: hide label "idx"
 		h-box [
 			check "" fn\par { v } current
-			{ Data/check! to-integer idx .text? v , lst .refresh }
+			{ Data/check! integer idx .text? v , lst .refresh }
 			label ""
 			idx
 			layout-spacer
 			button-with-icon "" delete-icon fn\par { } current
-			{ Data/remove! to-integer idx .text? , lst .refresh }
+			{ Data/remove! integer idx .text? , lst .refresh }
 		]
 	}
 	fn { i box } { 
 		set! box .objects? { chk lbl hdn xo btn }
 		chk .set-checked 0 <- i <- deref Data/tasks
 		lbl .set-text 1 <- i <- deref Data/tasks
-		hdn .set-text to-string i
+		hdn .set-text string i
 	}
 
 	input: entry

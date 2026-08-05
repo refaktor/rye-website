@@ -108,7 +108,7 @@ If we wanted to **sum** the population in the previous example, we could convert
 ```lisp
 load\csv battle_of_darkness.csv
 |column? 'population 
-|map { .to-integer } 
+|map { .integer } 
 |sum
 ; returns 22000
 ```
@@ -194,7 +194,7 @@ Here we create a table of multiples of the first five prime numbers:
 primes: { 2 3 5 7 11 }
 
 map primes { ::x map primes { * x } }
-|table\rows* map primes ?to-string
+|table\rows* map primes ?string
 |display
 
 ; displays:

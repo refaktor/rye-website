@@ -100,7 +100,7 @@ print Message-id? eml
 ; main.clojure - parse email file from command line arg
 file: first args
 
-Reader to-file file |Parse-email :eml
+Reader file file |Parse-email :eml
 
 print "Subject: " ++ Subject? eml
 print "---"
@@ -229,7 +229,7 @@ client .Select-folder "INBOX"
 uids: client .Search-emails "UNSEEN"
 
 either uids .length? > 0 {
-    print "Found " ++ to-string length? uids ++ " unread emails"
+    print "Found " ++ string length? uids ++ " unread emails"
     
     emails: client .Get-emails uids
     emails |for { ::email

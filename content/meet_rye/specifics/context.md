@@ -161,7 +161,7 @@ Rye is a context-oriented language, where words get their meanings in specific c
 that it makes sense to define context circle with context math as the first parent.
 
 ```clojure
-rye .needs { math } ; check if we have math module built-in
+rye  { math } ; check if we have math module built-in
 
 circle: extends math { 
 	circumference: fn { r } { 2 * pi * r }

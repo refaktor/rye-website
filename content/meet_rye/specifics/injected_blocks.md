@@ -9,7 +9,7 @@ mygroup: true
 
 We've been dancing around this language feature so far, but it's such a natural way to code in Rye that it's used a lot and we couldn't escape it when showing how to use `for` loop, so we already did a little crash course in the loops section. 
 
-But we also didn't know op-words then, so we could use just left leaning set-words. Now we will finally be able to use full Rye.
+But we also didn't know [dot-words](/meet_rye/specifics/opwords) then, so we could use just left leaning set-words. Now we will finally be able to use full Rye.
 
 ## With function
 
@@ -102,7 +102,7 @@ Rye supports a great number of functions for patterns that are usually called hi
 
 In Rye, these functions can just take blocks of code (like `if`, `loop` or `for` functions) for what you would need special forms in most languages. 
 
-Rye really has a lot of these, see the [reference](structures.html#heading-Higher%20order%20like%20functions) for them. And here both injected blocks and op/pipe words come very handy.
+Rye really has a lot of these, see the [reference](structures.html#heading-Higher%20order%20like%20functions) for them. And here both injected blocks and [dot-words / pipe-words](/meet_rye/specifics/opwords) come very handy.
 
 
 ```clojure

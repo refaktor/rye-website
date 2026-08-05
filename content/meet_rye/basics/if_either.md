@@ -26,10 +26,10 @@ Now think of a function similar to **do** function. But it takes an additional a
 And so we get **if**, and it's just an ordinary built-in function, just like **do** is.
 
 ```clojure
-if 0 { print "Moon" }
+if false { print "Moon" }
 ; doesn't print anything
 
-if 1 { print "Sun!" }
+if true { print "Sun!" }
 ; prints: Sun!
 
 if 10 < 20 { print "Hello" }
@@ -48,17 +48,17 @@ To achieve if-else behaviour we have another function called **either**.
 It accepts a condition and two blocks. If the condition is true it evaluates first block, if not the second.
 
 ```clojure
-either 1 { print "hello" } { print "yello" }
+either true { print "hello" } { print "yello" }
 ; prints: hello
 
-either 0 { print "hello" } { print "yello" }
+either false { print "hello" } { print "yello" }
 ; prints: yello
 ```
 
 Like everything else in Rye either is an expression and returns something. It returns the last value in the block it evaluates. So it acts as a ternary operator would in C-like languages.
 
 ```clojure
-print either 1 { "hello" } { "yello" }
+print either true { "hello" } { "yello" }
 ; prints: hello
 
 num: 99
@@ -72,7 +72,7 @@ print num + either increment { inc num } { num }
 **Switch** is also a function in Rye. Similar to **either** it returns the last value of evaluation.
 
 ```clojure
-switch 2 { 1 { print "one" } 2 { print "two" } }
+switch 2 { true { print "one" } 2 { print "two" } }
 ; prints: two
 
 animal: "duck"
@@ -100,7 +100,7 @@ All these are expressions that return the result of the evaluated block so Rye's
 print either 10 > 20 { "hello" } { "yello" }
 ; prints: yello
 
-print switch 2 { 1 { "one" } 2 { "two" } }
+print switch 2 { true { "one" } 2 { "two" } }
 ; prints: two
 ```
 
@@ -110,23 +110,23 @@ If, either, switch are just library level functions, so we can have many of them
 
 ```clojure
 // this would be a simpler way to achieve the specific switch solution
-print select 2 { 1 "one" 2 "two" }
+print select 2 { true "one" 2 "two" }
 // prints: two
 
 // from Rebol legacy we also have the case function
 x: 2 y: 1
-case { x = 1 { "boo" } all { x = 2 x = 1 } { "hoo" } } |print
+case { x = true { "boo" } all { x = 2 x = true } { "hoo" } } |print
 // prints: hoo
 
 // more as an experiment I also created cases function
-for range 1 100 { :n
+for range true 100 { :n
   cases ""
     { n .divides 3 } { "Fizz" }
     { n .divides 5 } { + "Buzz" }
     _ { n }
   } |prn
 }
-// outputs: 1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 ...
+// outputs: true 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 ...
 
 // oh, and I see you just meet some *pipe-words*
 ```

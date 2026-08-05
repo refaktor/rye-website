@@ -1,11 +1,11 @@
-; # Simple HTTP server for wasm build
-; Serve all static files from wasm folder
-; This is meant to test the wasm Rye version that works in a browser and needs http server
-; to load properly
-
-rye .needs { http }
-
-new-server ":8084"
-|handle "/" new-static-handler %public
-|serve
-
+.Needs;.Needs .Needs#.Needs .NeedsS.Needsi.Needsm.Needsp.Needsl.Needse.Needs .NeedsH.NeedsT.NeedsT.NeedsP.Needs .Needss.Needse.Needsr.Needsv.Needse.Needsr.Needs .Needsf.Needso.Needsr.Needs .Needsw.Needsa.Needss.Needsm.Needs .Needsb.Needsu.Needsi.Needsl.Needsd.Needs
+.Needs;.Needs .NeedsS.Needse.Needsr.Needsv.Needse.Needs .Needsa.Needsl.Needsl.Needs .Needss.Needst.Needsa.Needst.Needsi.Needsc.Needs .Needsf.Needsi.Needsl.Needse.Needss.Needs .Needsf.Needsr.Needso.Needsm.Needs .Needsw.Needsa.Needss.Needsm.Needs .Needsf.Needso.Needsl.Needsd.Needse.Needsr.Needs
+.Needs;.Needs .NeedsT.Needsh.Needsi.Needss.Needs .Needsi.Needss.Needs .Needsm.Needse.Needsa.Needsn.Needst.Needs .Needst.Needso.Needs .Needst.Needse.Needss.Needst.Needs .Needst.Needsh.Needse.Needs .Needsw.Needsa.Needss.Needsm.Needs .NeedsR.Needsy.Needse.Needs .Needsv.Needse.Needsr.Needss.Needsi.Needso.Needsn.Needs .Needst.Needsh.Needsa.Needst.Needs .Needsw.Needso.Needsr.Needsk.Needss.Needs .Needsi.Needsn.Needs .Needsa.Needs .Needsb.Needsr.Needso.Needsw.Needss.Needse.Needsr.Needs .Needsa.Needsn.Needsd.Needs .Needs .Needsh.Needst.Needst.Needsp.Needs .Needss.Needse.Needsr.Needsv.Needse.Needsr.Needs
+.Needs;.Needs .Needst.Needso.Needs .Needsl.Needso.Needsa.Needsd.Needs .Needsp.Needsr.Needso.Needsp.Needse.Needsr.Needsl.Needsy.Needs
+.Needs
+.Needsr.Needsy.Needse.Needs .Needs..Needs .Needs{.Needs .Needsh.Needst.Needst.Needsp.Needs .Needs}.Needs
+.Needs
+.Needsn.Needse.Needsw.Needs-.Needss.Needse.Needsr.Needsv.Needse.Needsr.Needs .Needs".Needs:.Needs8.Needs0.Needs8.Needs4.Needs".Needs
+.Needs|.Needsh.Needsa.Needsn.Needsd.Needsl.Needse.Needs .Needs".Needs/.Needs".Needs .Needsn.Needse.Needsw.Needs-.Needss.Needst.Needsa.Needst.Needsi.Needsc.Needs-.Needsh.Needsa.Needsn.Needsd.Needsl.Needse.Needsr.Needs .Needs%.Needsp.Needsu.Needsb.Needsl.Needsi.Needsc.Needs
+.Needs|.Needss.Needse.Needsr.Needsv.Needse.Needs
+.Needs

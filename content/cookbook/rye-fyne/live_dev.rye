@@ -1,30 +1,30 @@
----
-title: "Live development"
-date: 2024-09-13T19:30:08+10:00
-draft: false
-group: true
-weight: 150
-summary: "You can explore the wast Fyne library and combine / see and use various widgets and layout directly from Rye console (REPL)"
-mygroup: true
----
-
-## Exploring Fyne binding
-
-What's new: `app` `window` `label` `set-content` `show-and-run`
-
-
-![Hello fyne World](../hello_fyne_world_s.png)
-
-```lisp
-```
-
-## Develop from REPL
-
-What's new: `button` `v-box` `set-text` `layout-spacer` `resize`
-
-![Button](../button.png)
-
-
-```lisp
-```
-
+.Needs-.Needs-.Needs-.Needs
+.Needst.Needsi.Needst.Needsl.Needse.Needs:.Needs .Needs".NeedsL.Needsi.Needsv.Needse.Needs .Needsd.Needse.Needsv.Needse.Needsl.Needso.Needsp.Needsm.Needse.Needsn.Needst.Needs".Needs
+.Needsd.Needsa.Needst.Needse.Needs:.Needs .Needs2.Needs0.Needs2.Needs4.Needs-.Needs0.Needs9.Needs-.Needs1.Needs3.NeedsT.Needs1.Needs9.Needs:.Needs3.Needs0.Needs:.Needs0.Needs8.Needs+.Needs1.Needs0.Needs:.Needs0.Needs0.Needs
+.Needsd.Needsr.Needsa.Needsf.Needst.Needs:.Needs .Needsf.Needsa.Needsl.Needss.Needse.Needs
+.Needsg.Needsr.Needso.Needsu.Needsp.Needs:.Needs .Needst.Needsr.Needsu.Needse.Needs
+.Needsw.Needse.Needsi.Needsg.Needsh.Needst.Needs:.Needs .Needs1.Needs5.Needs0.Needs
+.Needss.Needsu.Needsm.Needsm.Needsa.Needsr.Needsy.Needs:.Needs .Needs".NeedsY.Needso.Needsu.Needs .Needsc.Needsa.Needsn.Needs .Needse.Needsx.Needsp.Needsl.Needso.Needsr.Needse.Needs .Needst.Needsh.Needse.Needs .Needsw.Needsa.Needss.Needst.Needs .NeedsF.Needsy.Needsn.Needse.Needs .Needsl.Needsi.Needsb.Needsr.Needsa.Needsr.Needsy.Needs .Needsa.Needsn.Needsd.Needs .Needsc.Needso.Needsm.Needsb.Needsi.Needsn.Needse.Needs .Needs/.Needs .Needss.Needse.Needse.Needs .Needsa.Needsn.Needsd.Needs .Needsu.Needss.Needse.Needs .Needsv.Needsa.Needsr.Needsi.Needso.Needsu.Needss.Needs .Needsw.Needsi.Needsd.Needsg.Needse.Needst.Needss.Needs .Needsa.Needsn.Needsd.Needs .Needsl.Needsa.Needsy.Needso.Needsu.Needst.Needs .Needsd.Needsi.Needsr.Needse.Needsc.Needst.Needsl.Needsy.Needs .Needsf.Needsr.Needso.Needsm.Needs .NeedsR.Needsy.Needse.Needs .Needsc.Needso.Needsn.Needss.Needso.Needsl.Needse.Needs .Needs(.NeedsR.NeedsE.NeedsP.NeedsL.Needs).Needs".Needs
+.Needsm.Needsy.Needsg.Needsr.Needso.Needsu.Needsp.Needs:.Needs .Needst.Needsr.Needsu.Needse.Needs
+.Needs-.Needs-.Needs-.Needs
+.Needs
+.Needs#.Needs#.Needs .NeedsE.Needsx.Needsp.Needsl.Needso.Needsr.Needsi.Needsn.Needsg.Needs .NeedsF.Needsy.Needsn.Needse.Needs .Needsb.Needsi.Needsn.Needsd.Needsi.Needsn.Needsg.Needs
+.Needs
+.NeedsW.Needsh.Needsa.Needst.Needs'.Needss.Needs .Needsn.Needse.Needsw.Needs:.Needs .Needs`.Needsa.Needsp.Needsp.Needs`.Needs .Needs`.Needsw.Needsi.Needsn.Needsd.Needso.Needsw.Needs`.Needs .Needs`.Needsl.Needsa.Needsb.Needse.Needsl.Needs`.Needs .Needs`.Needss.Needse.Needst.Needs-.Needsc.Needso.Needsn.Needst.Needse.Needsn.Needst.Needs`.Needs .Needs`.Needss.Needsh.Needso.Needsw.Needs-.Needsa.Needsn.Needsd.Needs-.Needsr.Needsu.Needsn.Needs`.Needs
+.Needs
+.Needs
+.Needs!.Needs[.NeedsH.Needse.Needsl.Needsl.Needso.Needs .Needsf.Needsy.Needsn.Needse.Needs .NeedsW.Needso.Needsr.Needsl.Needsd.Needs].Needs(.Needs..Needs..Needs/.Needsh.Needse.Needsl.Needsl.Needso.Needs_.Needsf.Needsy.Needsn.Needse.Needs_.Needsw.Needso.Needsr.Needsl.Needsd.Needs_.Needss.Needs..Needsp.Needsn.Needsg.Needs).Needs
+.Needs
+.Needs`.Needs`.Needs`.Needsl.Needsi.Needss.Needsp.Needs
+.Needs`.Needs`.Needs`.Needs
+.Needs
+.Needs#.Needs#.Needs .NeedsD.Needse.Needsv.Needse.Needsl.Needso.Needsp.Needs .Needsf.Needsr.Needso.Needsm.Needs .NeedsR.NeedsE.NeedsP.NeedsL.Needs
+.Needs
+.NeedsW.Needsh.Needsa.Needst.Needs'.Needss.Needs .Needsn.Needse.Needsw.Needs:.Needs .Needs`.Needsb.Needsu.Needst.Needst.Needso.Needsn.Needs`.Needs .Needs`.Needsv.Needs-.Needsb.Needso.Needsx.Needs`.Needs .Needs`.Needss.Needse.Needst.Needs-.Needst.Needse.Needsx.Needst.Needs`.Needs .Needs`.Needsl.Needsa.Needsy.Needso.Needsu.Needst.Needs-.Needss.Needsp.Needsa.Needsc.Needse.Needsr.Needs`.Needs .Needs`.Needsr.Needse.Needss.Needsi.Needsz.Needse.Needs`.Needs
+.Needs
+.Needs!.Needs[.NeedsB.Needsu.Needst.Needst.Needso.Needsn.Needs].Needs(.Needs..Needs..Needs/.Needsb.Needsu.Needst.Needst.Needso.Needsn.Needs..Needsp.Needsn.Needsg.Needs).Needs
+.Needs
+.Needs
+.Needs`.Needs`.Needs`.Needsl.Needsi.Needss.Needsp.Needs
+.Needs`.Needs`.Needs`.Needs
+.Needs

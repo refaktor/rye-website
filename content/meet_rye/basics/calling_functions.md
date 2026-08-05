@@ -165,4 +165,4 @@ dot-words and pipe-words. This enables left-to-right code flow:
 ; prints: Bob Smith
 ```
 
-See [Dot-words](/meet_rye/specifics/dotwords) and [Op and Pipe-words](/meet_rye/specifics/opwords).
+See [Dot, Op and Pipe-words](/meet_rye/specifics/opwords).

@@ -88,7 +88,7 @@ print content
 ; Get file information
 file: Open %data.txt
 info: Stat file
-print "File size:" ++ to-string Size? info
+print "File size:" ++ string Size? info
 file .Close
 ```
 
