@@ -385,7 +385,7 @@ do\par fyne {
 What's new: `button-with-icon` `objects?` `set-checked` `place-holder!` `on-submitted!` `refresh`
 
 This is a very simple work in progress app with simple state management using a Rye's table value type. Tables were like other values in Rye basically immutable data strucures, so they can't be
-efficietly used as a app-level "database". We are changing some things so they can also be usefull in this situation. While the default use is still immutable.
+efficiently used as an app-level "database". We are changing some things so they can also be useful in this situation. While the default use is still immutable.
 
 ![shoping list app](../shopping_list.png)
 

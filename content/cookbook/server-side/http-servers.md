@@ -359,7 +359,7 @@ What's new: `validate` `Full-form?` `sqlite`
 ;
 ; Code uses SQL and Validation dialects which are the usual part of Ryelang
 
-rye |Needs { sqlite http }
+rye .Needs { sqlite http }
 
 assure-requests-table: fn { db } {
       Exec db {

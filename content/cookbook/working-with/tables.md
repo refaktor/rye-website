@@ -144,8 +144,8 @@ insert into crew values
 
 $ rye
 
-open sqlite://theseus.db
-|query { select * from crew }
+Open sqlite://theseus.db
+|Query { select * from crew }
 ; returns a table with 3 columns and 3 rows
 ; 
 ; | id | name            | race      |
@@ -154,6 +154,8 @@ open sqlite://theseus.db
 ; | 2  | Jukka Sarasti   | vampire   |
 ; | 3  | Susan James     | human     |
 ```
+
+Tip: You can pass parameters safely in SQL blocks using get-words (?var). See also: ../server-side/sqlite_database/
 &nbsp;
 
 ### From Excel file

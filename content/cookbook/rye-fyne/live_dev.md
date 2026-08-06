@@ -21,7 +21,7 @@ Keywords: `cc` `lc` `lcp` `lc\` `lcp\`
 Fyne binding lives in it's own context (fyne). That's why our code generally resides in `do\in fyne` or better `do\par fyne` in our scripts.
 
 Rye has some console specific functions that are similar to how we traverse and explore directories in general. We wouldn't normally use these in scrips,
-but they are very usefull in console.
+but they are very useful in console.
 
 ```lisp
 x> lc            ; list current context, empty if we just started a console

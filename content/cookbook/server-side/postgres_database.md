@@ -20,7 +20,7 @@ summary: "How to work with Postgres databases."
 
 ### Opening a database
 
-What's new: `open` `postgres-schema`
+What's new: `Open` `postgres-schema`
 
 To open a connection to a PostgreSQL database server, we use generic function `Open` function with a PostgreSQL connection URI.
 
@@ -66,7 +66,9 @@ SQL that doesn't query for data, but executes changes is called with an `exec` f
 db .Exec { 
     create table employees (  
         id serial primary key , 
-        name varchar ( 100 ) , salary decimal ( 10 , 2 ) , 
+        name varchar ( 100 ) ,
+        department varchar ( 100 ) ,
+        salary decimal ( 10 , 2 ) , 
         hire_date date default current_date 
     ) 
 }
@@ -103,13 +105,17 @@ x> .Query { select * from employees } |display
 ; | 4  | David Wilson  | 55000.00 | 2025-09-27T00:00:00Z |
 ```
 
-Function `Query` returns a table or a failure value type.
+Function `Query` returns a table or a failure value type. Note: SQL NULL values are returned as Rye Void (_).
+
+See also: the Tables cookbook for working with query results: ../working-with/tables/
 
 ### Working with PostgreSQL-specific features
 
 PostgreSQL offers many advanced features. Here are some examples:
 
 #### JSON operations
+
+(Using backticks below for raw JSON strings.)
 
 ```lisp
 ; Create a table with JSON data
@@ -136,7 +142,7 @@ db .Query `select name, metadata->>'brand' as brand,
 #### Arrays
 
 ```lisp
-; text[] is not a walid Rye word for now, so string
+; text[] is not a valid Rye word for now, so string
 db .Exec `create table teams ( 
     id serial primary key ,
     name varchar ( 100 ) ,
@@ -179,6 +185,18 @@ db .Query { select
 
 This approach provides the security benefits of prepared statements while maintaining readable SQL code.
 
+### Debugging SQL
+
+Use `Show-SQL` to see the generated SQL and parameter values without executing the query. PostgreSQL placeholders render as $1, $2, ...
+
+```lisp
+min-salary: 60000
+
+; See what SQL is generated
+db .Show-SQL { select name , salary from employees where salary >= ?min-salary }
+; Returns: "SELECT name , salary FROM employees WHERE salary >= $1\n-- Parameters: $1 = 60000"
+```
+
 ### Transactions
 
 PostgreSQL connections should be properly managed in production applications:
@@ -197,6 +215,14 @@ perform-batch-operations: fn { db } {
 }
 
 db |perform-batch-operations
+```
+
+### Closing the database
+
+When you're done with the connection, close it to free resources.
+
+```lisp
+db .Close
 ```
 
 <!--

@@ -105,6 +105,10 @@ db .Query { select name from pets where name like "H%" }
 
 Queries return table objects that can be further processed with Rye's table functions.
 
+Note: SQL NULL values are returned as Rye Void (_).
+
+See also: the Tables cookbook for working with query results: ../working-with/tables/
+
 ## Prepared statements with parameters
 
 Rye's SQL dialect supports safe parameter embedding using get-words. This prevents SQL injection and makes queries more readable.
@@ -163,6 +167,19 @@ db .Show-SQL { select * from pets where species = ?search-term and id >= ?min-id
 ```
 
 This is useful for debugging complex queries and understanding how parameters are bound.
+
+## Transactions (optional)
+
+You can wrap multiple operations in a simple transaction.
+
+```lisp
+db .Exec { begin }
+; ... your inserts/updates ...
+db .Exec { insert into pets values ( null , "Buddy" , "dog" ) }
+db .Exec { commit }
+; Use rollback if something goes wrong
+; db .Exec { rollback }
+```
 
 ## Closing the database
 
